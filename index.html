@@ -109,16 +109,20 @@ a:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
 .gform iframe{display:block;border:0;max-width:100%}
 @media (max-width:420px){.engage button{padding:8px 11px;font-size:13px}.engage{gap:6px}}
 @media (prefers-reduced-motion:reduce){.eb-heart svg,.eb-heart::after{animation:none!important}.fh2{display:none}.rb,.rb *,.heart.pop svg,.panel.open{animation:none!important}.fh{display:none}}
+.panel{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:auto;z-index:30;width:min(440px,calc(100vw - 28px));height:auto;min-height:min(340px,60vh);max-height:min(640px,86vh);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;display:none;flex-direction:column;overflow:hidden;transform-origin:bottom right;box-shadow:0 10px 34px rgba(0,0,0,.34);transition:max-height .25s,width .25s}
+.panel.open{animation:none!important}.fh{display:none}}
 .panel{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:auto;z-index:30;width:min(380px,calc(100vw - 28px));height:min(560px,72vh);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;display:none;flex-direction:column;overflow:hidden;transform-origin:bottom right;box-shadow:0 10px 34px rgba(0,0,0,.34)}
 .panel.open{display:flex;animation:pin .28s cubic-bezier(.2,.9,.3,1.1)}
-.panel.demo{height:min(300px,38vh)}
+.panel.demo{min-height:0;max-height:38vh}
+.panel.big{width:min(760px,calc(100vw - 28px));max-height:92vh;min-height:min(560px,80vh)}
+.panel.demo.big{max-height:38vh;min-height:0}
 @keyframes pin{from{opacity:0;transform:translate(28px,36px) scale(.82)}to{opacity:1;transform:none}}
 .ph{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
-.ph b{flex:1;font-family:'Bricolage Grotesque',sans-serif;font-size:18px}
+.ph b{flex:1;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;white-space:nowrap}
 .ph button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 12px;font:600 14px Figtree,sans-serif;cursor:pointer}
 .msgs{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:12px 14px;display:flex;flex-direction:column;gap:10px;flex:1 1 auto;min-height:0}
 .chips,.ask{flex:none}
-.m{max-width:90%;padding:10px 13px;border-radius:14px;white-space:pre-wrap}
+.m{max-width:92%;font-size:16px;font-weight:400;line-height:1.5;padding:10px 13px;border-radius:14px;white-space:pre-wrap}
 .m.c{background:var(--bg);border:1px solid var(--line);align-self:flex-start}
 .m.u{background:var(--court);color:#fff;align-self:flex-end}
 .chips{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 8px}
@@ -305,7 +309,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
 
 <button class="fab" id="fab" aria-expanded="false" aria-label="Ask AI Coach Shree"><span id="fabav"></span>Ask AI Coach Shree</button>
 <div class="panel" id="panel" role="dialog" aria-label="AI Coach Shree">
-  <div class="ph"><span id="phav"></span><b>AI Coach Shree</b><button id="pclose" aria-label="Close AI Coach Shree">Close</button></div>
+  <div class="ph"><span id="phav"></span><b>AI Coach Shree</b><button id="pbig" type="button" aria-label="Make the chat bigger" aria-pressed="false">Expand</button><button id="pclose" aria-label="Close AI Coach Shree">Close</button></div>
   <div class="msgs" id="msgs" aria-live="polite"></div>
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Coach Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
@@ -366,22 +370,26 @@ function ask(q){q=q.trim();if(!q)return;var cm=demoFor(q);if(cm){say('u',q);say(
 function openC(o){if(!o){document.getElementById('panel').classList.remove('demo');if(window.coachDemo)coachDemo(null)}document.getElementById('panel').classList.toggle('open',o);document.getElementById('fab').style.display=o?'none':'flex';document.getElementById('fab').setAttribute('aria-expanded',o);if(o){if(!document.getElementById('msgs').children.length)say('c',INTRO[ctab]);chips()}}
 window.coachTab=function(id){ctab=id;if(window.coachSkip){window.coachSkip=0;return}if(document.getElementById('panel').classList.contains('open')){say('c',INTRO[id]);chips()}};
 document.getElementById('fab').onclick=function(){openC(true)};document.getElementById('pclose').onclick=function(){openC(false)};
+var pbig=document.getElementById('pbig');pbig.onclick=function(){var b=document.getElementById('panel').classList.toggle('big');pbig.textContent=b?'Shrink':'Expand';pbig.setAttribute('aria-pressed',b);var m=document.getElementById('msgs');m.scrollTop=m.scrollHeight};
 document.getElementById('send').onclick=function(){var i=document.getElementById('q');ask(i.value);i.value=''};
 document.getElementById('q').onkeydown=function(e){if(e.key==='Enter'){document.getElementById('send').click()}};
-(function(){var NS='aismashlearningacademy.com',KEY='hearts',BASES=['https://abacus.jasoncameron.dev','https://v2.jasoncameron.dev'],LK='ais_heart_given';
-var btn=document.getElementById('hbtn'),cnt=document.getElementById('hcount'),msg=document.getElementById('hmsg'),eng=document.getElementById('engage'),cur=null,given=false,mt=0;
-try{given=localStorage.getItem(LK)==='1'}catch(e){}
-btn.classList.toggle('on',given);
+(function(){var NS='aismashlearningacademy.com',KEY='hearts',BASES=['https://abacus.jasoncameron.dev','https://v2.jasoncameron.dev'],LK='ais_heart_mine';
+var btn=document.getElementById('hbtn'),cnt=document.getElementById('hcount'),msg=document.getElementById('hmsg'),eng=document.getElementById('engage'),shown=null,server=null,pending=0,busy=false,mt=0,mine=0;
+try{mine=parseInt(localStorage.getItem(LK)||'0',10)||0}catch(e){}
+btn.classList.toggle('on',mine>0);
 function call(path,i){i=i||0;if(i>=BASES.length)return Promise.reject();return fetch(BASES[i]+path).then(function(r){if(r.status===404)return{value:0};if(!r.ok)throw 0;return r.json()}).catch(function(){return call(path,i+1)})}
-function show(n){if(typeof n!=='number'||isNaN(n))return;var from=cur===null?0:cur,t0=performance.now();cur=n;if(from===n||matchMedia('(prefers-reduced-motion:reduce)').matches){cnt.textContent=n.toLocaleString();return}(function f(t){var k=Math.min(1,(t-t0)/700);cnt.textContent=Math.round(from+(n-from)*k).toLocaleString();if(k<1)requestAnimationFrame(f)})(t0)}
-function load(){call('/get/'+NS+'/'+KEY).then(function(d){show(d.value)}).catch(function(){})}
-function say(t){msg.textContent=t;msg.classList.add('show');clearTimeout(mt);mt=setTimeout(function(){msg.classList.remove('show')},3500)}
-function burst(){var r=btn.getBoundingClientRect(),e=eng.getBoundingClientRect();for(var i=0;i<9;i++){var h=document.createElement('span');h.className='fh2';h.textContent='\u2665';h.style.left=(r.left-e.left+14+Math.random()*(r.width-28))+'px';h.style.setProperty('--dx',(Math.random()*80-40)+'px');h.style.animationDelay=(i*55)+'ms';h.style.fontSize=(14+Math.random()*12)+'px';eng.appendChild(h);setTimeout(function(x){x.remove()},1400+i*55,h)}}
-btn.onclick=function(){burst();if(given){say('Thank you! You already gave a heart \u2665');return}
-given=true;btn.classList.add('on');try{localStorage.setItem(LK,'1')}catch(e){}
-say('Thank you! Your heart helps the community grow \u2665');
-call('/hit/'+NS+'/'+KEY).then(function(d){show(d.value)}).catch(function(){})};
-load();setInterval(function(){if(!document.hidden)load()},60000);document.addEventListener('visibilitychange',function(){if(!document.hidden)load()})})();
+function show(n){if(typeof n!=='number'||isNaN(n))return;var from=shown===null?0:shown,t0=performance.now();shown=n;if(from===n||matchMedia('(prefers-reduced-motion:reduce)').matches){cnt.textContent=n.toLocaleString();return}(function f(t){if(shown!==n)return;var k=Math.min(1,(t-t0)/500);cnt.textContent=Math.round(from+(n-from)*k).toLocaleString();if(k<1)requestAnimationFrame(f)})(t0)}
+function sync(){if(server!==null)show(server+pending)}
+function load(){call('/get/'+NS+'/'+KEY).then(function(d){server=d.value;sync()}).catch(function(){})}
+function flush(){if(busy||!pending)return;busy=true;call('/hit/'+NS+'/'+KEY).then(function(d){pending--;server=d.value;sync()}).catch(function(){pending=0;sync()}).then(function(){busy=false;setTimeout(flush,260)})}
+function say(t){msg.textContent=t;msg.classList.add('show');clearTimeout(mt);mt=setTimeout(function(){msg.classList.remove('show')},3200)}
+function burst(){var r=btn.getBoundingClientRect(),e=eng.getBoundingClientRect();eng.querySelectorAll('.fh2').forEach(function(x,i,a){if(a.length>24)x.remove()});for(var i=0;i<6;i++){var h=document.createElement('span');h.className='fh2';h.textContent='\u2665';h.style.left=(r.left-e.left+14+Math.random()*(r.width-28))+'px';h.style.setProperty('--dx',(Math.random()*80-40)+'px');h.style.animationDelay=(i*50)+'ms';h.style.fontSize=(14+Math.random()*12)+'px';eng.appendChild(h);setTimeout(function(x){x.remove()},1400+i*50,h)}}
+btn.onclick=function(){burst();btn.classList.add('on');mine++;try{localStorage.setItem(LK,String(mine))}catch(e){}
+say(mine===1?'Thank you! Your heart helps the community grow \u2665':'You have given '+mine.toLocaleString()+' hearts \u2665');
+if(pending<60)pending++;
+if(server===null){shown=(shown||0)+1;cnt.textContent=shown.toLocaleString()}else sync();
+flush()};
+load();setInterval(function(){if(!document.hidden&&!pending)load()},60000);document.addEventListener('visibilitychange',function(){if(!document.hidden&&!pending)load()})})();
 if(window.claude&&claude.use)claude.use('sample').then(function(s){sample=s}).catch(function(){});
 
 var TE=[['Serve (toss)','Every rally starts here.',['Stand near the short service line with your feet still.','Hold the shuttle by its feathers in front of you, below your waist.','Let it drop and swing the racket forward and up.','Hit it below your waist so it clears the net and lands near the short service line.'],'Drop the shuttle, don\u2019t throw it up. Watch it all the way to the racket.'],['Forehand smash','Your fast, steep attacking shot.',['Turn sideways with your racket arm back and up.','Jump or step back and hit the shuttle at the highest point in front of you.','Snap your forearm and wrist down as you hit.','Follow through across your body and return to the centre.'],'Aim steeply down to the floor. A steep shot beats a merely hard one.'],['Forehand drop','Looks like a smash but lands softly near the net.',['Prepare exactly like a smash.','Slow the swing just before contact.','Tap the shuttle with a soft wrist so it just clears the net.'],'If your preparation looks the same as a smash, your opponent can\u2019t tell which is coming.'],['Forehand lift','Underarm shot from the front court to the back.',['Lunge forward with your racket foot toward the shuttle.','Swing underarm from low to high with a loose wrist.','Send the shuttle high and deep to the back line.','Push off your front foot and go back to the centre.'],'Height and depth matter more than speed. A high lift gives you time to recover.'],['Forehand keep','A small tap that keeps the shuttle tight to the net.',['Lunge with the racket held up in front, at net height.','Hit the shuttle early, as close to the top of the net as you can.','Use a soft push of your fingers, not a big swing.','The shuttle should barely clear the net and drop close to it.'],'The higher you take the shuttle, the more pressure you put on your opponent.'],['Backhand lift','Underarm lift hit on your non-racket side.',['Step toward the shuttle with your racket foot and turn your back slightly to the net.','Bring your elbow across your body so the back of your hand leads.','Swing from low to high, pushing with your thumb on the wide flat of the handle.','Send it high and deep, then push back to the centre.'],'Use a thumb grip: press your thumb on the wide flat of the handle for power and control.'],['Backhand smash','Overhead smash hit on your backhand side.',['Turn your back toward the net and lift your elbow high.','Rotate and reach up to hit at the highest point above your shoulder.','Snap your forearm and fingers through the shuttle.','Recover quickly, because this shot is hard to control.'],'A backhand smash is difficult. Most players use a backhand clear or drop unless they can reach the shuttle early.'],['Backhand keep','A soft net tap on your backhand side.',['Lunge with your racket foot and bring the racket across your body.','Hold the racket up at net height, back of the hand facing the net.','Push with your thumb and fingers for a soft tap.','The shuttle should barely cross the net and drop close to it.'],'Keep your wrist loose and take the shuttle as early as you can.'],['Net lift','Underarm lift played right at the net.',['Lunge to the net with the racket up and ready.','Let the shuttle drop a little, then swing underarm from low to high.','Use your wrist and fingers to send it high and deep to the back line.','Push back to the centre and get ready for the next shot.'],'Lift higher than you think. A high lift gives you time to recover.'],['Backhand drop','A soft drop played on your backhand side.',['Turn your back to the net and bring your elbow up.','Prepare like a backhand clear so the shot is hidden.','Slow the swing and tap with your fingers and thumb.','The shuttle should just clear the net and drop close to it.'],'It looks like a backhand clear until the last moment, which is what makes it work.']];
