@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Smash Learning Academy: learn badminton rules, rackets, grip, footwork, techniques and drills with 3D demonstrations.">
+<title>Smash Learning Academy – Learn Badminton</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F3F6F2;--surface:#FFFFFF;--ink:#14281F;--muted:#4C6257;--court:#1D6B55;--court-d:#14483A;--line:#DCE5DE;--cork:#E9C46A;--hot:#E4572E;--onc:#FFFFFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A15;--surface:#172620;--ink:#EAF2EC;--muted:#A3B8AC;--court:#3FA386;--court-d:#2D7A64;--line:#27403529;--line:#2A4237}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;line-height:1.55;font-size:16px}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.1;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;padding:12px 0 8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px}
+nav button{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 14px Figtree,sans-serif;padding:8px 14px;border-radius:999px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--court);color:var(--onc);border-color:var(--court)}
+button:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+section{display:none;padding:28px 0 56px}
+section.on{display:block}
+.hero h1{font-size:clamp(36px,9vw,56px);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--muted);font-size:18px;max-width:46ch}
+.court{width:100%;height:auto;margin:22px 0;border-radius:14px;display:block}
+.cta{display:inline-block;background:var(--hot);color:#fff;border:0;font:700 16px Figtree,sans-serif;padding:13px 22px;border-radius:10px;cursor:pointer}
+.cta.alt{background:var(--court);margin-top:8px}
+.form label{display:block;font-weight:600;margin:14px 0 4px}
+.form input,.form select,.form textarea{width:100%;font:16px Figtree,sans-serif;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+h2{font-size:30px;font-weight:700;margin-bottom:6px}
+.lead{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{font-size:18px;margin-bottom:4px}
+.card p{margin:0;color:var(--muted)}
+.big{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:34px;color:var(--court)}
+.row{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)}
+.row b{font-family:'Bricolage Grotesque',sans-serif;font-size:18px}
+.pick{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.pick button{border:1.5px solid var(--court);background:transparent;color:var(--ink);font:600 14px Figtree,sans-serif;padding:9px 14px;border-radius:10px;cursor:pointer}
+.pick button[aria-pressed="true"]{background:var(--court);color:var(--onc)}
+.result{background:var(--surface);border-left:6px solid var(--cork);border-radius:8px;padding:16px;border:1px solid var(--line);border-left:6px solid var(--cork)}
+.result h3{margin-bottom:8px}
+.result ul,.result ol{margin:0 0 10px;padding-left:20px}
+.table{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:'Bricolage Grotesque',sans-serif}
+.tip{background:var(--court-d);color:#fff;border-radius:12px;padding:16px;margin-top:20px}
+.score{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;margin:18px 0 0;padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;font:600 15px Figtree,sans-serif}
+.score b{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;color:var(--court);padding:0 4px}
+.say{display:flex;gap:10px;align-items:flex-start;margin:10px 0 0;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--hot);border-radius:12px}
+.say svg{background:#fff;border-radius:50%;display:block;flex:none}
+.say div{font-size:15px;min-height:46px}
+.score .sp{order:5;flex-basis:100%;color:var(--muted);font-size:13px}
+.score button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 10px;font:600 13px Figtree,sans-serif;cursor:pointer}
+.ctl{position:absolute;top:8px;right:8px;display:flex;gap:6px;z-index:3}
+.ctl button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px Figtree,sans-serif;cursor:pointer;opacity:.92;padding:0}
+.stage.big{position:fixed;left:0;top:0;right:0;bottom:0;width:auto;height:auto;margin:0;border-radius:0;z-index:60}
+.stage.big .ctl{top:calc(10px + env(safe-area-inset-top,0px))}
+body.noscroll{overflow:hidden}
+.lk{display:block;text-decoration:none;color:inherit}.lk:hover{border-color:var(--court)}.lk h3 span{color:var(--hot)}
+a:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+.stage{position:relative;height:300px;margin:18px 0;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:grab}
+.stage.sm{height:260px}
+.stage canvas{display:block;width:100%;height:100%;touch-action:pan-y}
+.stage::after{content:"Drag to rotate";position:absolute;right:12px;bottom:8px;font-size:12px;color:var(--muted);pointer-events:none}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;align-items:center;gap:8px;background:var(--hot);color:#fff;border:0;border-radius:999px;padding:6px 16px 6px 6px;font:700 15px Figtree,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:pointer}
+.fab svg,.ph svg{background:#fff;border-radius:50%;display:block}
+.panel{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:560px;margin:0 auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px 18px 0 0;display:none;flex-direction:column;max-height:74vh;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -6px 24px rgba(0,0,0,.28)}
+.panel.open{display:flex}
+.panel.demo{max-height:38vh}
+.ph{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.ph b{flex:1;font-family:'Bricolage Grotesque',sans-serif;font-size:18px}
+.ph button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 12px;font:600 14px Figtree,sans-serif;cursor:pointer}
+.msgs{overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:120px}
+.m{max-width:90%;padding:10px 13px;border-radius:14px;white-space:pre-wrap}
+.m.c{background:var(--bg);border:1px solid var(--line);align-self:flex-start}
+.m.u{background:var(--court);color:#fff;align-self:flex-end}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 8px}
+.chips button{flex:none;border:1.5px solid var(--court);background:transparent;color:var(--ink);font:600 13px Figtree,sans-serif;padding:7px 12px;border-radius:999px;cursor:pointer}
+.ask{display:flex;gap:8px;padding:6px 14px 12px}
+.ask input{flex:1;min-width:0;font:16px Figtree,sans-serif;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true"><circle cx="10" cy="13" r="6" fill="#E8B04A"/><circle cx="10" cy="13" r="3" fill="#3A2A1A"/><circle cx="38" cy="13" r="6" fill="#E8B04A"/><circle cx="38" cy="13" r="3" fill="#3A2A1A"/><ellipse cx="24" cy="26" rx="16" ry="15" fill="#F0BE55"/><ellipse cx="24" cy="33" rx="8" ry="6" fill="#FBE7B0"/><g fill="#3A2A1A"><circle cx="14" cy="20" r="1.4"/><circle cx="19" cy="15.5" r="1.2"/><circle cx="29" cy="15.5" r="1.2"/><circle cx="34" cy="20" r="1.4"/><circle cx="11.5" cy="27" r="1.2"/><circle cx="36.5" cy="27" r="1.2"/><circle cx="24" cy="13" r="1.2"/></g><g fill="none" stroke="#2B1D10" stroke-width="2" stroke-linecap="round"><path d="M17 27Q14.500 33 18 39"/><path d="M31 27Q33.500 33 30 39"/></g><circle cx="18" cy="24" r="2.4" fill="#3A2A1A"/><circle cx="30" cy="24" r="2.4" fill="#3A2A1A"/><circle cx="18.800" cy="23.200" r=".8" fill="#fff"/><circle cx="30.800" cy="23.200" r=".8" fill="#fff"/><path d="M21 30h6l-3 3.500z" fill="#2B1D10"/><path d="M24 33.500v2M24 35.500q-3 2-5 0M24 35.500q3 2 5 0" fill="none" stroke="#2B1D10" stroke-width="1.200" stroke-linecap="round"/></svg>Smash Learning Academy</div>
+  <nav role="tablist" aria-label="Sections"></nav>
+</div></header>
+
+<main class="wrap">
+<section id="home" class="hero on">
+  <h1>Learn badminton the right way, from the first grip.</h1>
+  <p>Simple guides to the rules, rackets, shuttles and strokes. No jargon, made for beginners.</p>
+  <div class="score"><div>Coach <b id="sa">0</b></div><div><b id="sb">0</b> Opponent</div><button id="pm">Play match</button><button id="ex" aria-label="Coach explanation mode">Coach: text</button><button id="spd" aria-label="Change game speed">4×</button><div class="sp" id="sst" aria-live="polite">Ready · tap Play match to start</div></div>
+  <div class="stage" id="s-court" role="img" aria-label="3D badminton court where the coach plays a rally"></div>
+  <div class="say" aria-live="polite"><span id="sayav"></span><div id="saytx">Ask me anything and I will explain it and show it here. Tap Play match when you want to see a game.</div></div>
+  <div class="score" style="margin-top:10px;font-size:14px"><div>Back court · Coach <b style="font-size:22px" id="ba">0</b></div><div><b style="font-size:22px" id="bb">0</b> Opponent</div><div class="sp" id="bst">First to 21 wins</div></div>
+  <svg class="court" style="display:none" viewBox="0 0 340 160" role="img" aria-label="Badminton court diagram">
+    <rect width="340" height="160" fill="#1D6B55"/>
+    <g fill="none" stroke="#fff" stroke-width="2">
+      <rect x="20" y="14" width="300" height="132"/><line x1="20" y1="28" x2="320" y2="28"/><line x1="20" y1="132" x2="320" y2="132"/>
+      <line x1="62" y1="14" x2="62" y2="146"/><line x1="278" y1="14" x2="278" y2="146"/>
+      <line x1="170" y1="14" x2="170" y2="146" stroke-width="4"/><line x1="20" y1="80" x2="62" y2="80"/><line x1="278" y1="80" x2="320" y2="80"/>
+    </g>
+    <text x="170" y="8" fill="#fff" font-size="9" text-anchor="middle" font-family="Figtree,sans-serif">Net</text>
+  </svg>
+  <button class="cta" data-go="rules">Start with the rules</button> <button class="cta alt" data-go="join">Join the academy</button>
+  <p class="lead" style="margin:28px 0 8px;font-weight:600">Jump to a section</p>
+  <div class="grid" style="margin-top:0">
+    <a class="card lk" href="#rules" data-go="rules"><h3>Rules <span aria-hidden="true">›</span></h3><p>Scoring, serving, faults and court lines.</p></a>
+    <a class="card lk" href="#rackets" data-go="rackets"><h3>Rackets <span aria-hidden="true">›</span></h3><p>Find a racket that suits your level.</p></a>
+    <a class="card lk" href="#grip" data-go="grip"><h3>Grip <span aria-hidden="true">›</span></h3><p>How to hold the racket for power and control.</p></a>
+    <a class="card lk" href="#shuttles" data-go="shuttles"><h3>Shuttles <span aria-hidden="true">›</span></h3><p>Feather or nylon? Which speed to buy.</p></a>
+    <a class="card lk" href="#techniques" data-go="techniques"><h3>Techniques <span aria-hidden="true">›</span></h3><p>Watch the coach serve, smash, drop, lift and keep.</p></a>
+    <a class="card lk" href="#footwork" data-go="footwork"><h3>Footwork <span aria-hidden="true">›</span></h3><p>Split step, side steps, lunges and the six-corner drill.</p></a>
+    <a class="card lk" href="#tricks" data-go="tricks"><h3>Trickshots <span aria-hidden="true">›</span></h3><p>Easy and hard tricks, plus the illegal moves to avoid.</p></a>
+    <a class="card lk" href="#feed" data-go="feed"><h3>Feed Drill <span aria-hidden="true">›</span></h3><p>The coach throws shuttles and the player hits every one.</p></a>
+    <a class="card lk" href="#warmup" data-go="warmup"><h3>Dynamic &amp; Rotation <span aria-hidden="true">›</span></h3><p>Warm-ups before the game and stretches after.</p></a>
+  </div>
+</section>
+
+<section id="rules">
+  <h2>Rules in two minutes</h2>
+  <p class="lead">The basics every new player needs.</p>
+  <div class="grid">
+    <div class="card"><div class="big">21</div><h3>Points win a game</h3><p>A point is scored on every rally, whoever served. Win by 2, up to a maximum of 30.</p></div>
+    <div class="card"><div class="big">2 of 3</div><h3>Games win the match</h3><p>At 1–1 in games, a deciding third game is played. Players switch ends between games.</p></div>
+  </div>
+  <div style="margin-top:18px">
+    <div class="row"><b>Serve</b><span>Hit the shuttle below your waist, diagonally into the opponent’s service court. Both feet stay still on the ground.</span></div>
+    <div class="row"><b>Singles</b><span>Use the long, narrow court. Serves go to the back line.</span></div>
+    <div class="row"><b>Doubles</b><span>Use the wide court. Serves must be short, and the back boundary for a serve is the shorter doubles long service line.</span></div>
+    <div class="row"><b>Faults</b><span>Shuttle lands out, hits the net or floor on your side, you touch the net, or you hit it twice.</span></div>
+  </div>
+</section>
+
+<section id="rackets">
+  <h2>Choose a racket</h2>
+  <p class="lead">Tap your level to see what to look for.</p>
+  <div class="stage sm" id="s-racket" role="img" aria-label="3D badminton racket"></div>
+  <div class="pick" id="lvl" role="group" aria-label="Your level">
+    <button aria-pressed="true" data-l="b">Beginner</button><button aria-pressed="false" data-l="i">Intermediate</button><button aria-pressed="false" data-l="a">Advanced</button>
+  </div>
+  <div class="result" id="rres" aria-live="polite"></div>
+  <h3 style="margin:26px 0 10px">What the numbers mean</h3>
+  <div class="table"><table>
+    <tr><th>Term</th><th>What it means</th><th>Good for</th></tr>
+    <tr><td>3U / 4U</td><td>Weight. 3U is about 85–89 g, 4U about 80–84 g.</td><td>4U is easier on the wrist</td></tr>
+    <tr><td>Head-heavy</td><td>Balance point toward the head. More power.</td><td>Smashes, clears</td></tr>
+    <tr><td>Even balance</td><td>Balance in the middle.</td><td>All-round play</td></tr>
+    <tr><td>Head-light</td><td>Balance toward the handle. Fast and quick to swing.</td><td>Doubles, net play</td></tr>
+    <tr><td>Flexible shaft</td><td>Bends more and helps generate power.</td><td>Beginners</td></tr>
+    <tr><td>Stiff shaft</td><td>Bends less and gives control.</td><td>Strong, fast swings</td></tr>
+  </table></div>
+</section>
+
+<section id="grip">
+  <h2>Grip</h2>
+  <p class="lead">The way you hold the racket decides your power and control. Pick a grip and watch a close-up. Green marks the narrow side of the handle and orange marks the wide flat side. Drag to see it from other sides.</p>
+  <div class="stage sm" id="s-grip" role="img" aria-label="3D close-up of a hand holding a badminton racket"></div>
+  <div class="say" style="margin:10px 0 0"><div id="gcap" style="font-weight:600;min-height:0">V on the narrow side</div></div>
+  <div class="pick" id="gps" role="group" aria-label="Grip"><button aria-pressed="true" data-k="0">Forehand grip</button><button aria-pressed="false" data-k="1">Backhand grip</button><button aria-pressed="false" data-k="2">Panhandle (avoid)</button><button aria-pressed="false" data-k="3">Loose and tight</button><button aria-pressed="false" data-k="4">Switching grips</button></div>
+  <div class="result" id="gres" aria-live="polite"></div>
+</section>
+
+<section id="techniques">
+  <h2>Learn the strokes</h2>
+  <p class="lead">Pick a stroke and watch the coach play it. The red circle shows where the shuttle should land.</p>
+  <div class="stage sm" id="s-tech" role="img" aria-label="3D coach demonstrating a badminton stroke"></div>
+  <div class="pick" id="stk" role="group" aria-label="Stroke"><button aria-pressed="true" data-k="0">Serve (toss)</button><button aria-pressed="false" data-k="1">Forehand smash</button><button aria-pressed="false" data-k="2">Forehand drop</button><button aria-pressed="false" data-k="3">Forehand lift</button><button aria-pressed="false" data-k="4">Forehand keep</button><button aria-pressed="false" data-k="5">Backhand lift</button><button aria-pressed="false" data-k="6">Backhand smash</button><button aria-pressed="false" data-k="7">Backhand keep</button><button aria-pressed="false" data-k="8">Net lift</button><button aria-pressed="false" data-k="9">Backhand drop</button></div>
+  <div class="result" id="tres" aria-live="polite"></div>
+</section>
+
+<section id="footwork">
+  <h2>Footwork</h2>
+  <p class="lead">Good footwork gets you to the shuttle early. Pick a move and watch the coach on the court. Drag to see it from another side.</p>
+  <div class="stage sm" id="s-foot" role="img" aria-label="3D coach showing badminton footwork on a court"></div>
+  <div class="pick" id="fwc" role="group" aria-label="Category"><button aria-pressed="true" data-c="0">Basics</button><button aria-pressed="false" data-c="1">Center to corner</button><button aria-pressed="false" data-c="2">Court patterns</button></div>
+  <div class="pick" id="fwb" role="group" aria-label="Footwork move"></div>
+  <div class="result" id="fwres" aria-live="polite"></div>
+</section>
+
+<section id="feed">
+  <h2>Feed drill</h2>
+  <p class="lead">The coach holds a shuttle and throws it to a spot on the court. The player moves and hits every shuttle back. Pick a drill and drag to see it from another side.</p>
+  <div class="stage sm" id="s-feed" role="img" aria-label="3D coach throwing shuttles to a player who hits each one"></div>
+  <p id="fdcnt" class="lead" style="margin:0 0 10px;font-weight:600">Shuttles in the coach’s hand: 20</p>
+  <div class="pick" id="fdb" role="group" aria-label="Drill"><button aria-pressed="true" data-k="0">All corners</button><button aria-pressed="false" data-k="1">Net feeds</button><button aria-pressed="false" data-k="2">Mid-court feeds</button><button aria-pressed="false" data-k="3">Back-court feeds</button><button aria-pressed="false" data-k="4">20-feed drill</button></div>
+  <div class="result" id="fdres" aria-live="polite"></div>
+</section>
+
+<section id="tricks">
+  <h2>Trickshots</h2>
+  <p class="lead">Pick a level. Easy and Hard are legal tricks. Impossible has only illegal moves that break the rules and lose the point. Fantasy has stunts that no one can do. Drag to see each one from another side.</p>
+  <div class="stage sm" id="s-trick" role="img" aria-label="3D coach performing a badminton trick shot"></div>
+  <div class="pick" id="tkc" role="group" aria-label="Difficulty"><button aria-pressed="true" data-c="0">Easy</button><button aria-pressed="false" data-c="1">Hard</button><button aria-pressed="false" data-c="2">Impossible</button><button aria-pressed="false" data-c="3">Fantasy</button></div>
+  <div class="pick" id="tkb" role="group" aria-label="Trick shot"></div>
+  <div class="result" id="tkres" aria-live="polite"></div>
+</section>
+
+<section id="warmup">
+  <h2>Dynamic and rotation</h2>
+  <p class="lead">Before the game: dynamic and rotation moves. After the game: stretches. Use Next to go one by one. Stop if anything hurts.</p>
+  <div class="pick" id="wtop" role="group" aria-label="When"><button aria-pressed="true" data-t="0">Before the game</button><button aria-pressed="false" data-t="1">After the game</button></div>
+  <div class="pick" id="wph" role="group" aria-label="Category"><button aria-pressed="true" data-p="0">Dynamic</button><button aria-pressed="false" data-p="1">Rotation</button><button aria-pressed="false" data-p="2" hidden>Stretches</button></div>
+  <div class="stage sm" id="s-warm" role="img" aria-label="3D coach doing a warm-up or stretch"></div>
+  <div class="pick" id="wex" role="group" aria-label="Exercise"></div>
+  <div class="pick" id="wnav" style="align-items:center"><button id="wprev">‹ Previous</button><span id="wcnt" style="font-weight:600"></span><button id="wnext">Next ›</button></div>
+  <div class="result" id="wres" aria-live="polite"></div>
+</section>
+
+<section id="join">
+  <h2>Join the academy</h2>
+  <p class="lead">Fill in your details and send them to us by email. We will contact you with batch timings and fees.</p>
+  <div class="form">
+    <label for="jn">Your name</label><input id="jn" autocomplete="name">
+    <label for="jc">Phone number or email</label><input id="jc" autocomplete="tel">
+    <label for="ja">Age group</label><select id="ja"><option>Child (under 12)</option><option>Teen (12 to 17)</option><option>Adult (18 and over)</option></select>
+    <label for="jl">Your level</label><select id="jl"><option>Complete beginner</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+    <label for="jm">Message (optional)</label><textarea id="jm" rows="3"></textarea>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><button class="cta" id="jmail" type="button">Send by email</button></div>
+    <p style="font-size:14px;color:var(--muted);margin:14px 0 0">Privacy: this form stores nothing on this site. Your details are only sent when you tap Send by email, and they go to the academy’s email address. For children under 12, please ask a parent or guardian to send it.</p>
+    <p id="jerr" role="alert" style="color:var(--hot);font-weight:600;min-height:1.4em"></p>
+  </div>
+  <div class="card" style="margin-top:12px"><h3>Contact us</h3><p id="jinfo"></p></div>
+</section>
+
+<section id="shuttles">
+  <h2>Choose a shuttle</h2>
+  <p class="lead">Pick the type, then the speed for your hall.</p>
+  <div class="stage sm" id="s-shuttle" role="img" aria-label="3D badminton shuttle"></div>
+  <div class="grid">
+    <div class="card"><h3>Feather</h3><p>Real goose or duck feathers with a cork head. Better flight and feel, used in tournaments. Breaks faster and costs more.</p></div>
+    <div class="card"><h3>Nylon</h3><p>Plastic skirt that lasts much longer. Great for practice and beginners. Flight is a little less precise.</p></div>
+  </div>
+  <h3 style="margin:26px 0 6px">Which speed?</h3>
+  <p class="lead" style="margin-bottom:8px">Faster numbers fly farther. Match them to the temperature.</p>
+  <div class="pick" id="tmp" role="group" aria-label="Weather">
+    <button aria-pressed="true" data-t="c">Cold</button><button aria-pressed="false" data-t="m">Mild</button><button aria-pressed="false" data-t="h">Hot</button>
+  </div>
+  <div class="result" id="sres" aria-live="polite"></div>
+  <div class="tip"><b>Tip:</b> a good test is to hit a full underarm clear from the back line. The shuttle should land just inside the opposite back line.</div>
+</section>
+</main>
+
+<button class="fab" id="fab" aria-expanded="false"><span id="fabav"></span>Ask coach</button>
+<div class="panel" id="panel" role="dialog" aria-label="Badminton coach">
+  <div class="ph"><span id="phav"></span><b>Your coach</b><button id="pclose" aria-label="Close coach">Close</button></div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask the coach"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
+</div>
+<div class="wrap"><footer>© 2026 Smash Learning Academy. All rights reserved.</footer></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+var tabs=[["home","Home"],["rules","Rules"],["rackets","Rackets"],["grip","Grip"],["techniques","Techniques"],["footwork","Footwork"],["feed","Feed Drill"],["tricks","Trickshots"],["warmup","Dynamic & Rotation"],["shuttles","Shuttles"],["join","Join"]];
+var nav=document.querySelector("nav");
+tabs.forEach(function(t,i){var b=document.createElement("button");b.textContent=t[1];b.setAttribute("role","tab");b.setAttribute("aria-selected",i==0);b.dataset.id=t[0];b.onclick=function(){go(t[0])};nav.appendChild(b)});
+function go(id){document.querySelectorAll("section").forEach(function(s){s.classList.toggle("on",s.id==id)});
+nav.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.id==id)});window.scrollTo(0,0);if(window.coachTab)coachTab(id)}
+document.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(e){e.preventDefault();go(b.dataset.go)}});
+var R={b:["Beginner","4U weight (easier on the wrist)","Even balance or slightly head-heavy","Flexible shaft","Budget range, pre-strung is fine","String tension 18–20 lbs"],
+i:["Intermediate","3U or 4U, whichever feels comfortable","Even balance","Medium shaft","Your own string choice","String tension 20–24 lbs"],
+a:["Advanced","3U for power or 4U for speed","Head-heavy for singles, head-light for doubles","Stiff shaft for control","Premium frame, custom string","String tension 24 lbs and above"]};
+var S={c:["Cold weather","Use a faster shuttle, such as speed 78 or 79. Cold air makes the shuttle fall short."],m:["Mild weather","Speed 77 is the usual choice for most halls."],h:["Hot weather","Use a slower shuttle, such as speed 76 or 75. Warm air lets it fly farther."]};
+function wire(gid,rid,data,key,fn){var g=document.getElementById(gid);g.querySelectorAll("button").forEach(function(b){b.onclick=function(){g.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x==b)});fn(data[b.dataset[key]])}})}
+function showR(d){document.getElementById("rres").innerHTML="<h3>"+d[0]+" picks</h3><ul>"+d.slice(1).map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul>"}
+function showS(d){document.getElementById("sres").innerHTML="<h3>"+d[0]+"</h3><p style='margin:0'>"+d[1]+"</p>"}
+wire("lvl","rres",R,"l",showR);wire("tmp","sres",S,"t",showS);showR(R.b);showS(S.c);
+
+/* Coach */
+var ctab='home',sample=null,hist=[];
+function av(s){return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 48c2-10 10-14 18-14s16 4 18 14z" fill="#1D6B55"/><circle cx="24" cy="22" r="11" fill="#F2C9A0"/><path d="M12 20c0-9 7-12 12-12s12 3 12 12z" fill="#14283A"/><rect x="12" y="17" width="24" height="4" rx="2" fill="#E4572E"/><circle cx="20" cy="25" r="1.4" fill="#14283A"/><circle cx="28" cy="25" r="1.4" fill="#14283A"/><path d="M20 29q4 3 8 0" stroke="#14283A" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>'}
+document.getElementById('fabav').innerHTML=av(38);document.getElementById('phav').innerHTML=av(40);
+var INTRO={home:'Hi, I’m your coach! Ask me anything. A good path is Rules first, then Rackets, then Shuttles.',rules:'Rules page: a game is to 21 points and every rally scores. Want me to explain any part?',rackets:'Rackets page: tap your level to see picks. The table explains weight, balance and shaft flex. What would you like explained?',shuttles:'Shuttles page: feather feels best, nylon lasts longer. Speed depends on the temperature. Ask me why!',techniques:'Techniques page: pick a stroke and watch me play it in 3D. Drag to look from another angle. Which one do you want to learn?',warmup:'Dynamic and rotation page: warm up before you play and stretch after. Pick a move and I will show you.',grip:'Grip page: pick a grip and I will show it up close in 3D. The right grip gives you power and control.',footwork:'Footwork page: pick a move and I will show it on the court. Good footwork gets you to the shuttle early.',feed:'Feed drill: I hold a shuttle and throw it, and the player hits every one. Pick a drill and watch.',tricks:'Trickshots page: pick a level, then a trick, and I will show it. Impossible means illegal moves.',join:'Join page: fill in your details and send them by email. We will reply with timings and fees.'};
+var CH={home:['Where do I start?','Explain scoring','Which racket for me?'],rules:['Explain scoring','What is a fault?','How do I serve?','Singles vs doubles'],rackets:['Which racket for me?','What is 3U vs 4U?','Head-heavy vs head-light','What string tension?'],shuttles:['Feather or nylon?','Which shuttle speed?','Why does temperature matter?'],techniques:['How do I smash?','Drop vs smash','What is a lift?','What is a net keep?'],warmup:['Why warm up?','How long should I stretch?','Arm circles'],grip:['Forehand grip','Backhand grip','Why not panhandle?'],footwork:['What is a split step?','Show the six-corner drill','Back-court footwork'],feed:['Show the feed drill','Net feeds','Back-court feeds'],tricks:['Double hit','Behind the back','360 spin smash'],join:['How do I join?','What are the fees?']};
+var KB=[[/footwork|foot work|split step|chass|scissor|cross.?step/,'Good footwork means a split step as your opponent hits, a quick push-off, side steps and lunges to reach the shuttle, and a return to the middle after every shot. Open the Footwork tab and I will show each move.'],[/warm|stretch|exercise|cool/,'Warm up before you play with dynamic moves: arm circles, trunk rotation, leg swings, lunges with a twist, high knees and side shuffles. After you play, stretch slowly: cross-body shoulder, overhead reach, quad and calf stretches. Open the Dynamic & Rotation tab and I will show you.'],[/net lift/,'A net lift is an underarm lift played right at the net. Lunge to the shuttle, let it drop a little, then swing from low to high and send it high and deep to the back line.'],[/backhand.*drop|drop.*backhand/,'A backhand drop looks like a backhand clear until the last moment. Slow the swing and tap with your fingers and thumb so the shuttle just clears the net and falls close to it.'],[/backhand/,'For a backhand, turn your back slightly to the net, bring your elbow across your body, and hit with the back of your hand leading. Use a thumb grip: press your thumb on the wide flat of the handle.'],[/forehand/,'A forehand is hit on your racket side with your palm leading. Turn sideways, swing from back to front, and snap your wrist through the shuttle.'],[/smash/,'Turn sideways, racket arm back and up. Jump or step back, hit at the highest point in front of you, and snap your forearm and wrist down. Aim steeply at the floor.'],[/drop/,'A drop shot looks like a smash but you slow the swing right before contact and tap softly, so the shuttle just clears the net and falls close to it.'],[/lift/,'A lift is an underarm shot from the front court. Lunge forward, swing from low to high with a loose wrist, and send the shuttle high and deep to the back line.'],[/net shot|net keep|keep/,'A net keep is a small tap taken high near the top of the net. Use your fingers, not a big swing, so the shuttle barely clears the net and drops close to it.'],[/toss/,'In badminton you drop the shuttle rather than toss it. Hold it by the feathers below your waist, let go, and swing the racket forward and up. See the Serve (toss) demo on Techniques.'],[/start|begin/,'Start with the Rules tab to learn scoring and serving. Then read Rackets and Shuttles before you buy gear. Practise your grip: hold the racket like a handshake.'],[/doubles|singles/,'Singles uses the narrow court, doubles the wide one. In singles the serve can go to the back line. In doubles the serve must stay short, inside the doubles long service line.'],[/scor|point|21|win/,'A game goes to 21 points and every rally scores, even if you did not serve. At 20-all, play on until someone leads by 2, up to 30. Win 2 games to win the match.'],[/fault/,'A fault is when the shuttle lands outside the lines, hits the net or your own floor, you touch the net, or you hit it twice in a row.'],[/serve|service/,'Serve underarm, hitting the shuttle below your waist, with both feet still. Aim diagonally across the net. Serve from the right box when your score is even, left when it is odd.'],[/balance|head-?heavy|head-?light/,'Head-heavy rackets give more power for smashes and clears. Head-light rackets are quicker for fast doubles and net play. Even balance is a good all-round start.'],[/3u|4u|weight/,'3U is heavier (85–89 g) and 4U is lighter (80–84 g). Most beginners do well with 4U because it is easier on the wrist and quicker to swing.'],[/shaft|flex|stiff/,'A flexible shaft helps you make power with an easy swing, so it suits beginners. A stiff shaft gives control but needs a fast, strong swing.'],[/string|tension/,'Beginners do well with 18–20 lbs. Looser strings are more forgiving on off-centre hits. Stronger players go higher for control.'],[/racket|racquet|recommend/,'Beginner pick: 4U weight, even or slightly head-heavy balance, flexible shaft, and a budget frame. Tap your level on the Rackets tab for more.'],[/feather|nylon|plastic/,'Feather shuttles fly truest and feel best, so tournaments use them, but they break quickly. Nylon lasts much longer, so it is great for practice and beginners.'],[/speed|temperat|cold|hot|76|77|78|79/,'Faster speed numbers fly farther. Use 78 or 79 in cold air, 77 in mild weather, and 76 or 75 when it is hot, because warm air lets the shuttle fly farther.'],[/grip|hold/,'Hold the racket like a handshake, with a V between thumb and index finger. Keep your fingers relaxed so you can switch quickly between forehand and backhand.']];
+function local(q){q=q.toLowerCase();for(var i=0;i<KB.length;i++)if(KB[i][0].test(q))return KB[i][1];return 'I can explain scoring, serving, faults, rackets, shuttles and grip. Tap one of the buttons below, or ask in your own words.'}
+function say(k,t){var d=document.createElement('div');d.className='m '+k;d.textContent=t;var m=document.getElementById('msgs');m.appendChild(d);m.scrollTop=m.scrollHeight;return d}
+function chips(){var c=document.getElementById('chips');c.innerHTML='';CH[ctab].forEach(function(t){var b=document.createElement('button');b.textContent=t;b.onclick=function(){ask(t)};c.appendChild(b)})}
+function demoFor(q){var s=q.toLowerCase();
+ if(window.coachPlay){if(/(play|start|begin|resume).*(match|game|rally|opponent)|let.?s play|^\s*play\s*$/.test(s)){coachPlay(1);return 'play'}if(/\b(stop|pause)\b/.test(s)){coachPlay(0);return 'stop'}}
+ if(/join|enrol|sign.?up|admission|fees|how.*register/.test(s)){window.coachSkip=1;go('join');window.coachSkip=0;document.getElementById('panel').classList.add('demo');if(window.coachDemo)coachDemo(null);return}
+ var tkx=[[/double hit/,30],[/sling/,31],[/reach.*over.*net/,33],[/serve.*(above|high).*waist|high serve/,35],[/foot fault/,36],[/hit.*with.*hand|hand hit/,37],[/obstruct/,38],[/false start|feint/,39],[/illegal/,30],[/double.*flip/,24],[/cartwheel/,25],[/giant/,26],[/teleport/,28],[/mega jump|super jump/,29],[/net flick/,11],[/slice/,12],[/tumble/,15],[/half smash/,17],[/flat drive/,14],[/backflip|back flip/,7],[/1080|triple/,8],[/mid.?air split|the splits/,9],[/hover|levitat/,10],[/jump drop/,5],[/tomahawk/,6],[/behind.*back/,0],[/between.*leg|tweener/,1],[/360|spin/,2],[/switch.*hand|left.?hand/,3],[/flick|decept|disguise/,4],[/trick/,0]].reduce(function(r,x){return r!==-1?r:(x[0].test(s)?x[1]:-1)},-1);
+ if(tkx>=0){window.coachSkip=1;go('tricks');window.coachSkip=0;document.getElementById('panel').classList.add('demo');if(window.coachDemo)coachDemo(null);tpick(tkx);var ts2=document.getElementById('s-trick');if(ts2)window.scrollTo(0,Math.max(0,ts2.getBoundingClientRect().top+window.scrollY-120));return}
+ if(/feed|throw.*(drill|shuttle)|multi.?shuttle/.test(s)){window.coachSkip=1;go('feed');window.coachSkip=0;document.getElementById('panel').classList.add('demo');if(window.coachDemo)coachDemo(null);dpick(0);var ds=document.getElementById('s-feed');if(ds)window.scrollTo(0,Math.max(0,ds.getBoundingClientRect().top+window.scrollY-120));return}
+ var fwx=[[/(center|centre).*corner|corner.*(center|centre)/,6],[/split.?step/,0],[/side.?step|chass/,1],[/front.*lunge|lunge.*front/,2],[/scissor|back.?court/,3],[/cross.?step/,4],[/six|corner|drill/,5],[/footwork|foot work|how to move/,0]].reduce(function(r,x){return r!==-1?r:(x[0].test(s)?x[1]:-1)},-1);
+ if(fwx>=0){window.coachSkip=1;go('footwork');window.coachSkip=0;document.getElementById('panel').classList.add('demo');if(window.coachDemo)coachDemo(null);fpick(fwx);var fs=document.getElementById('s-foot');if(fs)window.scrollTo(0,Math.max(0,fs.getBoundingClientRect().top+window.scrollY-120));return}
+ var gx=[[/panhandle|frying/,2],[/backhand.*grip|grip.*backhand|thumb/,1],[/loose|tight|finger power|squeeze/,3],[/switch|change.*grip/,4],[/grip|handshake|hold.*racket/,0]].reduce(function(r,x){return r!==-1?r:(x[0].test(s)?x[1]:-1)},-1);
+ if(gx>=0){window.coachSkip=1;go('grip');window.coachSkip=0;document.getElementById('panel').classList.add('demo');if(window.coachDemo)coachDemo(null);gpick(gx);var gs=document.getElementById('s-grip');if(gs)window.scrollTo(0,Math.max(0,gs.getBoundingClientRect().top+window.scrollY-120));return}
+ var wx=[[/wrist.*stretch|stretch.*wrist/,22],[/wrist/,11],[/windmill|alternate arm/,12],[/hip circle/,13],[/butt kick/,14],[/jumping jack/,15],[/split.?step|hop/,16],[/knee hug/,17],[/(side|lateral).*lunge.*stretch/,23],[/lateral lunge|side lunge/,18],[/side leg/,19],[/hamstring/,20],[/chest/,21],[/hip flexor/,24],[/breath/,25],[/arm circle/,0],[/trunk|twist|rotat/,1],[/leg swing/,2],[/lunge/,3],[/knee/,4],[/shuffle/,5],[/walk/,6],[/shoulder/,7],[/overhead|reach|tricep/,8],[/quad|thigh/,9],[/calf/,10],[/warm|dynamic|exercise/,0],[/stretch|cool/,7]].reduce(function(r,x){return r!==-1?r:(x[0].test(s)?x[1]:-1)},-1);
+ if(wx>=0){window.coachSkip=1;go('warmup');window.coachSkip=0;document.getElementById('panel').classList.add('demo');if(window.coachDemo)coachDemo(null);wpick(wx);var ws=document.getElementById('s-warm');if(ws)window.scrollTo(0,Math.max(0,ws.getBoundingClientRect().top+window.scrollY-120));return}
+ var k=[[/backhand.*drop|drop.*backhand/,'bd'],[/net lift|lift.*net/,'nl'],[/backhand.*lift|lift.*backhand/,'bl'],[/backhand.*smash|smash.*backhand/,'bs'],[/backhand.*(keep|net)|(keep|net).*backhand/,'bk'],[/backhand/,'bl'],[/(touch|hit|into).{0,12}net|net fault/,'fn'],[/single|double|court line|lines|width/,'co'],[/\bout\b|fault|boundar/,'fo'],[/scor|point|21|win/,'sc'],[/clear/,'cl'],[/smash/,'sm'],[/drop/,'dr'],[/lift/,'li'],[/net shot|keep|\bnet\b/,'ke'],[/toss/,'tos'],[/serv/,'sv'],[/grip|hold|handshake/,'gp'],[/shuttle|feather|nylon|speed|temperat|cold|\bhot\b/,'shu'],[/racket|racquet|3u|4u|weight|balance|shaft|string|tension|frame|head|heavy|light/,'rk'],[/foot|move|step|run|lunge|position/,'ft']].reduce(function(r,x){return r||(x[0].test(s)?x[1]:0)},0)||'sv';
+ if(!window.coachDemo)return;window.coachSkip=1;go('home');window.coachSkip=0;
+ document.getElementById('panel').classList.add('demo');coachDemo(k);var st=document.getElementById('s-court');if(st)window.scrollTo(0,Math.max(0,st.getBoundingClientRect().top+window.scrollY-120))}
+function ask(q){q=q.trim();if(!q)return;var cm=demoFor(q);if(cm){say('u',q);say('c',cm==='play'?'Okay! I am now playing a match with my opponent. Ask me anything and I will stop to show you.':'Okay, the match is stopped. Ask me anything and I will explain and show it.');return}say('u',q);var el=say('c','Thinking…');
+ var fin=function(t){el.textContent=t;if(window.coachSay)coachSay(t,1);hist.push({role:'assistant',content:t})};
+ var msgs=hist.slice(-6).concat([{role:'user',content:q}]);
+ var first=msgs[0];var pre='You are a friendly badminton coach on a beginner academy website. Use simple words, answer in under 90 words, no markdown. The person is on the '+ctab+' page. Conversation so far, then the latest question is last.\n\n';
+ msgs[0]={role:'user',content:pre+first.content};if(msgs[0].role!=='user'){msgs.shift()}
+ hist.push({role:'user',content:q});
+ if(!sample){fin(local(q));return}
+ sample(msgs[msgs.length-1].role==='user'&&msgs.length===1?msgs[0].content:msgs.map(function(m){return(m.role==='user'?'Student: ':'Coach: ')+m.content}).join('\n')+'\nCoach:',{cache:false,onText:function(r){el.textContent=r.text;if(window.coachSay)coachSay(r.text,0)}}).then(function(r){fin(r.text)}).catch(function(){fin(local(q))})}
+function openC(o){if(!o){document.getElementById('panel').classList.remove('demo');if(window.coachDemo)coachDemo(null)}document.getElementById('panel').classList.toggle('open',o);document.getElementById('fab').style.display=o?'none':'flex';document.getElementById('fab').setAttribute('aria-expanded',o);if(o){if(!document.getElementById('msgs').children.length)say('c',INTRO[ctab]);chips()}}
+window.coachTab=function(id){ctab=id;if(window.coachSkip){window.coachSkip=0;return}if(document.getElementById('panel').classList.contains('open')){say('c',INTRO[id]);chips()}};
+document.getElementById('fab').onclick=function(){openC(true)};document.getElementById('pclose').onclick=function(){openC(false)};
+document.getElementById('send').onclick=function(){var i=document.getElementById('q');ask(i.value);i.value=''};
+document.getElementById('q').onkeydown=function(e){if(e.key==='Enter'){document.getElementById('send').click()}};
+if(window.claude&&claude.use)claude.use('sample').then(function(s){sample=s}).catch(function(){});
+
+var TE=[['Serve (toss)','Every rally starts here.',['Stand near the short service line with your feet still.','Hold the shuttle by its feathers in front of you, below your waist.','Let it drop and swing the racket forward and up.','Hit it below your waist so it clears the net and lands near the short service line.'],'Drop the shuttle, don\u2019t throw it up. Watch it all the way to the racket.'],['Forehand smash','Your fast, steep attacking shot.',['Turn sideways with your racket arm back and up.','Jump or step back and hit the shuttle at the highest point in front of you.','Snap your forearm and wrist down as you hit.','Follow through across your body and return to the centre.'],'Aim steeply down to the floor. A steep shot beats a merely hard one.'],['Forehand drop','Looks like a smash but lands softly near the net.',['Prepare exactly like a smash.','Slow the swing just before contact.','Tap the shuttle with a soft wrist so it just clears the net.'],'If your preparation looks the same as a smash, your opponent can\u2019t tell which is coming.'],['Forehand lift','Underarm shot from the front court to the back.',['Lunge forward with your racket foot toward the shuttle.','Swing underarm from low to high with a loose wrist.','Send the shuttle high and deep to the back line.','Push off your front foot and go back to the centre.'],'Height and depth matter more than speed. A high lift gives you time to recover.'],['Forehand keep','A small tap that keeps the shuttle tight to the net.',['Lunge with the racket held up in front, at net height.','Hit the shuttle early, as close to the top of the net as you can.','Use a soft push of your fingers, not a big swing.','The shuttle should barely clear the net and drop close to it.'],'The higher you take the shuttle, the more pressure you put on your opponent.'],['Backhand lift','Underarm lift hit on your non-racket side.',['Step toward the shuttle with your racket foot and turn your back slightly to the net.','Bring your elbow across your body so the back of your hand leads.','Swing from low to high, pushing with your thumb on the wide flat of the handle.','Send it high and deep, then push back to the centre.'],'Use a thumb grip: press your thumb on the wide flat of the handle for power and control.'],['Backhand smash','Overhead smash hit on your backhand side.',['Turn your back toward the net and lift your elbow high.','Rotate and reach up to hit at the highest point above your shoulder.','Snap your forearm and fingers through the shuttle.','Recover quickly, because this shot is hard to control.'],'A backhand smash is difficult. Most players use a backhand clear or drop unless they can reach the shuttle early.'],['Backhand keep','A soft net tap on your backhand side.',['Lunge with your racket foot and bring the racket across your body.','Hold the racket up at net height, back of the hand facing the net.','Push with your thumb and fingers for a soft tap.','The shuttle should barely cross the net and drop close to it.'],'Keep your wrist loose and take the shuttle as early as you can.'],['Net lift','Underarm lift played right at the net.',['Lunge to the net with the racket up and ready.','Let the shuttle drop a little, then swing underarm from low to high.','Use your wrist and fingers to send it high and deep to the back line.','Push back to the centre and get ready for the next shot.'],'Lift higher than you think. A high lift gives you time to recover.'],['Backhand drop','A soft drop played on your backhand side.',['Turn your back to the net and bring your elbow up.','Prepare like a backhand clear so the shot is hidden.','Slow the swing and tap with your fingers and thumb.','The shuttle should just clear the net and drop close to it.'],'It looks like a backhand clear until the last moment, which is what makes it work.']];
+function showT(i){var d=TE[i];document.getElementById('tres').innerHTML='<h3>'+d[0]+'</h3><p style="margin:0 0 8px">'+d[1]+'</p><ol>'+d[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+d[3]+'</p>'}
+document.querySelectorAll('#stk button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#stk button').forEach(function(x){x.setAttribute('aria-pressed',x==b)});showT(+b.dataset.k);if(window.setStroke)setStroke(+b.dataset.k)}});showT(0);
+
+var WE=[[0,'Arm circles','About 10 each way',['Stand tall with your feet shoulder-width apart.','Raise both arms to the sides and make big circles forward.','After 10 circles, switch to backward circles.','Keep your shoulders relaxed and your neck long.'],'Start small and make the circles bigger each time.'],
+[0,'Trunk rotation','10 to 15 twists',['Stand with your feet apart and your arms out to the sides.','Turn your upper body to the right, then to the left.','Keep your hips facing forward and move smoothly.','Do 10 to 15 turns.'],'Turn from the middle of your back, not by swinging your arms.'],
+[0,'Leg swings','10 swings each leg',['Hold your arms out for balance.','Swing one leg forward and backward in a smooth motion.','Do 10 swings, then change legs.','Keep your upper body tall.'],'Swing a little higher each time, but never force it.'],
+[0,'Lunge with twist','6 on each side',['Step forward into a lunge, with the front knee over your ankle.','Turn your upper body toward the front leg.','Push back to stand, then change legs.','Keep your back straight and your front knee steady.'],'This warms up the hips and the trunk you use for smashes.'],
+[0,'High knees','20 to 30 seconds',['Jog on the spot and lift your knees high.','Swing your arms to help you.','Stay on the balls of your feet.','Keep the pace quick and light.'],'Land softly to protect your knees.'],
+[0,'Side shuffles','4 to 6 lengths',['Bend your knees slightly and stay low.','Step sideways without crossing your feet.','Keep your chest up and your racket hand ready.','Change direction quickly at the end.'],'This is the movement you use to cover the court.'],
+[1,'Slow walk','About 2 minutes',['Walk slowly around the court.','Swing your arms gently and breathe deeply.','Let your heart rate come down gradually.'],'Never stop suddenly after a hard game.'],
+[1,'Cross-body shoulder','Hold 20 seconds each arm',['Bring one arm straight across your chest.','Hold it close with your other arm.','Keep your shoulders down and breathe slowly.','Switch arms.'],'You should feel a gentle stretch, never pain.'],
+[1,'Overhead reach','Hold 20 seconds',['Reach both arms up high.','Stretch tall from your fingertips to your heels.','Breathe in slowly and hold.'],'Good for the shoulders and sides after many smashes.'],
+[1,'Quad stretch','Hold 20 seconds each leg',['Stand on one leg and hold a wall if you need balance.','Bend the other knee and bring your heel toward your bottom.','Hold your foot with the hand on the same side.','Keep your knees close together, then switch legs.'],'Keep your hips pushed forward.'],
+[1,'Calf stretch','Hold 20 seconds each leg',['Step one foot back and keep that leg straight.','Press the back heel into the floor.','Bend the front knee and lean forward gently.','Hold, then switch legs.'],'Keep both feet pointing forward.'],
+[0,'Wrist circles','10 each way',['Hold your arm out in front with a loose fist or your racket.','Make small circles with your wrist, 10 one way.','Change direction for 10 more.','Keep your forearm still and let only the wrist move.'],'Strong, loose wrists give you quicker smashes and net shots.'],
+[0,'Arm windmills','10 in each direction',['Stand tall with your feet apart.','Swing one arm forward in a big circle as the other swings backward.','Keep the swings smooth and controlled.','Change direction after 10 swings.'],'Keep your core tight so your back does not arch.'],
+[0,'Hip circles','8 each way',['Stand with your feet shoulder-width apart.','Move your hips in a big, slow circle.','Do 8 circles one way, then change direction.','Keep your shoulders still.'],'Imagine drawing a circle with your belt buckle.'],
+[0,'Butt kicks','20 to 30 seconds',['Jog on the spot and kick your heels toward your bottom.','Keep your knees pointing down.','Swing your arms gently.','Stay light on your feet.'],'This warms up your hamstrings for quick starts.'],
+[0,'Jumping jacks','20 to 30 reps',['Start with your feet together and your arms at your sides.','Jump your feet apart as your arms go overhead.','Jump back to the start.','Keep a steady rhythm and land softly.'],'A great way to raise your heart rate before the first rally.'],
+[0,'Split-step hops','10 to 15 hops',['Stand with your knees bent and your weight on the balls of your feet.','Hop lightly and land as your opponent hits.','Push off at once toward the shuttle.','Keep your racket up and ready.'],'The split step is the start of every good move in badminton.'],
+[0,'Knee hugs','5 on each leg',['Stand tall and lift one knee toward your chest.','Hug it gently with both hands.','Hold for a second, then switch legs.','Keep your standing leg steady.'],'Use a wall for balance if you need it.'],
+[0,'Lateral lunges','6 on each side',['Stand wide with your toes pointing forward.','Shift your weight to one side and bend that knee.','Keep the other leg straight and your chest up.','Push back to the middle and switch sides.'],'This prepares your legs for the side steps you use in rallies.'],
+[0,'Side leg swings','10 each leg',['Hold your arms out for balance.','Swing one leg out to the side, then across your body.','Keep your hips level and your body tall.','Do 10 swings, then switch legs.'],'Keep the swing smooth, not forceful.'],
+[1,'Hamstring leg raise','Hold 20 seconds each leg',['Stand tall and lift one leg straight in front of you.','Reach your hands toward your toes, keeping your back straight.','Breathe slowly and hold.','Lower the leg and switch.'],'Stop when you feel a stretch behind the thigh, not pain.'],
+[1,'Chest opener','Hold 20 seconds',['Stand tall and take both arms behind you.','Open your chest and keep your shoulders down.','Breathe slowly and hold.'],'This helps undo the forward-rounded shoulders from playing.'],
+[1,'Wrist stretch','Hold 15 seconds each way',['Hold one arm out in front with your palm down.','With the other hand, gently bend your wrist down and hold.','Then turn your palm up and gently bend it the other way.','Switch arms.'],'Your wrists work hard in badminton, so give them time.'],
+[1,'Side lunge stretch','Hold 20 seconds each side',['Step wide to the side with both toes pointing forward.','Bend one knee and keep the other leg straight.','Sit back gently into the stretch.','Switch sides.'],'Keep the heel down on the bent leg.'],
+[1,'Hip flexor lunge','Hold 20 seconds each side',['Step one foot far forward into a deep lunge.','Keep the back leg straight and press your hips forward.','Raise your arms overhead for a bigger stretch.','Switch sides.'],'Keep your upper body tall and do not arch your back.'],
+[1,'Deep breathing','5 slow breaths',['Stand tall and breathe in through your nose as you raise your arms.','Breathe out slowly as you lower them.','Repeat 5 times.'],'Slow breathing helps your body settle after a hard game.']];
+var wsel=0,wph=0,ORD=[[17,2,19,14,4,15,5,18,16],[0,12,11,1,13,3],[6,25,7,8,21,22,9,20,10,23,24]];
+function catOf(i){return ORD[0].indexOf(i)>=0?0:ORD[1].indexOf(i)>=0?1:2}
+function wgrp(p){wph=p;var t=p===2?1:0;document.querySelectorAll('#wph button').forEach(function(x){var q=+x.dataset.p;x.setAttribute('aria-pressed',q===p);x.hidden=t?q!==2:q===2});document.querySelectorAll('#wtop button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.t===t)})}
+function wlist(){var g=document.getElementById('wex');g.innerHTML='';ORD[wph].forEach(function(i,n){var b=document.createElement('button');b.textContent=(n+1)+'. '+WE[i][1];b.setAttribute('aria-pressed',i===wsel);b.onclick=function(){wpick(i)};g.appendChild(b)})}
+function wpick(i){wsel=i;wgrp(catOf(i));wlist();var e=WE[i],o=ORD[wph],n=o.indexOf(i);document.getElementById('wcnt').textContent=(n+1)+' of '+o.length;document.getElementById('wres').innerHTML='<h3>'+e[1]+'</h3><p style="margin:0 0 8px">'+e[2]+'</p><ol>'+e[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+e[4]+'</p>';if(window.setWarm)setWarm(i)}
+document.querySelectorAll('#wph button').forEach(function(b){b.onclick=function(){wpick(ORD[+b.dataset.p][0])}});
+document.getElementById('wnext').onclick=function(){var o=ORD[wph],n=o.indexOf(wsel);wpick(n<o.length-1?o[n+1]:ORD[[1,0,2][wph]][0])};
+document.getElementById('wprev').onclick=function(){var o=ORD[wph],n=o.indexOf(wsel),p=ORD[[1,0,2][wph]];wpick(n>0?o[n-1]:p[p.length-1])};
+document.querySelectorAll('#wtop button').forEach(function(b){b.onclick=function(){wpick(ORD[+b.dataset.t?2:0][0])}});
+wpick(ORD[0][0]);
+
+var GR=[['Forehand grip','Your main grip, also called the handshake grip.',['Hold the racket by the head and shake hands with the handle.','Your thumb and index finger make a V on the narrow side of the handle.','Keep a small gap between your fingers so the racket moves quickly.','Keep your palm slightly off the end of the handle.'],'Hold it like a small bird: firm enough not to fly away, gentle enough not to hurt it.'],
+['Backhand grip','Used for shots on your non-racket side, also called the thumb grip.',['Start from the forehand grip.','Rotate the racket a little so your thumb rests on the wide, flat side of the handle.','Keep your fingers relaxed and your thumb pressing along the handle.','Use your thumb to push the racket through the shot.'],'Switch by turning your fingers, not by changing your whole hand.'],
+['Panhandle grip','The common mistake: holding the racket like a frying pan.',['The palm faces the same way as the racket face, like holding a pan.','This stops your wrist from moving freely.','Your shots lose power and control, especially overhead.','Fix it by going back to the handshake grip.'],'If your hand looks like it is holding a frying pan, change the grip.'],
+['Loose and tight','Power comes from squeezing at the right moment.',['Hold the racket loosely while you wait for the shuttle.','Move the racket with a relaxed wrist and fingers.','Squeeze with your fingers just as you hit the shuttle.','Relax again right after the shot.'],'A tight grip all the time makes you tired and slow.'],
+['Switching grips','Change between forehand and backhand quickly.',['Hold the racket loosely with your fingers.','Turn the racket with your fingers and thumb, not your whole arm.','Forehand: V on the narrow side. Backhand: thumb on the wide side.','Practise switching slowly, then faster.'],'Do 20 switches a day while watching TV to build the habit.']];
+function gpick(i){document.querySelectorAll('#gps button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.k===i)});var d=GR[i];document.getElementById('gres').innerHTML='<h3>'+d[0]+'</h3><p style="margin:0 0 8px">'+d[1]+'</p><ol>'+d[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+d[3]+'</p>';if(window.setGrip)setGrip(i)}
+document.querySelectorAll('#gps button').forEach(function(b){b.onclick=function(){gpick(+b.dataset.k)}});gpick(0);
+
+var FW=[['Split step','The hop you make just before every shot.',['Stand in the middle of your half with your knees slightly bent.','As your opponent hits, hop up a little.','Land on both feet, shoulder-width apart, as the shuttle leaves their racket.','Push off at once toward the shuttle.'],'The split step lets you start fast in any direction.'],
+['Side step','Moving sideways without crossing your feet.',['Bend your knees and keep your weight on the balls of your feet.','Step to the side with your lead foot.','Bring the other foot close to it without crossing.','Repeat until you reach the shuttle.'],'Keep the racket up and your chest facing the net.'],
+['Front lunge','Reaching the shuttle near the net.',['Push off toward the net with your back foot.','Step with your racket-side foot, heel first, into a deep lunge.','Reach out with the racket and play the shot.','Push back with the front leg and return to the middle.'],'Keep your front knee over your ankle and your back straight.'],
+['Back-court jump','Getting behind the shuttle and hitting it in the air.',['Turn your body sideways and move back with side steps.','Take a last big step so you are behind the shuttle.','Jump and swap your feet in the air, like scissors.','Land on your racket-side foot, then recover toward the middle.'],'Get behind the shuttle early so you can hit it at the top of your reach.'],
+['Cross step','A fast way to reach the corners.',['Turn your body to the side, with your back toward the corner you move to.','Cross one foot in front of the other as you step.','Follow with a side step to keep your balance.','Use it to reach the back corners quickly.'],'Cross-over steps are faster than sliding all the way.'],
+['Six-corner drill','The classic drill that trains every direction.',['Start in the middle of the court.','Move to each of the six corners and swing at an imaginary shuttle.','Return to the middle after each corner.','Do it slowly first, then faster.'],'Always push back to the middle. That is your base position.'],
+['Center to front right','The forehand net corner.',['Start in the center with a split step.','Push off and step toward the front right corner.','Lunge with your racket foot and reach out with the racket.','Push back to the center.'],'Land heel first and keep your knee over your toes.'],
+['Center to front left','The backhand net corner.',['Start in the center with a split step.','Step toward the front left corner with a short side step.','Lunge across with your racket foot and reach with a backhand.','Push back to the center.'],'Get the racket up early so you only need one big step.'],
+['Center to right side','The mid-court on your forehand side.',['Split step in the center.','Step out to the right with a side step, then a longer step.','Bend your knees and swing.','Push back with the outside foot.'],'Stay low so you can recover quickly.'],
+['Center to left side','The mid-court on your backhand side.',['Split step in the center.','Step to the left with a side step.','Plant your feet and hit a backhand or a drive.','Push back to the center.'],'Use short steps first, then a long last step.'],
+['Center to back right','The forehand corner at the back.',['Turn your body sideways with your first step.','Chasse back with small side steps.','Take a last big step, jump, and hit overhead.','Land and recover toward the center.'],'Get behind the shuttle so you hit it in front of your body.'],
+['Center to back left','The back corner on your other side.',['Turn and move back with a cross step.','Take two or three steps to get behind the shuttle.','Hit overhead or with a round-the-head shot.','Land and push back to the center.'],'A round-the-head shot avoids the weaker backhand.'],
+['Front right to back left','The long diagonal.',['Hit from the front right corner with a lunge.','Push off hard with your front foot.','Move back with a cross step and side steps.','Jump and hit from the back left corner.'],'Push off the lunge with a strong first step.'],
+['Front left to back right','The other long diagonal.',['Hit from the front left corner.','Push back through the center.','Turn sideways and step back to the back right corner.','Jump and hit overhead.'],'Recover through the center to keep your balance.'],
+['Back right to back left','Side to side along the back line.',['Hit overhead from the back right corner.','Land and turn.','Move across the back with chasse steps.','Jump and hit from the back left corner.'],'Keep your steps small and quick.'],
+['Front right to front left','Side to side at the net.',['Lunge at the front right.','Push off and cross the net area with two steps.','Lunge at the front left.','Stay low and keep the racket up.'],'Keep the racket up so you need less time to reach.'],
+['Side to side in mid-court','Defense and drives.',['Stay low in the mid-court.','Step to the right with a side step.','Push off and step to the left.','Keep your racket in front and your eyes on the shuttle.'],'Use short, fast steps and stay balanced.'],
+['Forward chasse','Moving to the net in a straight line.',['Start in the center.','Step forward with one foot, then bring the other close.','Make the last step a lunge with your racket foot.','Push back to the center.'],'Make your last step the biggest.'],
+['Backward chasse','Moving to the rear court in a straight line.',['Turn your body sideways.','Step back with your back foot and bring the other foot close.','Take a last big step and jump to hit.','Land and recover to the center.'],'Do not run backward facing the net. Turn sideways.'],
+['Net to baseline','The front-to-back pattern.',['Lunge to the front and hit a net shot.','Push back hard and turn sideways.','Step back and jump for an overhead shot.','Return to the center.'],'Recover through the center every time.']];
+var fsel=0,fcat=0,FC=[[0,1,2,3,4,5],[6,7,8,9,10,11],[12,13,14,15,16,17,18,19]];
+function fpick(i){fsel=i;fcat=FC[0].indexOf(i)>=0?0:FC[1].indexOf(i)>=0?1:2;document.querySelectorAll('#fwc button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.c===fcat)});var gb=document.getElementById('fwb');gb.innerHTML='';FC[fcat].forEach(function(j,n){var b=document.createElement('button');b.textContent=(n+1)+'. '+FW[j][0];b.setAttribute('aria-pressed',j===i);b.onclick=function(){fpick(j)};gb.appendChild(b)});var d=FW[i];document.getElementById('fwres').innerHTML='<h3>'+d[0]+'</h3><p style="margin:0 0 8px">'+d[1]+'</p><ol>'+d[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+d[3]+'</p>';if(window.setFoot)setFoot(i)}
+document.querySelectorAll('#fwc button').forEach(function(b){b.onclick=function(){fpick(FC[+b.dataset.c][0])}});fpick(0);
+
+var FD=[['All corners','The coach feeds every area and the player hits every shuttle.',['The coach holds a shuttle and feeds it to a spot on the court.','Start from the center with a split step as the feed leaves the hand.','Move to the shuttle and hit it back over the net.','Return to the center before the next feed.'],'Quality first: hit every shuttle cleanly, then speed up.'],
+['Net feeds','Short feeds to the front corners and the net.',['The coach throws short to the front corners.','Lunge and play a net shot or a lift.','Push back to the center.','Keep your racket up in front.'],'Land heel first on the lunge and keep your knee over your toes.'],
+['Mid-court feeds','Feeds to the sides of the mid-court.',['The coach throws to the right and left sides.','Side step and bend your knees.','Play a lift or a drive.','Recover to the center.'],'Keep your body low so you can move quickly.'],
+['Back-court feeds','High feeds to the back of the court.',['The coach throws high to the back of the court.','Turn sideways, move back, and jump.','Hit a smash or a drop shot.','Return to the center.'],'Get behind the shuttle before you hit it.'],
+['20-feed drill','One full hand of 20 shuttles. It stops after the last one.',['The coach throws the 20 shuttles one by one to different spots.','Hit every shuttle back over the net and return to the center after each one.','Count your good shots out of 20.','When the last shuttle is hit, the drill ends. Tap 20-feed drill again to restart.'],'Aim for 15 good shots out of 20, then try to beat your score.']];
+function dpick(i){document.querySelectorAll('#fdb button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.k===i)});var d=FD[i];document.getElementById('fdres').innerHTML='<h3>'+d[0]+'</h3><p style="margin:0 0 8px">'+d[1]+'</p><ol>'+d[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+d[3]+'</p>';if(window.setDrill)setDrill(i)}
+document.querySelectorAll('#fdb button').forEach(function(b){b.onclick=function(){dpick(+b.dataset.k)}});dpick(0);
+
+var TK=[['Behind-the-back shot','Hit the shuttle behind your back as it drops past you.',['Watch the shuttle drop past your racket side.','Swing your racket arm behind your back with the elbow bent.','Flick the racket up and out with your wrist as the shuttle arrives.','Send it over the net and recover quickly.'],'Only try it when the shuttle is out of reach for a normal shot.'],
+['Between-the-legs shot','Turn your back to the net and hit between your legs.',['Turn your back to the net when the shuttle goes past you.','Bend your knees and open your legs.','Swing the racket between your legs and hit the shuttle.','Turn back around and get ready for the return.'],'It is risky, so use it only when you cannot turn around in time.'],
+['360 spin smash','Spin a full circle in the air, then smash.',['Jump up and turn your body one full circle.','Keep your racket arm tucked in as you spin.','Finish facing the net with the racket high.','Snap down on the shuttle as you come around.'],'Practice the full turn slowly before adding the smash.'],
+['Switch-hand shot','Hit with your other hand when the shuttle is out of reach.',['When the shuttle is far on your off side, move the racket to your other hand.','Reach with that hand and swing underarm.','Keep your eyes on the shuttle and hit it high and deep.','Move back to the middle.'],'Practice with your weaker hand in a safe drill first.'],
+['Deceptive flick','Look like a smash, then flick the shuttle across the court.',['Prepare exactly like a smash, with your arm back and your body ready.','Delay your hit by a fraction of a second.','At the last moment, flick your wrist to send the shuttle softly cross-court.','Watch your opponent move the wrong way.'],'The disguise is the weapon: your preparation must look like a smash.'],
+['Jump drop','Jump like a smash, then drop the shuttle softly.',['Prepare for a smash and jump.','At the top of the jump, slow your swing.','Tap the shuttle softly so it falls just over the net.','Land with your knees bent.'],'It works because your opponent expects a hard smash.'],
+['Tomahawk','An overhead shot on your backhand side, with the racket brought up behind your head.',['Turn your back toward the net and lift your elbow.','Bring the racket up behind your head.','Hit the shuttle over your backhand shoulder with a quick wrist snap.','Turn back and recover.'],'It is a backhand overhead swing, so build a good backhand first.'],
+['Backflip smash','Impossible: a full backflip in the air, then a smash.',['Jump very high and tuck your knees to your chest.','Flip backward one full turn in the air.','Come around with the racket arm raised.','Smash and land on both feet.'],'Not possible in real life. Nobody can flip and still hit the shuttle accurately.'],
+['1080 triple spin smash','Impossible: three full spins in the air, then a smash.',['Jump high and spin three full circles.','Keep your racket arm tucked in.','Face the net again.','Smash and land safely.'],'Not possible in real life. Nobody can spin that fast and still time the shuttle.'],
+['Mid-air split smash','Impossible: do the full splits in the air, then smash.',['Jump high and open your legs into the splits.','Keep your racket arm up.','Smash at the top of the jump.','Land on both feet.'],'For fun only. Real players would risk a serious injury.'],
+['Hover smash','Impossible: float above the net and smash down.',['Float up high above the court.','Hover above the net.','Smash the shuttle straight down.','Float back to the floor.'],'Pure fantasy. Nobody can hover.'],
+['Net flick','A quick wrist flick at the net that sends the shuttle across.',['Get to the net with your racket up.','Wait until the shuttle is close.','Flick your wrist to push it cross-court.','Return to the center.'],'Keep the swing small and use only the wrist.'],
+['Slice drop','A drop shot cut across the shuttle so it slows and turns.',['Prepare like a clear.','Cut across the back of the shuttle with the racket.','The shuttle drops slowly and goes across the court.','Move forward to cover the reply.'],'The cut slows the shuttle so it falls steeply.'],
+['Backhand net flick','A flick from the backhand side at the net.',['Turn your racket hand over to the backhand.','Hold the racket at the net with the back of your hand facing the net.','Flick with your thumb and fingers.','Send the shuttle high and deep.'],'Use the thumb grip for a sharper flick.'],
+['Flat drive','A fast, flat shot at chest height.',['Hold the racket at chest height.','Meet the shuttle in front of your body.','Push through with a short, quick swing.','Send it flat and fast over the net.'],'Keep the shuttle low so your opponent cannot attack it.'],
+['Tumble net shot','A tiny shot that tumbles over the net.',['Get to the net early.','Roll the racket under the shuttle with your wrist.','Let the shuttle tumble over the tape.','Recover to the center.'],'Keep the racket close to the tape.'],
+['Cross-court lift','A lift sent diagonally to the far back corner.',['Lunge to the shuttle at the net.','Swing underarm and aim for the far back corner.','Send it high and deep.','Return to the center.'],'Lift higher than you think to buy time.'],
+['Half smash','A smash at about half power with a steep angle.',['Prepare like a full smash.','Hit at about half power but keep it steep.','Aim for the sideline.','Recover quickly.'],'A half smash saves energy and is easier to control.'],
+['Jump back-flick','A flick behind you while you jump.',['Turn your back to the net and jump.','Bring the racket over your shoulder.','Flick the shuttle across the court behind you.','Land and turn around.'],'Use it only when the shuttle is behind your normal reach.'],
+['Behind-the-back clear','A high, deep clear hit behind your back.',['Swing the racket behind your back.','Flick it up and out with your wrist.','Send the shuttle high and deep.','Recover to the middle.'],'A very risky shot. Practice with soft feeds.'],
+['Between-the-legs lift','A lift hit between your legs.',['Turn your back to the net.','Bend your knees and open your legs.','Swing the racket between your legs.','Send the shuttle high.'],'Aim high so you have time to turn back.'],
+['180 spin smash','Start facing away, turn in the air, then smash.',['Start facing away from the net.','Jump and turn half a circle.','Face the net at the top of the jump.','Smash and land.'],'Turn your head first, then your body.'],
+['Spin drop','A full spin followed by a soft drop.',['Jump and spin a full circle.','Face the net with your racket high.','Slow your swing and tap the shuttle.','Land and move forward.'],'The spin hides the soft drop.'],
+['High-flying jump smash','A smash from the highest jump you can make.',['Bend deeply and push off the floor.','Reach for the highest point you can.','Smash steeply downward at the top.','Land with bent knees.'],'A higher jump gives a steeper angle.'],
+['Double backflip smash','Impossible: two backflips in the air, then a smash.',['Jump super high.','Do two backflips in the air.','Come around and smash.','Land safely.'],'Not possible in real life.'],
+['Cartwheel smash','Impossible: a cartwheel in the air, then a smash.',['Jump and turn sideways in a cartwheel.','Keep the racket arm high.','Smash at the end of the turn.','Land on both feet.'],'Not possible: nobody can cartwheel and hit a shuttle in time.'],
+['Giant racket smash','Impossible: a smash with a racket three times the normal size.',['Hold a racket three times its normal size.','Swing it down onto the shuttle.','Smash.','Put the racket down.'],'It would be illegal and impossible to swing.'],
+['Spinning hover smash','Impossible: float, spin three times, then smash.',['Float up above the net.','Spin three times while hovering.','Smash straight down.','Float back to the floor.'],'Pure fantasy.'],
+['Teleport smash','Impossible: disappear and appear next to the net.',['Disappear from one spot.','Appear in the middle of the court.','Smash at once.','Nobody can follow it.'],'Pure fantasy. No one can teleport.'],
+['Mega jump smash','Impossible: a jump almost two meters high.',['Crouch and push off.','Jump almost two meters high.','Smash from above the net.','Land with bent knees.'],'Even the best players jump well under one meter.'],
+['Double hit','Illegal: hitting the shuttle twice in a row.',['You swing and hit the shuttle once.','Before it leaves, the racket hits it a second time.','The umpire calls a fault.','The point goes to your opponent.'],'You may hit the shuttle only once each time it comes to your side.'],
+['Slung shot','Illegal: the shuttle is caught and slung from the racket.',['The shuttle rests on the racket strings.','You carry it for a moment.','The shuttle is slung over the net instead of being hit.','This is a fault and your opponent gets the point.'],'The shuttle must be hit cleanly, not caught and slung.'],
+['Touching the net','Illegal: the racket or body touches the net during a rally.',['You lunge toward the net.','Your racket touches the net or the posts.','The umpire calls a fault.','Your opponent gets the point.'],'Keep your racket and body clear of the net while the shuttle is in play.'],
+['Reaching over the net','Illegal: hitting the shuttle on your opponent\u2019s side.',['The shuttle is still on your opponent\u2019s side of the net.','You reach over the net with your racket.','You hit it before it crosses to your side.','This is a fault.'],'Wait until the shuttle has crossed to your side before you hit it.'],
+['Stepping over the net','Illegal: invading the opponent\u2019s court.',['You step past the net into your opponent\u2019s half.','You hit the shuttle from there.','The umpire calls a fault.','Your opponent gets the point.'],'Stay on your own side of the net.'],
+['Serve above the waist','Illegal: the shuttle is hit too high on the serve.',['You drop the shuttle and swing.','You hit it high, above the allowed height.','The umpire calls a service fault.','Your opponent gets the point.'],'At the moment of contact, the whole shuttle must be below 1.15 meters from the floor.'],
+['Foot fault on the serve','Illegal: moving your feet while serving.',['The server must keep part of both feet still on the floor until the serve is hit.','Here the server steps forward while swinging.','The umpire calls a foot fault.','The serve is lost.'],'Do not move or lift your feet until the shuttle has been hit.'],
+['Hitting with the hand','Illegal: hitting the shuttle with your hand instead of the racket.',['The shuttle comes toward you.','You hit it with your hand.','The umpire calls a fault.','Your opponent gets the point.'],'Only the racket may hit the shuttle.'],
+['Obstructing your opponent','Illegal: waving or shouting to distract your opponent.',['You stand at the net and wave your arms.','You try to put your opponent off.','The umpire calls a fault.','You may also get a card.'],'You may not deliberately distract your opponent.'],
+['False-start serve','Illegal: a feint or pause before the serve.',['The server starts to swing, stops, then swings again.','The receiver cannot judge the serve.','The umpire calls a fault.','The serve is lost.'],'Once the forward swing starts, it must continue without a pause.']];
+var tcat=0,TC=[[3,4,5,11,12,13,14,15,16,17],[0,1,2,6,18,19,20,21,22,23],[30,31,32,33,34,35,36,37,38,39],[7,8,9,10,24,25,26,27,28,29]],TN=['Easy','Hard','Impossible','Fantasy'];
+function tpick(i){i=TC.some(function(a){return a.indexOf(i)>=0})?i:TC[0][0];tcat=TC.findIndex(function(a){return a.indexOf(i)>=0});document.querySelectorAll('#tkc button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.c===tcat)});var gb=document.getElementById('tkb');gb.innerHTML='';TC[tcat].forEach(function(j,n){var b=document.createElement('button');b.textContent=(n+1)+'. '+TK[j][0];b.setAttribute('aria-pressed',j===i);b.onclick=function(){tpick(j)};gb.appendChild(b)});var d=TK[i];document.getElementById('tkres').innerHTML='<h3>'+d[0]+' \u00b7 '+TN[tcat]+'</h3><p style="margin:0 0 8px">'+d[1]+'</p><ol>'+d[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+d[3]+'</p>';if(window.setTrick)setTrick(i)}
+document.querySelectorAll('#tkc button').forEach(function(b){b.onclick=function(){tpick(TC[+b.dataset.c][0])}});tpick(TC[0][0]);
+
+var ACADEMY={email:'vgrowalong@gmail.com'};
+function jmsg(){var v=function(id){return document.getElementById(id).value.trim()},n=v('jn'),c=v('jc'),e=document.getElementById('jerr');if(!n||!c){e.textContent='Please enter your name and your phone number or email.';return null}e.textContent='';return 'Hello Smash Learning Academy, I would like to join.\nName: '+n+'\nContact: '+c+'\nAge group: '+v('ja')+'\nLevel: '+v('jl')+(v('jm')?'\nMessage: '+v('jm'):'')}
+document.getElementById('jmail').onclick=function(){var t=jmsg();if(t)location.href='mailto:'+ACADEMY.email+'?subject='+encodeURIComponent('Join Smash Learning Academy')+'&body='+encodeURIComponent(t)};
+document.getElementById('jinfo').textContent='Email: '+ACADEMY.email;
+
+/* 3D scenes */
+if(window.THREE){(function(){
+var T=THREE,calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function shuttle(){var s=new T.Group();s.userData.shuttle=1;
+ var m=new T.MeshLambertMaterial({color:0xC8E04A,side:T.DoubleSide});
+ s.add(new T.Mesh(new T.CylinderGeometry(.05,.14,.28,16,1,true),m));
+ s.add(new T.Mesh(new T.CylinderGeometry(.052,.142,.28,16,1,true),new T.MeshBasicMaterial({color:0x7E9A1C,wireframe:true})));
+ var c=new T.Mesh(new T.SphereGeometry(.065,16,12),new T.MeshLambertMaterial({color:0xF2F2F2}));c.position.y=.16;s.add(c);
+ var rm=new T.MeshLambertMaterial({color:0x8FAE22});[[.14,-.14],[.095,0]].forEach(function(r){var rg=new T.Mesh(new T.TorusGeometry(r[0],.007,6,24),rm);rg.rotation.x=Math.PI/2;rg.position.y=r[1];s.add(rg)});return s}
+function box(g,w,h,d,x,y,z,col,op){var m=new T.Mesh(new T.BoxGeometry(w,h,d),new T.MeshLambertMaterial({color:col,transparent:!!op,opacity:op||1,side:T.DoubleSide}));m.position.set(x,y,z);g.add(m);return m}
+
+function mkP(g,shirt,band,x,z,ry,coach,sc){var P=new T.Group(),L=function(c){return new T.MeshStandardMaterial({color:c,roughness:.72,metalness:0})};
+ function cy(rt,h,m,px,py,pz){var o=new T.Mesh(new T.CylinderGeometry(rt,rt,h,10),m);o.position.set(px,py,pz);P.add(o);return o}
+ var sk=L(0xF2C9A0),nv=L(0x14283A);
+ var legs=new T.Group();P.add(legs);var Ls=[.1,-.1].map(function(zz){var lg=new T.Group(),kn=new T.Group();lg.position.set(0,.8,zz);legs.add(lg);
+  var th=new T.Mesh(new T.CylinderGeometry(.068,.055,.4,20),sk);th.position.y=-.2;lg.add(th);kn.position.y=-.4;lg.add(kn);var ks=new T.Mesh(new T.SphereGeometry(.058,12,10),sk);ks.position.y=-.4;lg.add(ks);
+  var sn=new T.Mesh(new T.CylinderGeometry(.052,.04,.4,20),sk);sn.position.y=-.2;kn.add(sn);var so=new T.Mesh(new T.BoxGeometry(.32,.04,.15),L(0x1B2430));so.position.set(.08,-.38,0);kn.add(so);
+  var up=new T.Mesh(new T.SphereGeometry(.1,24,14,0,Math.PI*2,0,Math.PI/2),L(0xF4F6F8));up.scale.set(1.5,.8,.75);up.position.set(.09,-.36,0);kn.add(up);
+  var hc=new T.Mesh(new T.SphereGeometry(.058,16,12),L(shirt));hc.scale.set(.9,1.1,1.05);hc.position.set(-.04,-.335,0);kn.add(hc);
+  var tc=new T.Mesh(new T.SphereGeometry(.075,16,10,0,Math.PI*2,0,Math.PI/2),L(shirt));tc.scale.set(1,.55,.95);tc.position.set(.17,-.36,0);kn.add(tc);
+  var co=new T.Mesh(new T.CylinderGeometry(.062,.07,.05,16),L(0x1B2430));co.position.set(0,-.32,0);kn.add(co);
+  for(var li=0;li<3;li++){var lc=new T.Mesh(new T.BoxGeometry(.018,.008,.07),L(0xBFC5CC));lc.position.set(.06+li*.045,-.278-li*.006,0);kn.add(lc)}lg.kn=kn;return lg});var la=new T.Group();la.position.set(0,1.38,-.27);P.add(la);var lm1=new T.Mesh(new T.CylinderGeometry(.048,.044,.28,20),L(shirt));lm1.position.y=-.14;la.add(lm1);var lf=new T.Mesh(new T.CylinderGeometry(.04,.034,.28,20),sk);lf.position.y=-.42;la.add(lf);var h0=new T.Mesh(new T.SphereGeometry(.085,12,10),sk);h0.position.y=-.56;la.add(h0);
+ var tor=new T.Mesh(new T.CylinderGeometry(.2,.155,.64,28),L(shirt));tor.scale.set(.72,1,1.22);tor.position.y=1.09;P.add(tor);
+ [1,-1].forEach(function(s){var sd=new T.Mesh(new T.SphereGeometry(.075,16,12),L(shirt));sd.position.set(0,1.37,s*.27);P.add(sd)});
+ var sc0=new T.Mesh(new T.SphereGeometry(.2,24,12,0,Math.PI*2,0,Math.PI/2),L(shirt));sc0.scale.set(.72,.25,1.22);sc0.position.y=1.41;P.add(sc0);
+ var nk=new T.Mesh(new T.CylinderGeometry(.052,.06,.16,16),sk);nk.position.y=1.5;P.add(nk);
+ var sh0=new T.Mesh(new T.CylinderGeometry(.17,.17,.26,24),nv);sh0.scale.set(.8,1,1.18);sh0.position.y=.76;P.add(sh0);
+ var hd=new T.Mesh(new T.SphereGeometry(.13,28,20),sk);hd.position.y=1.62;hd.scale.set(1,1.1,.95);P.add(hd);
+ var hr=new T.Mesh(new T.SphereGeometry(.14,28,12,0,Math.PI*2,0,Math.PI/2),nv);hr.position.y=1.64;P.add(hr);var bk0=new T.Mesh(new T.SphereGeometry(.136,28,18),nv);bk0.scale.set(.95,1.05,.98);bk0.position.set(-.035,1.625,0);P.add(bk0);
+ var fw=L(0xffffff),fk=L(0x14283A);
+ [-1,1].forEach(function(s){var e=new T.Mesh(new T.SphereGeometry(.024,10,8),fw);e.position.set(.116,1.625,s*.05);P.add(e);var pu=new T.Mesh(new T.SphereGeometry(.014,8,6),fk);pu.position.set(.134,1.625,s*.05);P.add(pu);var ea=new T.Mesh(new T.SphereGeometry(.032,8,6),sk);ea.position.set(0,1.62,s*.13);P.add(ea)});
+ var ns=new T.Mesh(new T.SphereGeometry(.02,8,6),L(0xE0B088));ns.position.set(.13,1.605,0);P.add(ns);
+ var mg=new T.TorusGeometry(.03,.006,6,14,Math.PI);mg.rotateZ(Math.PI);mg.rotateY(Math.PI/2);var mo=new T.Mesh(mg,L(0xA0302A));mo.position.set(.122,1.597,0);P.add(mo);
+ var bd=new T.Mesh(new T.TorusGeometry(.135,.02,6,20),L(band));bd.rotation.x=Math.PI/2;bd.position.y=1.66;P.add(bd);
+ var arm=new T.Group();arm.position.set(0,1.38,.27);P.add(arm);
+ var am=new T.Mesh(new T.CylinderGeometry(.048,.044,.3,20),L(shirt));am.position.y=-.15;arm.add(am);var fa=new T.Mesh(new T.CylinderGeometry(.04,.034,.3,20),sk);fa.position.y=-.45;arm.add(fa);var el0=new T.Mesh(new T.SphereGeometry(.043,12,10),sk);el0.position.y=-.3;arm.add(el0);var wr=new T.Group();wr.position.y=-.6;arm.add(wr);
+ var pm=new T.Mesh(new T.BoxGeometry(.07,.1,.045),sk);pm.position.set(0,-.06,-.045);wr.add(pm);var fj=[];
+ function fg(x,y,z,th){var j1=new T.Group(),j2=new T.Group(),l1=th?.03:.036,l2=th?.025:.03;j1.position.set(x,y,z);
+  [[j1,l1],[j2,l2]].forEach(function(q){var gm=new T.CylinderGeometry(.015,.013,q[1],12);gm.rotateZ(Math.PI/2);gm.translate(q[1]/2,0,0);q[0].add(new T.Mesh(gm,sk));var kb=new T.Mesh(new T.SphereGeometry(.0165,10,8),sk);q[0].add(kb)});
+  j2.position.x=l1;j1.add(j2);wr.add(j1);fj.push({a:j1,b:j2,th:th})}
+ [-.03,-.055,-.08,-.105].forEach(function(y){fg(.03,y,-.03,false)});fg(-.03,-.03,-.03,true);
+ var rk=new T.Group();rk.rotation.y=Math.PI/2;rk.scale.setScalar(1.35);wr.add(rk);var rm=L(0xE4572E);
+ var h1=new T.Mesh(new T.CylinderGeometry(.018,.018,.3,12),rm);h1.position.y=-.1;h1.scale.set(1.35,1,.85);rk.add(h1);var bc=new T.Mesh(new T.CylinderGeometry(.024,.024,.03,12),L(0x1B2430));bc.position.y=-.255;rk.add(bc);
+ var h2=new T.Mesh(new T.CylinderGeometry(.01,.01,.25,6),rm);h2.position.y=-.325;rk.add(h2);
+ var h3=new T.Mesh(new T.TorusGeometry(.11,.012,6,24),rm);h3.position.y=-.58;h3.scale.y=1.3;h3.scale.x=1.4;rk.add(h3);
+ var h4=new T.Mesh(new T.CircleGeometry(.11,20),new T.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.45,side:T.DoubleSide}));h4.position.y=-.58;h4.scale.y=1.3;h4.scale.x=1.4;rk.add(h4);
+ if(coach){var c=document.createElement('canvas');c.width=128;c.height=48;var q=c.getContext('2d');q.fillStyle='#E4572E';q.fillRect(0,0,128,48);q.fillStyle='#fff';q.font='bold 30px sans-serif';q.textAlign='center';q.fillText('Coach',64,35);
+  var sp=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(c)}));sp.scale.set(1,.375,1);sp.position.y=2.15;P.add(sp)}
+ P.scale.setScalar(sc||1.15);P.position.set(x,0,z);P.rotation.y=ry;g.add(P);
+ return{g:P,arm:arm,wr:wr,fj:fj,la:la,rk:rk,legs:legs,L1:Ls[0],L2:Ls[1],K1:Ls[0].kn,K2:Ls[1].kn,o:coach?0:3}}
+function smLegs(p,dt){var TT=[-.9,-.45,-.3,-.25,.35,.42,1],CC=[0,1,1,0,0,.9,0],c=0,i,u;
+ for(i=0;i<6;i++)if(dt>=TT[i]&&dt<=TT[i+1]){u=(dt-TT[i])/(TT[i+1]-TT[i]);u=u*u*(3-2*u);c=CC[i]+(CC[i+1]-CC[i])*u;break}
+ var air=dt>-.25&&dt<.35,u2=(dt+.25)/.6,y=air?.31*4*u2*(1-u2):0,a=air?Math.sin(Math.PI*u2):0,bend=.6*c;
+ p.L1.rotation.z=bend+.25*a;p.K1.rotation.z=-2*bend-.5*a;p.L2.rotation.z=bend-.45*a;p.K2.rotation.z=-2*bend-.9*a;
+ p.g.position.y=y-.8*(1-Math.cos(bend))}
+function flex(p,A,dt){var K=[-1,-.45,0,.35,.8],m=Math.min(1,Math.abs(A[2]-A[1])/1.5)*.9,sg=A[2]>A[1]?-1:1,W=[0,sg*m,0,-sg*m*.8,0],w=0;for(var i=0;i<4;i++)if(dt>=K[i]&&dt<=K[i+1])w=W[i]+(W[i+1]-W[i])*(dt-K[i])/(K[i+1]-K[i]);p.wr.rotation.z=w;p.wr.rotation.x=(dt>0&&dt<.4)?.1*Math.sin(dt*70)*Math.exp(-dt*9):0;var cf=.75+.35*Math.max(0,1-Math.abs(dt)/.6);p.fj.forEach(function(f){f.a.rotation.y=f.th?Math.PI+cf*.9:-cf*.9;f.b.rotation.y=f.th?cf*1.6:-cf*2});if(A[2]===Math.PI-.3&&A[3]===Math.PI/2)smLegs(p,dt);else if(p.L1){p.L1.rotation.z=0;p.L2.rotation.z=0;p.K1.rotation.z=0;p.K2.rotation.z=0}}
+function mk(id,cam,build,fix){
+ var el=document.getElementById(id),r=null,dead=false;if(!el)return;
+ var EXT={'s-court':15,'s-tech':7,'s-warm':6,'s-grip':4,'s-racket':3,'s-shuttle':3}[id]||8;
+ function ensure(){if(r)return true;try{r=new T.WebGLRenderer({antialias:true,alpha:true})}catch(e){el.textContent='3D is not supported on this device.';dead=true;return false}r.setPixelRatio(Math.min(devicePixelRatio||1,2));r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;el.insertBefore(r.domElement,el.firstChild);lw=0;return true}
+ function drop(){if(r){r.dispose();try{r.forceContextLoss()}catch(e){}if(r.domElement.parentNode)r.domElement.parentNode.removeChild(r.domElement);r=null}}
+ 
+ var sc=new T.Scene(),ca=new T.PerspectiveCamera(40,1,.1,100),g=new T.Group(),lw=0,lh=0,rot0=fix?.3:.6,rot=rot0,dr=false,lx=0,vel=0,uz=1,big=false;
+ sc.add(g);sc.add(new T.HemisphereLight(0xffffff,0x4a6a58,.55));sc.add(new T.AmbientLight(0xffffff,.35));
+ var dl=new T.DirectionalLight(0xffffff,.85),sz=EXT>10?2048:1024,sc2=dl.shadow.camera;dl.position.set(5,10,6);dl.castShadow=true;dl.shadow.mapSize.set(sz,sz);sc2.left=-EXT;sc2.right=EXT;sc2.top=EXT;sc2.bottom=-EXT;sc2.near=1;sc2.far=40;dl.shadow.bias=-.0004;sc.add(dl);
+ ca.position.set(cam[0],cam[1],cam[2]);ca.lookAt(0,cam[3]||0,0);
+ var upd=build(g,ca)||function(){};
+ var SHs=[];g.traverse(function(o){if(o.userData&&o.userData.shuttle)SHs.push({o:o,last:null,pv:null,t0:-9,fx:null})});
+ SHs.forEach(function(S){var m=new T.Mesh(new T.SphereGeometry(.16,12,10),new T.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,depthWrite:false}));m.visible=false;S.o.parent.add(m);S.fx=m});
+ function hits(tm){SHs.forEach(function(S){var p=S.o.position;if(S.last){var v=new T.Vector3().subVectors(p,S.last);if(v.lengthSq()>1e-6&&v.length()<3){if(S.pv&&v.dot(S.pv)<0)S.t0=tm;S.pv=v}}S.last=p.clone();var a=tm-S.t0;if(a>=0&&a<.25){S.fx.visible=true;S.fx.position.copy(p);S.fx.scale.setScalar(.5+a*8);S.fx.material.opacity=.7*(1-a/.25)}else S.fx.visible=false})}
+ g.traverse(function(m){if(m.isMesh){var p=m.geometry.parameters||{},flat=m.geometry.type==='BoxGeometry'&&(p.height<=.03||p.width>8);m.castShadow=!flat&&!m.material.transparent;m.receiveShadow=true}});
+ var cl=document.createElement('div');cl.className='ctl';
+ function btn(t,l,f){var b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-label',l);b.onclick=f;cl.appendChild(b);return b}
+ function zm(k){uz=Math.max(.6,Math.min(3,uz*k));lw=0}
+ btn('+','Zoom in',function(){zm(1.25)});btn('\u2212','Zoom out',function(){zm(.8)});btn('\u21ba','Reset view',function(){rot=rot0;uz=1;vel=0;lw=0});
+ var eb=btn('\u26f6','Full screen',function(){big=!big;el.classList.toggle('big',big);document.body.classList.toggle('noscroll',big);eb.textContent=big?'\u2715':'\u26f6';eb.setAttribute('aria-label',big?'Close full screen':'Full screen');lw=0});
+ el.appendChild(cl);
+ addEventListener('keydown',function(e){if(e.key==='Escape'&&big)eb.onclick()});
+ el.addEventListener('wheel',function(e){if(big||e.ctrlKey){e.preventDefault();zm(e.deltaY<0?1.1:.91)}},{passive:false});
+ el.onpointerdown=function(e){if(e.target.closest&&e.target.closest('.ctl'))return;dr=true;lx=e.clientX;vel=0;el.style.cursor='grabbing'};
+ addEventListener('pointerup',function(){dr=false;el.style.cursor='grab'});
+ addEventListener('pointermove',function(e){if(dr){var d=(e.clientX-lx)*.01;rot+=d;vel=d;lx=e.clientX}});
+ (function loop(t){requestAnimationFrame(loop);if(!el.getClientRects().length){drop();return}if(dead||!ensure())return;
+  var rc=el.getBoundingClientRect();if(!big&&(rc.bottom<0||rc.top>innerHeight))return;
+  var w=el.clientWidth,h=el.clientHeight;if(w!==lw||h!==lh){lw=w;lh=h;r.setSize(w,h);ca.aspect=w/h;ca.zoom=Math.min(1,w/h/1.2)*uz;ca.updateProjectionMatrix()}
+  if(!dr){rot+=vel;vel*=.94;if(!calm&&!fix)rot+=.004}
+  g.rotation.y=rot;upd(t/1000,g);hits(t/1000);r.render(sc,ca)})(0);
+}
+function bgGame(pl,sh){
+ var PI=Math.PI,Y=new T.Vector3(0,1,0),v=new T.Vector3(),K=[-1,-.45,0,.35,.8];
+ var ST={sv:{A:[.3,-.5,.9,1.5,.3],j:0,tl:0},li:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3},sm:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0},dr:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0},ke:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3}};
+ var BASE=[[0,'sv',-2.6,-1,1,1.3],[1,'li',3.4,1.2,1.5,3],[0,'sm',-5.4,-.4,.5,0],[1,'li',4.8,.6,1.5,3],[0,'dr',-5.3,.8,1,.4],[1,'ke',3.96,-.6,.8,.9],[0,'li',-3.18,.9,1.5,3],[1,'sm',5.4,-1,.5,0],[0,'li',-4.78,.2,1.5,3],[1,'dr',5.3,1,1,.4],[0,'ke',-3.96,-.8,.8,1.2]];
+ var EN={1:[-6,-.3,1.5,3.5],2:[4.4,.3,.5,0],4:[1.2,.3,1,1.6],7:[-4.2,-.3,.5,0],9:[-1,-.3,1,1.8],10:[1,.3,.8,1.2]};
+ var fin=0,rs=11,sA=0,sB=0,srv=0,R=null,tOff=0,lastT=null,clk=0,over=0,cur=[[-2.6,-1],[3.4,1.2]],st=[[-2.6,-1],[3.4,1.2]],NM=['Coach','Opponent'];
+ function rnd(){rs=(rs*16807)%2147483647;return rs/2147483647}
+ function ui(m){document.getElementById('ba').textContent=sA;document.getElementById('bb').textContent=sB;document.getElementById('bst').textContent=m}
+ function build(){
+  var win=rnd()<.52?0:1,pool=win===srv?[2,4,10]:[1,7,9],end=pool[Math.floor(rnd()*3)%3],mir=srv,tm=1.8,k,ts=[],C=[],E=[[],[]],en=EN[end];
+  var sq=BASE.slice(0,end+1).map(function(s){return[mir?1-s[0]:s[0],s[1],mir?-s[2]:s[2],mir?-s[3]:s[3],s[4],s[5]]});
+  sq[end][4]=en[2];sq[end][5]=en[3];
+  for(k=0;k<sq.length;k++){var s0=sq[k],S0=ST[s0[1]],tl=S0.tl,an=S0.A[2]+tl,ox=-2.07*Math.sin(tl)+2.075*Math.sin(an),oy=S0.j+2.07*Math.cos(tl)-2.075*Math.cos(an);
+   ts.push(tm);tm+=s0[4];C.push(s0[0]?[s0[2]-ox,oy,s0[3]-.405]:[s0[2]+ox,oy,s0[3]+.405])}
+  ts.push(tm);C.push([mir?-en[0]:en[0],.05,mir?-en[1]:en[1]]);
+  sq.forEach(function(s,i){E[s[0]].push({a:ts[i]-.4,d:ts[i]+.3,x:s[2],z:s[3],k:i})});
+  st=[cur[0].slice(),cur[1].slice()];
+  R={SQ:sq,ts:ts,C:C,E:E,win:win,tEnd:tm,LOOP:tm+1.2,sc:0};ui('First to 21 wins')}
+ function score(){if(R.win)sB++;else sA++;var a=sA,b=sB;over=((a>=21||b>=21)&&Math.abs(a-b)>=2)||a>=30||b>=30;
+  ui(over?NM[R.win]+' wins '+Math.max(a,b)+'\u2013'+Math.min(a,b)+'!':'First to 21 wins');if(over)fin=1}
+ function P0(w,tt){var e=R.E[w],i,p,q,u;
+  if(tt<e[0].a){u=Math.max(0,tt/e[0].a);u=u*u*(3-2*u);return[st[w][0]+(e[0].x-st[w][0])*u,st[w][1]+(e[0].z-st[w][1])*u]}
+  for(i=0;i<e.length;i++){p=e[i];if(tt<=p.d)return[p.x,p.z];q=e[i+1];if(q&&tt<q.a){u=(tt-p.d)/(q.a-p.d);u=u*u*(3-2*u);return[p.x+(q.x-p.x)*u,p.z+(q.z-p.z)*u]}}
+  return[e[e.length-1].x,e[e.length-1].z]}
+ function at(q){var i,u,a,b,C=R.C,ts=R.ts,SQ=R.SQ;
+  if(q<ts[0]-.3)return[C[0][0],C[0][1]+.45,C[0][2]];
+  if(q<ts[0]){u=(q-ts[0]+.3)/.3;return[C[0][0],C[0][1]+.45*(1-u),C[0][2]]}
+  for(i=0;i<SQ.length;i++)if(q<ts[i+1]){u=(q-ts[i])/SQ[i][4];a=C[i];b=C[i+1];return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u+SQ[i][5]*4*u*(1-u),a[2]+(b[2]-a[2])*u]}
+  return C[SQ.length]}
+ return function(t){var d=lastT===null?0:Math.min(t-lastT,.1),w,i,j;lastT=t;if(fin)return;clk+=d*4;
+  if(!R){build();tOff=clk}
+  var tt=clk-tOff;
+  if(!R.sc&&tt>=R.tEnd){R.sc=1;score()}
+  if(tt>=R.LOOP){if(over){sA=0;sB=0;srv=0;over=0}else srv=R.win;build();tOff=clk;tt=0}
+  var p1=at(tt),p2=at(tt+.03);
+  v.set(p2[0]-p1[0],p2[1]-p1[1],p2[2]-p1[2]);if(v.lengthSq()>1e-6){v.normalize();sh.quaternion.setFromUnitVectors(Y,v)}
+  sh.position.set(p1[0],p1[1],p1[2]);
+  for(w=0;w<2;w++){var e=R.E[w],best=e[0];for(i=0;i<e.length;i++)if(Math.abs(tt-R.ts[e[i].k])<Math.abs(tt-R.ts[best.k]))best=e[i];
+   var S=ST[R.SQ[best.k][1]],dt=tt-R.ts[best.k],f=Math.max(0,1-Math.abs(dt)/.8),a=.3;
+   for(j=0;j<4;j++)if(dt>=K[j]&&dt<=K[j+1])a=S.A[j]+(S.A[j+1]-S.A[j])*(dt-K[j])/(K[j+1]-K[j]);
+   var ps=P0(w,tt),Q=pl[w];cur[w]=ps;Q.g.position.set(ps[0],S.j*Math.max(0,1-Math.abs(dt)/.4),ps[1]);Q.g.rotation.z=S.tl*f;Q.arm.rotation.z=a;flex(Q,S.A,dt)}}}
+function bgCourts(g){
+ box(g,70,.02,70,0,-.06,0,0xC9A66B);
+ var Z=[-7.8],CL=[[0x8E44AD,0xffffff,0xE67E22,0xffffff]],items=[];
+ Z.forEach(function(zc,i){
+  box(g,15,.02,7.7,0,-.02,zc,0x14483A);box(g,13.4,.02,6.1,0,0,zc,0x1D6B55);
+  function ln(x,z,w,d){box(g,w,.02,d,x,.012,zc+z,0xffffff)}
+  [-1,1].forEach(function(s){ln(0,s*3.05,13.4,.05);ln(0,s*2.59,13.4,.05);ln(s*6.7,0,.05,6.1);ln(s*1.98,0,.05,6.1);ln(s*5.94,0,.05,6.1);ln(s*4.34,0,4.72,.05);box(g,.06,1.55,.06,0,.775,zc+s*3.05,0xdddddd)});
+  box(g,.02,.76,6.1,0,1.14,zc,0xffffff,.35);box(g,.05,.07,6.1,0,1.52,zc,0xffffff);
+  var c=CL[i],sg=new T.Group(),s2=shuttle(),pa,pb;sg.position.z=zc;g.add(sg);pa=mkP(sg,c[0],c[1],-2.6,-1,0,true,1.5);pb=mkP(sg,c[2],c[3],3.4,1.2,Math.PI,false,1.5);
+  s2.scale.setScalar(1.6);sg.add(s2);items.push({u:bgGame([pa,pb],s2),ph:0})});
+ return function(t){items.forEach(function(it){it.u(t+it.ph)})}}
+function rally(pl,sh,ca,g){
+ var PI=Math.PI,Y=new T.Vector3(0,1,0),v=new T.Vector3(),K=[-1,-.45,0,.35,.8];
+ var ST={sv:{A:[.3,-.5,.9,1.5,.3],j:0,tl:0},li:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3},sm:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0},dr:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0},ke:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3},cl:{A:[.3,PI+.9,PI-.3,PI*.65,.3],j:0,tl:0},bl:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3,bh:1,bt:.35},bs:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0,bh:1,bt:.8},bk:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3,bh:1,bt:.35},bd:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0,bh:1,bt:.8}};
+ var BASE=[[0,'sv',-2.6,-1,1,1.3],[1,'li',3.4,1.2,1.5,3],[0,'sm',-5.4,-.4,.5,0],[1,'li',4.8,.6,1.5,3],[0,'dr',-5.3,.8,1,.4],[1,'ke',3.96,-.6,.8,.9],[0,'li',-3.18,.9,1.5,3],[1,'sm',5.4,-1,.5,0],[0,'li',-4.78,.2,1.5,3],[1,'dr',5.3,1,1,.4],[0,'ke',-3.96,-.8,.8,1.2]];
+ var EN={1:[-6,-.3,1.5,3.5],2:[4.4,.3,.5,0],4:[1.2,.3,1,1.6],7:[-4.2,-.3,.5,0],9:[-1,-.3,1,1.8],10:[1,.3,.8,1.2]};
+ var rs=7,sA=0,sB=0,srv=0,R=null,tOff=0,lastT=null,clk=0,spd=4,over=0,cur=[[-2.6,-1],[3.4,1.2]],st=[[-2.6,-1],[3.4,1.2]],NM=['Coach','Opponent'];
+ function rnd(){rs=(rs*16807)%2147483647;return rs/2147483647}
+ function ui(m){m=/wins/.test(m)?m:'First to 21 wins';lm=m;document.getElementById('sa').textContent=sA;document.getElementById('sb').textContent=sB;document.getElementById('sst').textContent=m}
+ function build(){
+  var win=rnd()<.52?0:1,pool=win===srv?[2,4,10]:[1,7,9],end=pool[Math.floor(rnd()*3)%3],mir=srv,tm=1.8,k,ts=[],C=[],E=[[],[]],en=EN[end];
+  var sq=BASE.slice(0,end+1).map(function(s){return[mir?1-s[0]:s[0],s[1],mir?-s[2]:s[2],mir?-s[3]:s[3],s[4],s[5]]});
+  sq[end][4]=en[2];sq[end][5]=en[3];
+  for(k=0;k<sq.length;k++){var s0=sq[k],S0=ST[s0[1]],tl=S0.tl,an=S0.A[2]+tl,ox=-2.07*Math.sin(tl)+2.075*Math.sin(an),oy=S0.j+2.07*Math.cos(tl)-2.075*Math.cos(an);
+   ts.push(tm);tm+=s0[4];C.push(s0[0]?[s0[2]-ox,oy,s0[3]-.405]:[s0[2]+ox,oy,s0[3]+.405])}
+  ts.push(tm);C.push([mir?-en[0]:en[0],.05,mir?-en[1]:en[1]]);
+  sq.forEach(function(s,i){E[s[0]].push({a:ts[i]-.4,d:ts[i]+.3,x:s[2],z:s[3],k:i})});
+  st=[cur[0].slice(),cur[1].slice()];
+  R={SQ:sq,ts:ts,C:C,E:E,win:win,tEnd:tm,LOOP:tm+1.2,sc:0,cs:-1};
+  ui(NM[srv]+' serves')}
+ function score(){if(R.win)sB++;else sA++;var a=sA,b=sB;over=((a>=21||b>=21)&&Math.abs(a-b)>=2)||a>=30||b>=30;
+  ui(over?NM[R.win]+' wins '+Math.max(a,b)+'\u2013'+Math.min(a,b)+'! Tap Play match for a new game':NM[R.win]+' scores');if(over){fin=1;run=0;setPM()}}
+ function P0(w,tt){var e=R.E[w],i,p,q,u;
+  if(tt<e[0].a){u=Math.max(0,tt/e[0].a);u=u*u*(3-2*u);return[st[w][0]+(e[0].x-st[w][0])*u,st[w][1]+(e[0].z-st[w][1])*u]}
+  for(i=0;i<e.length;i++){p=e[i];if(tt<=p.d)return[p.x,p.z];q=e[i+1];if(q&&tt<q.a){u=(tt-p.d)/(q.a-p.d);u=u*u*(3-2*u);return[p.x+(q.x-p.x)*u,p.z+(q.z-p.z)*u]}}
+  return[e[e.length-1].x,e[e.length-1].z]}
+ function at(q){var i,u,a,b,C=R.C,ts=R.ts,SQ=R.SQ;
+  if(q<ts[0]-.3)return[C[0][0],C[0][1]+.45,C[0][2]];
+  if(q<ts[0]){u=(q-ts[0]+.3)/.3;return[C[0][0],C[0][1]+.45*(1-u),C[0][2]]}
+  for(i=0;i<SQ.length;i++)if(q<ts[i+1]){u=(q-ts[i])/SQ[i][4];a=C[i];b=C[i+1];return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u+SQ[i][5]*4*u*(1-u),a[2]+(b[2]-a[2])*u]}
+  return C[SQ.length]}
+ var lm='',fin=0,run=0,demo=null,dstart=-1,mode=1,pu=0,EXL={sv:['serve','Drop the shuttle and hit it underarm, below your waist.'],li:['lift','Swing underarm from low to high to send the shuttle deep.'],sm:['smash','Jump and hit down hard and steep.'],dr:['drop shot','It looks like a smash, but a soft tap lands it close to the net.'],ke:['net keep','A small, soft tap at the top of the net.']};
+ var sav=document.getElementById('sayav');if(sav)sav.innerHTML=av(36);
+ function say(k){var s=R.SQ[k],x=EXL[s[1]],m=NM[s[0]]+' plays a '+x[0]+'. '+x[1],el=document.getElementById('saytx');if(el)el.textContent=m;
+  if(mode!==2)return;pu=lastT+2.4;
+  if(mode===2&&window.speechSynthesis){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(m);u.onend=function(){pu=0};u.onerror=function(){pu=0};pu=lastT+9;speechSynthesis.speak(u)}catch(e){pu=lastT+2.4}}}
+ var ex=document.getElementById('ex');if(ex)ex.onclick=function(){mode=(mode+1)%3;ex.textContent=['Coach: off','Coach: text','Coach: voice'][mode];pu=0;try{speechSynthesis.cancel()}catch(e){}};
+ function ctc(sn,px,pz){var S0=ST[sn],tl=S0.tl,an=S0.A[2]+tl,ox=-2.07*Math.sin(tl)+2.075*Math.sin(an),bt=S0.bt||0,zl=S0.bh?-.15:.405;return[px+ox*Math.cos(bt)+zl*Math.sin(bt),S0.j+2.07*Math.cos(tl)-2.075*Math.cos(an),pz-ox*Math.sin(bt)+zl*Math.cos(bt)]}
+ var DM={sv:{s:'sv',px:-2.6,pz:-1,S0:null,hin:0,inD:.3,T:[1.6,.05,-.7],H:1.3,dur:1},sm:{s:'sm',px:-5.4,pz:-.4,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[4.4,.05,.3],H:0,dur:.5},dr:{s:'dr',px:-5.3,pz:.8,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[1.2,.05,.3],H:1.6,dur:1},li:{s:'li',px:-3.18,pz:.9,S0:[1.2,1.6,.5],hin:.9,inD:.8,T:[5.8,.05,.5],H:3.5,dur:1.5},ke:{s:'ke',px:-3.96,pz:-.8,S0:[1.3,1.63,-.2],hin:.9,inD:.8,T:[1,.05,.3],H:1.2,dur:.8}};
+ DM.cl={s:'cl',px:-5.4,pz:-.4,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[5.8,.05,.3],H:3.2,dur:1.5};
+ DM.fo={s:'cl',px:-5.4,pz:-.4,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[7.7,.05,.3],H:3.2,dur:1.6,mark:'out'};
+ DM.fn={s:'dr',px:-5.3,pz:.8,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[-.06,.05,.3],H:0,dur:.9,mark:'net'};
+ DM.sc={s:'sm',px:-5.4,pz:-.4,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[4.4,.05,.3],H:0,dur:.5,mark:'pt'};
+ DM.ft={kind:'ft',s:'sv',px:-2.6,pz:-1};DM.co={kind:'co',s:'sv',px:-2.6,pz:-1};
+ DM.gp={kind:'gp',s:'sv',px:-2.6,pz:-1,th:1.45,L:.9,dist:2.6};DM.rk={kind:'gp',s:'sv',px:-2.6,pz:-1,th:2.6,L:1.7,dist:4.6};DM.shu={kind:'shu',s:'sv',px:-2.6,pz:-1};
+ DM.tos={s:'sv',px:-2.6,pz:-1,S0:[-1.94,1.7,-1.405],hin:.9,inD:1,T:[1.6,.05,-.7],H:1.3,dur:1,tos:1};
+ DM.bl={s:'bl',px:-3,pz:.55,S0:[1.2,1.6,-.2],hin:.9,inD:.8,T:[5.8,.05,.3],H:3.5,dur:1.5};
+ DM.bs={s:'bs',px:-5.4,pz:.3,S0:[3.5,3.8,-.2],hin:2.2,inD:1.2,T:[4.4,.05,.3],H:0,dur:.5};
+ DM.bk={s:'bk',px:-3.75,pz:1,S0:[1.3,1.63,-.1],hin:.9,inD:.8,T:[1,.05,.3],H:1.2,dur:.8};
+ DM.bd={s:'bd',px:-5.3,pz:.8,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[1.2,.05,.3],H:1.6,dur:1};
+ DM.nl={s:'li',px:-2.6,pz:.1,S0:[.9,1.2,.5],hin:.2,inD:.6,T:[5.8,.05,.5],H:4.2,dur:1.5};
+ for(var dk in DM)DM[dk].C=ctc(DM[dk].s,DM[dk].px,DM[dk].pz);
+ var ring=new T.Mesh(new T.RingGeometry(.2,.34,24),new T.MeshBasicMaterial({color:0xE4572E,side:T.DoubleSide}));ring.rotation.x=-PI/2;ring.position.y=.04;ring.visible=false;g.add(ring);
+ function tex(txt,col){var c=document.createElement('canvas');c.width=256;c.height=96;var x=c.getContext('2d');x.fillStyle=col;x.fillRect(0,0,256,96);x.fillStyle='#fff';x.font='bold 46px sans-serif';x.textAlign='center';x.fillText(txt,128,66);return new T.CanvasTexture(c)}
+ var TX={out:tex('OUT','#C0392B'),net:tex('FAULT','#C0392B'),pt:tex('+1 POINT','#1D6B55')};
+ var msp=new T.Sprite(new T.SpriteMaterial({map:TX.pt}));msp.scale.set(1.9,.71,1);msp.visible=false;g.add(msp);
+ var hS=box(g,13.4,.01,5.18,0,.03,0,0xE9C46A,.45),hA=box(g,13.4,.01,.46,0,.03,2.82,0xE4572E,.55),hB=box(g,13.4,.01,.46,0,.03,-2.82,0xE4572E,.55);hS.visible=hA.visible=hB.visible=false;
+ var zoomed=false;
+ function zoomTo(lp,dist){g.updateMatrixWorld();var w=g.localToWorld(lp);ca.position.set(w.x,w.y+.4,w.z+dist);ca.lookAt(w);zoomed=true}
+ function lp(q){var KK=[0,.4,.7,1.5,3.6,4.2],V=[.9,.9,1.8,.5,.5,.9],i;for(i=0;i<5;i++)if(q>=KK[i]&&q<=KK[i+1])return V[i]+(V[i+1]-V[i])*(q-KK[i])/(KK[i+1]-KK[i]);return .9}
+ function fx(t){var D=demo,K2=D&&D.kind,q=dstart<0?0:t-dstart;pl[0].la.rotation.z=(D&&D.tos)?lp(q%4.2):0;
+  var SB=D&&!D.kind&&ST[D.s].bh?ST[D.s]:null;pl[0].g.rotation.y=SB?SB.bt:0;pl[0].arm.position.z=SB?-.1:.27;pl[0].rk.rotation.y=SB?-PI/2:PI/2;if(SB)pl[0].la.rotation.z=-.7;
+  ring.visible=!!(D&&D.T);if(D&&D.T)ring.position.set(D.T[0],.04,D.T[2]);
+  msp.visible=!!(D&&D.mark&&(q%4.2)>1.4+D.dur);if(D&&D.mark){msp.material.map=TX[D.mark];msp.position.set(D.T[0],1.1,D.T[2])}
+  hS.visible=K2==='co';hA.visible=hB.visible=K2==='co'&&Math.floor(q/2)%2===1;
+  sh.visible=!(D&&K2&&K2!=='shu');sh.scale.setScalar(K2==='shu'?5:1.6);
+  if(!(K2==='gp'||K2==='shu')&&zoomed){ca.position.set(0,11,17);ca.lookAt(0,0,0);zoomed=false}}
+ function cdemo(t){var D=demo,Q=pl[0],S=ST.sv,q,a,i,u,p,r,n,c;if(dstart<0)dstart=t;q=t-dstart;
+  if(D.kind==='ft'){var FP=[[-2.6,-1.6],[-1.2,1.8],[-5.6,1.8],[-5.6,-1.8],[-1.2,-1.8],[-2.6,0]];n=FP.length;i=Math.floor(q/1.1)%n;r=q%1.1;p=FP[(i+n-1)%n];c=FP[i];u=Math.min(1,r/.7);u=u*u*(3-2*u);
+   Q.g.position.set(p[0]+(c[0]-p[0])*u,.06*Math.abs(Math.sin(r*9)),p[1]+(c[1]-p[1])*u);Q.g.rotation.z=u<1?-.25*Math.sin(u*PI):0;
+   a=r>.7?.9+1.3*Math.sin((r-.7)/.4*PI):.9;Q.arm.rotation.z=a;flex(Q,S.A,-5);ring.visible=true;ring.position.set(c[0],.04,c[1])}
+  else if(D.kind==='co'){Q.g.position.set(D.px,0,D.pz);Q.g.rotation.z=0;Q.arm.rotation.z=.9+.3*Math.sin(q*2);flex(Q,S.A,-5)}
+  else{var sw=D.kind==='shu',th=sw?2.2:D.th+.08*Math.sin(q*1.5),L=sw?.9:D.L,dist=sw?2.4:D.dist;
+   Q.g.position.set(D.px,0,D.pz);Q.g.rotation.z=0;Q.arm.rotation.z=th;flex(Q,S.A,0);
+   if(sw){var hx=D.px+.9*Math.sin(th)+.35,hy=2.07-.9*Math.cos(th)+.3;sh.position.set(hx,hy,D.pz+.405);sh.quaternion.setFromEuler(new T.Euler(.5,q*1.4,.25));zoomTo(new T.Vector3(hx,hy,D.pz+.405),dist)}
+   else zoomTo(new T.Vector3(D.px+L*Math.sin(th),2.07-L*Math.cos(th),D.pz+.405),dist)}}
+ function dat(D,q){var th=1.4,C=D.C,S0=D.S0||[C[0],C[1]+.45,C[2]],u;
+  if(q<th-D.inD)return S0;
+  if(q<th){u=(q-th+D.inD)/D.inD;return[S0[0]+(C[0]-S0[0])*u,S0[1]+(C[1]-S0[1])*u+D.hin*4*u*(1-u),S0[2]+(C[2]-S0[2])*u]}
+  u=Math.min(1,(q-th)/D.dur);return[C[0]+(D.T[0]-C[0])*u,C[1]+(D.T[1]-C[1])*u+D.H*4*u*(1-u),C[2]+(D.T[2]-C[2])*u]}
+ window.coachDemo=function(k){demo=k?DM[k]:null;dstart=-1;pl[1].g.visible=!k;if(k){run=0;setPM()}if(k){document.getElementById('sst').textContent='Paused \u00b7 coach is explaining'}else{fin=0;pl[1].g.visible=true;document.getElementById('sst').textContent=run&&lm?lm:'Ready \u00b7 tap Play match to start'}};
+ window.coachSay=function(t,f){var el=document.getElementById('saytx');if(el)el.textContent=t;if(f&&mode===2&&demo&&window.speechSynthesis){try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch(e){}}};
+ function setPM(){var b=document.getElementById('pm');if(b)b.textContent=run?'Stop match':'Play match'}
+ window.coachPlay=function(on){if(on&&over){sA=0;sB=0;srv=0;over=0;fin=0;R=null;ui('First to 21 wins')}run=on?1:0;pu=0;if(on){demo=null;dstart=-1;pl[1].g.visible=true;document.getElementById('panel').classList.remove('demo');if(lm)document.getElementById('sst').textContent=lm}else{document.getElementById('sst').textContent='Match stopped \u00b7 tap Play match to continue'}setPM()};
+ var pmb=document.getElementById('pm');if(pmb)pmb.onclick=function(){coachPlay(!run)};
+ var ctl=document.getElementById('spd');if(ctl)ctl.onclick=function(){spd=spd===4?8:spd===8?16:4;ctl.textContent=spd+'\u00d7'};
+ return function(t){var d=lastT===null?0:Math.min(t-lastT,.1),w,i,j;lastT=t;
+  fx(t);if(demo&&demo.kind){cdemo(t);return}
+  if(demo){if(dstart<0)dstart=t;var dq=(t-dstart)%4.2,DD=demo,DS=ST[DD.s],ddt=dq-1.4,df=Math.max(0,1-Math.abs(ddt)/.8),da=.3,jj;
+   for(jj=0;jj<4;jj++)if(ddt>=K[jj]&&ddt<=K[jj+1])da=DS.A[jj]+(DS.A[jj+1]-DS.A[jj])*(ddt-K[jj])/(K[jj+1]-K[jj]);
+   var d1=dat(DD,dq),d2=dat(DD,dq+.03),DQ=pl[0];
+   v.set(d2[0]-d1[0],d2[1]-d1[1],d2[2]-d1[2]);if(v.lengthSq()>1e-6){v.normalize();sh.quaternion.setFromUnitVectors(Y,v)}
+   sh.position.set(d1[0],d1[1],d1[2]);
+   DQ.g.position.set(DD.px,DS.j*Math.max(0,1-Math.abs(ddt)/.4),DD.pz);DQ.g.rotation.z=DS.tl*df;DQ.arm.rotation.z=da;flex(DQ,DS.A,ddt);return}
+  if(fin)return;
+  if(!run){var iA=pl[0],iB=pl[1],ci=DM.sv.C;iA.g.position.set(-2.6,0,-1);iA.g.rotation.z=0;iA.arm.rotation.z=.3;flex(iA,ST.sv.A,-5);iB.g.position.set(3.4,0,1.2);iB.g.rotation.z=0;iB.arm.rotation.z=.3;flex(iB,ST.sv.A,-5);iB.g.visible=true;sh.position.set(ci[0],ci[1]+.45,ci[2]);sh.quaternion.setFromUnitVectors(Y,v.set(0,-1,0));return}
+  if(mode>0&&t<pu)d=0;clk+=d*spd;
+  if(!R){build();tOff=clk}
+  var tt=clk-tOff;
+  if(!R.sc&&tt>=R.tEnd){R.sc=1;score()}
+  if(tt>=R.LOOP){if(over){sA=0;sB=0;srv=0;over=0}else srv=R.win;build();tOff=clk;tt=0}
+  var cs=-1,ii;for(ii=0;ii<R.SQ.length;ii++)if(tt>=R.ts[ii]-.1)cs=ii;if(cs>=0&&cs!==R.cs){R.cs=cs;say(cs)}
+  var p1=at(tt),p2=at(tt+.03);
+  v.set(p2[0]-p1[0],p2[1]-p1[1],p2[2]-p1[2]);if(v.lengthSq()>1e-6){v.normalize();sh.quaternion.setFromUnitVectors(Y,v)}
+  sh.position.set(p1[0],p1[1],p1[2]);
+  for(w=0;w<2;w++){var e=R.E[w],best=e[0];for(i=0;i<e.length;i++)if(Math.abs(tt-R.ts[e[i].k])<Math.abs(tt-R.ts[best.k]))best=e[i];
+   var S=ST[R.SQ[best.k][1]],dt=tt-R.ts[best.k],f=Math.max(0,1-Math.abs(dt)/.8),a=.3;
+   for(j=0;j<4;j++)if(dt>=K[j]&&dt<=K[j+1])a=S.A[j]+(S.A[j+1]-S.A[j])*(dt-K[j])/(K[j+1]-K[j]);
+   var ps=P0(w,tt),Q=pl[w];cur[w]=ps;Q.g.position.set(ps[0],S.j*Math.max(0,1-Math.abs(dt)/.4),ps[1]);Q.g.rotation.z=S.tl*f;Q.arm.rotation.z=a;flex(Q,S.A,dt)}}}
+mk("s-court",[0,11,17,0],function(g,ca){
+ box(g,15,.02,7.7,0,-.02,0,0x14483A);box(g,13.4,.02,6.1,0,0,0,0x1D6B55);
+ function ln(x,z,w,d){box(g,w,.02,d,x,.012,z,0xffffff)}
+ [-1,1].forEach(function(s){ln(0,s*3.05,13.4,.05);ln(0,s*2.59,13.4,.05);ln(s*6.7,0,.05,6.1);ln(s*1.98,0,.05,6.1);ln(s*5.94,0,.05,6.1);ln(s*4.34,0,4.72,.05);
+  box(g,.06,1.55,.06,0,.775,s*3.05,0xdddddd)});
+ box(g,.02,.76,6.1,0,1.14,0,0xffffff,.35);box(g,.05,.07,6.1,0,1.52,0,0xffffff);
+ var pl=[mkP(g,0xE4572E,0xffffff,-5.56,-1.6,0,true,1.5),mkP(g,0x3A6EA5,0xE9C46A,5.56,1.6,Math.PI,false,1.5)];
+ var sh=shuttle();sh.scale.setScalar(1.6);g.add(sh);var Y=new T.Vector3(0,1,0),v=new T.Vector3();
+ var rr=rally(pl,sh,ca,g),bgu=bgCourts(g);return function(t){rr(t);bgu(t)};});
+
+var ST=[{cx:.3,A:[.3,-.5,.9,1.5,.3],th:1.2,inD:.3,S0:null,hin:0,T:[4.2,.05],H:1,dur:.9,jump:0,tilt:0},
+ {cx:-.6,A:[.3,Math.PI+.9,Math.PI-.3,Math.PI/2,.3],th:1.3,inD:1.3,S0:[6,3.4],hin:1.2,T:[4.6,.05],H:.1,dur:.4,jump:.3,tilt:0},
+ {cx:-.6,A:[.3,Math.PI+.8,Math.PI-.35,Math.PI*.7,.3],th:1.3,inD:1.3,S0:[6,3.4],hin:1.2,T:[3.2,.05],H:1.4,dur:.9,jump:0,tilt:0},
+ {cx:.2,A:[.3,-.4,.9,2.3,.3],th:1,inD:.7,S0:[3.4,1.9],hin:.3,T:[6.2,.05],H:3.8,dur:1.5,jump:0,tilt:-.3},
+ {cx:-.6,A:[.3,1.2,1.7,1.8,.3],th:1,inD:.7,S0:[3.3,1.9],hin:.3,T:[3,.05],H:.8,dur:.7,jump:0,tilt:-.3},
+ {cx:.35,A:[.3,-.4,.9,2.3,.3],th:1,inD:.7,S0:[3.4,1.9],hin:.3,T:[6.2,.05],H:3.8,dur:1.5,jump:0,tilt:-.3,bh:1,bt:.35},
+ {cx:-.35,A:[.3,Math.PI+.9,Math.PI-.3,Math.PI/2,.3],th:1.3,inD:1.3,S0:[6,3.4],hin:1.2,T:[4.6,.05],H:.1,dur:.4,jump:.3,tilt:0,bh:1,bt:.8},
+ {cx:-.4,A:[.3,1.2,1.7,1.8,.3],th:1,inD:.7,S0:[3.3,1.9],hin:.3,T:[3,.05],H:.8,dur:.7,jump:0,tilt:-.3,bh:1,bt:.35},
+ {cx:.15,A:[.3,-.4,.9,2.3,.3],th:1,inD:.6,S0:[3,1.1],hin:.2,T:[6.2,.05],H:3.8,dur:1.5,jump:0,tilt:-.3},
+ {cx:-.4,A:[.3,Math.PI+.8,Math.PI-.35,Math.PI*.7,.3],th:1.3,inD:1.3,S0:[6,3.4],hin:1.2,T:[3.2,.05],H:1.4,dur:.9,jump:0,tilt:0,bh:1,bt:.8}];
+var cur=0,rs=true;window.setStroke=function(i){cur=i;rs=true};
+mk("s-tech",[0,3,13,1.3],function(g){
+ var w=new T.Group();w.position.x=-2.2;g.add(w);
+ box(w,9.8,.02,3.4,2.1,-.02,0,0x1D6B55);
+ box(w,.05,.02,3.4,.42,.012,0,0xffffff);box(w,.05,.02,3.4,4.38,.012,0,0xffffff);box(w,9.8,.02,.05,2.1,.012,1.5,0xffffff);box(w,9.8,.02,.05,2.1,.012,-1.5,0xffffff);
+ box(w,.02,.76,3.4,2.4,1.14,0,0xffffff,.35);box(w,.05,.07,3.4,2.4,1.52,0,0xffffff);box(w,.06,1.55,.06,2.4,.775,1.7,0xdddddd);box(w,.06,1.55,.06,2.4,.775,-1.7,0xdddddd);
+ var pl=mkP(w,0xE4572E,0xffffff,0,0,0,true,1.5),sh=shuttle(),Y=new T.Vector3(0,1,0),v=new T.Vector3(),T0=0,P=3.8,K=[-1,-.45,0,.35,.8];
+ sh.scale.setScalar(1.6);w.add(sh);
+ var ring=new T.Mesh(new T.RingGeometry(.18,.3,24),new T.MeshBasicMaterial({color:0xE4572E,side:T.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.03;w.add(ring);
+ return function(t){
+  if(rs){T0=t;rs=false}
+  var S=ST[cur],s=(t-T0)%P,dt=s-S.th,f=Math.max(0,1-Math.abs(dt)/.8),a=.3,i;
+  for(i=0;i<4;i++)if(dt>=K[i]&&dt<=K[i+1])a=S.A[i]+(S.A[i+1]-S.A[i])*(dt-K[i])/(K[i+1]-K[i]);
+  pl.g.position.set(S.cx,S.jump*Math.max(0,1-Math.abs(dt)/.4),0);pl.g.rotation.z=S.tilt*f;pl.arm.rotation.z=a;flex(pl,S.A,dt);pl.g.rotation.y=S.bt||0;pl.arm.position.z=S.bh?-.1:.27;pl.rk.rotation.y=S.bh?-Math.PI/2:Math.PI/2;pl.la.rotation.z=S.bh?-.7:0;
+  var ang=S.A[2]+S.tilt,ox0=-2.07*Math.sin(S.tilt)+2.075*Math.sin(ang),bt0=S.bt||0,zl=S.bh?-.15:.405,Cz=-ox0*Math.sin(bt0)+zl*Math.cos(bt0),Cx=S.cx+ox0*Math.cos(bt0)+zl*Math.sin(bt0),Cy=S.jump+2.07*Math.cos(S.tilt)-2.075*Math.cos(ang),S0=S.S0||[Cx,Cy+.45];
+  function at(q){var u,x,y;
+   if(q<S.th-S.inD)return S0;
+   if(q<S.th){u=(q-(S.th-S.inD))/S.inD;return[S0[0]+(Cx-S0[0])*u,S0[1]+(Cy-S0[1])*u+S.hin*4*u*(1-u)]}
+   u=Math.min(1,(q-S.th)/S.dur);return[Cx+(S.T[0]-Cx)*u,Cy+(S.T[1]-Cy)*u+S.H*4*u*(1-u)]}
+  var p1=at(s),p2=at(Math.min(s+.03,P));
+  v.set(p2[0]-p1[0],p2[1]-p1[1],0);if(v.lengthSq()>1e-6){v.normalize();sh.quaternion.setFromUnitVectors(Y,v)}
+  sh.position.set(p1[0],p1[1],Cz);ring.position.set(S.T[0],.03,Cz)}},true);
+
+var wcur=0,wrs=true;window.setWarm=function(i){wcur=i;wrs=true};
+mk("s-warm",[0,2.4,10,1.4],function(g){
+ var PI=Math.PI,w=new T.Group();g.add(w);
+ box(w,12,.02,5,0,-.02,0,0x1D6B55);box(w,12,.02,.05,0,.012,2.4,0xffffff);box(w,12,.02,.05,0,.012,-2.4,0xffffff);box(w,.05,.02,4.8,5.9,.012,0,0xffffff);box(w,.05,.02,4.8,-5.9,.012,0,0xffffff);
+ var P=mkP(w,0xE4572E,0xffffff,0,0,0,true,1.5),T0=0;P.rk.visible=false;
+ function rs0(){P.g.position.set(0,0,0);P.g.rotation.set(0,0,0);P.legs.rotation.set(0,0,0);P.arm.rotation.set(0,0,0);P.la.rotation.set(0,0,0);P.L1.rotation.set(0,0,0);P.L2.rotation.set(0,0,0);P.K1.rotation.set(0,0,0);P.K2.rotation.set(0,0,0);P.wr.rotation.set(0,0,0)}
+ function lat(d,m){var A=m?P.L2:P.L1,B=m?P.L1:P.L2,sa=m?1:-1;A.rotation.set(0,sa*PI/2,d);A.kn.rotation.z=-d;B.rotation.set(0,-sa*PI/2,d*.69);P.g.position.y=-.184*d;P.arm.rotation.z=1.4;P.la.rotation.z=1.4}
+ var F=[
+  function(q){var tr=q%8<4?q%8:8-q%8,f=tr*3;P.arm.rotation.x=-f;P.la.rotation.x=f},
+  function(q){var t=Math.sin(q*1.8)*.9;P.arm.rotation.x=-PI/2;P.la.rotation.x=PI/2;P.g.rotation.y=t;P.legs.rotation.y=-t},
+  function(q){var s=q%9.6,sw=Math.sin(s*5.2)*.7,L=s<4.8?P.L1:P.L2;P.arm.rotation.x=-PI/2;P.la.rotation.x=PI/2;L.rotation.z=sw;L.kn.rotation.z=-Math.max(0,-sw)*.6},
+  function(q){var c=Math.floor(q/3.2)%2,d=Math.sin((q%3.2)/3.2*PI),Fr=c?P.L2:P.L1,B=c?P.L1:P.L2,tw=(c?1:-1)*.8*d;Fr.rotation.z=1.2*d;Fr.kn.rotation.z=-1.2*d;B.rotation.z=-.5*d;B.kn.rotation.z=-.6*d;P.g.position.y=-.255*d;P.g.rotation.y=tw;P.legs.rotation.y=-tw;P.arm.rotation.x=-PI/2;P.la.rotation.x=PI/2},
+  function(q){var s=q*9,a=Math.max(0,Math.sin(s)),b=Math.max(0,-Math.sin(s));P.L1.rotation.z=a*1.3;P.L1.kn.rotation.z=-a*1.3;P.L2.rotation.z=b*1.3;P.L2.kn.rotation.z=-b*1.3;P.g.position.y=.05*Math.abs(Math.sin(s));P.arm.rotation.z=-Math.sin(s)*.9;P.la.rotation.z=Math.sin(s)*.9},
+  function(q){var s=q*8;P.g.position.z=Math.sin(q*1.6)*2.2;P.L1.rotation.z=.35;P.L2.rotation.z=.35;P.L1.kn.rotation.z=-.7;P.L2.kn.rotation.z=-.7;P.L1.rotation.x=.3*Math.sin(s)-.15;P.L2.rotation.x=-.3*Math.sin(s)+.15;P.g.position.y=-.048+.03*Math.abs(Math.sin(s));P.arm.rotation.z=.9;P.la.rotation.z=.6},
+  function(q){var s=q*3;P.L1.rotation.z=Math.sin(s)*.5;P.L2.rotation.z=-Math.sin(s)*.5;P.L1.kn.rotation.z=-Math.max(0,-Math.sin(s))*.5;P.L2.kn.rotation.z=-Math.max(0,Math.sin(s))*.5;P.arm.rotation.z=-Math.sin(s)*.5;P.la.rotation.z=Math.sin(s)*.5;P.g.position.y=.02*Math.abs(Math.sin(s))},
+  function(q){var m=(q%10)>=5,k=.5+.5*Math.min(1,(q%5)/.8);if(!m){P.arm.rotation.set(0,1.1*k,PI/2);P.la.rotation.set(0,-.6*k,1.5)}else{P.la.rotation.set(0,-1.1*k,PI/2);P.arm.rotation.set(0,.6*k,1.5)}},
+  function(q){P.arm.rotation.z=PI;P.la.rotation.z=PI;P.g.position.y=.05+.04*Math.sin(q*1.5)},
+  function(q){var m=(q%12)>=6,L=m?P.L2:P.L1;L.kn.rotation.z=-2.3;L.rotation.z=-.15;if(m){P.la.rotation.z=-2.2;P.arm.rotation.x=-PI/2}else{P.arm.rotation.z=-2.2;P.la.rotation.x=PI/2}},
+  function(q){var m=(q%12)>=6,Fr=m?P.L2:P.L1,B=m?P.L1:P.L2;Fr.rotation.z=.9;Fr.kn.rotation.z=-.9;B.rotation.z=-.62;P.g.position.y=-.151;P.arm.rotation.z=1.5;P.la.rotation.z=1.5},
+  function(q){P.arm.rotation.z=PI/2;P.la.rotation.z=PI/2;var s=q*4;P.wr.rotation.set(Math.sin(s)*.5,0,Math.cos(s)*.5)},
+  function(q){var f=q*4;P.arm.rotation.z=f;P.la.rotation.z=f+PI},
+  function(q){var a=q*2.5,x=Math.cos(a)*.22,z=Math.sin(a)*.22,ax=-Math.asin(x/.8),az=Math.asin(z/.8);P.L1.rotation.set(az,0,ax);P.L2.rotation.set(az,0,ax);P.g.position.set(x,-.8*(1-Math.cos(Math.sqrt(ax*ax+az*az))),z);P.arm.rotation.x=-.5;P.la.rotation.x=.5},
+  function(q){var s=q*9,a=Math.max(0,Math.sin(s)),b=Math.max(0,-Math.sin(s));P.L1.kn.rotation.z=-a*2.4;P.L2.kn.rotation.z=-b*2.4;P.L1.rotation.z=-a*.2;P.L2.rotation.z=-b*.2;P.g.position.y=.05*Math.abs(Math.sin(s));P.arm.rotation.z=-Math.sin(s)*.9;P.la.rotation.z=Math.sin(s)*.9},
+  function(q){var k=(Math.sin(q*5)+1)/2;P.arm.rotation.x=-k*PI;P.la.rotation.x=k*PI;P.L1.rotation.x=-k*.45;P.L2.rotation.x=k*.45;P.g.position.y=-.08*k+.1*Math.abs(Math.cos(q*5))*(1-k)},
+  function(q){var h=.22*Math.max(0,Math.sin(q*4));P.L1.rotation.z=.35;P.L2.rotation.z=.35;P.L1.kn.rotation.z=-.7;P.L2.kn.rotation.z=-.7;P.g.position.y=-.048+h;P.arm.rotation.z=.9;P.la.rotation.z=.6},
+  function(q){var m=(q%6)>=3,c=q%3,k=Math.min(1,c/.6)*(c<2.4?1:Math.max(0,(3-c)/.6)),L=m?P.L2:P.L1;L.rotation.z=1.5*k;L.kn.rotation.z=-1.2*k;P.arm.rotation.z=k;P.la.rotation.z=k},
+  function(q){lat(Math.sin((q%3.2)/3.2*PI),(q%6.4)>=3.2)},
+  function(q){var s=q%9.6,sw=Math.sin(s*5.2)*.6,L=s<4.8?P.L1:P.L2,sa=s<4.8?-1:1;L.rotation.set(0,sa*PI/2,sw);P.arm.rotation.x=-PI/2;P.la.rotation.x=PI/2},
+  function(q){var m=(q%12)>=6,L=m?P.L2:P.L1,z=PI/2+.2+.05*Math.sin(q*1.5);L.rotation.z=1.15;P.arm.rotation.z=z;P.la.rotation.z=z},
+  function(q){var k=Math.min(1,(q%6)/1);P.arm.rotation.z=-1.9*k;P.la.rotation.z=-1.9*k},
+  function(q){P.arm.rotation.z=PI/2;P.la.rotation.z=PI/2;P.wr.rotation.z=(q%10)>=5?1.2:-1.2},
+  function(q){lat(.85+.1*Math.sin(q*1.2),(q%12)>=6)},
+  function(q){var m=(q%12)>=6,Fr=m?P.L2:P.L1,B=m?P.L1:P.L2;Fr.rotation.z=1.35;Fr.kn.rotation.z=-1.35;B.rotation.z=-.91;P.g.position.y=-.313;P.arm.rotation.z=PI;P.la.rotation.z=PI},
+  function(q){var k=(1-Math.cos(q*.9))/2;P.arm.rotation.x=-k*PI;P.la.rotation.x=k*PI;P.g.position.y=.03*k}];
+ return function(t){if(wrs){T0=t;wrs=false}rs0();flex(P,[.3,.3,.3,.3,.3],-5);F[wcur](t-T0)}},true);
+
+var gcur=0,grs=true;window.setGrip=function(i){gcur=i;grs=true};
+mk("s-grip",[0,2.4,9,1.4],function(g,ca){
+ var PI=Math.PI,w=new T.Group();g.add(w);
+ box(w,6,.02,4,0,-.02,0,0x1D6B55);
+ var P=mkP(w,0xE4572E,0xffffff,0,0,0,true,1.5),T0=0;
+ P.wr.scale.setScalar(1.5);var s1=new T.Mesh(new T.BoxGeometry(.02,.2,.004),new T.MeshBasicMaterial({color:0xF28C28}));s1.position.set(0,-.1,.0185);P.rk.add(s1);var s2=new T.Mesh(new T.BoxGeometry(.004,.2,.012),new T.MeshBasicMaterial({color:0x2FBF71}));s2.position.set(.0255,-.1,0);P.rk.add(s2);
+ function lbl(t,col){var c=document.createElement('canvas');c.width=360;c.height=90;var x=c.getContext('2d');x.fillStyle=col;x.fillRect(0,0,360,90);x.fillStyle='#fff';x.font='bold 36px sans-serif';x.textAlign='center';x.fillText(t,180,60);return new T.CanvasTexture(c)}
+ var LB=[lbl('V on the narrow side','#1D6B55'),lbl('Thumb on the wide side','#1D6B55'),lbl('Frying pan: avoid','#C0392B'),lbl('Loose','#3A6EA5'),lbl('Tight','#E4572E'),lbl('Switch with fingers','#1D6B55')];
+ var LT=['V on the narrow side','Thumb on the wide side','Frying pan: avoid','Loose','Tight','Switch with fingers'];var sp=new T.Sprite(new T.SpriteMaterial({map:LB[0]}));sp.scale.set(1.5,.375,1);sp.visible=false;w.add(sp);
+ return function(t){if(grs){T0=t;grs=false}
+  var q=t-T0,i=gcur,th=1.45,k=0,cf=1,ry=PI/2;
+  if(i===1){k=1;ry=PI}else if(i===2){ry=0}else if(i===3){cf=(q%4<2)?.3:1.3}else if(i===4){k=(1-Math.cos(q*1.6))/2;ry=PI/2+k*PI/2}
+  P.g.rotation.y=Math.sin(q*.6)*.5;P.arm.rotation.z=th;P.rk.rotation.y=ry;flex(P,[.3,.3,.3,.3,.3],-5);
+  P.fj.forEach(function(f){if(f.th){f.a.position.x=-.03*(1-k);f.a.rotation.set(0,PI+(1-k)*cf*.9,-k*PI/2);f.b.rotation.set(0,(1-k)*cf*1.6,0)}else{f.a.rotation.y=-cf*.9;f.b.rotation.y=-cf*2}});
+  var li=i===3?(cf>.8?4:3):i===4?5:i,ce=document.getElementById('gcap');if(ce&&ce.dataset.i!==''+li){ce.dataset.i=li;ce.textContent=LT[li]}
+  var hx=1.1*Math.sin(th),hy=2.07-1.1*Math.cos(th);sp.position.set(hx,hy+.65,.405);
+  g.updateMatrixWorld();var wp=g.localToWorld(new T.Vector3(hx,hy,.405));ca.position.set(wp.x,wp.y+.35,wp.z+2.7);ca.lookAt(wp)}},true);
+
+var fcur=0,frs=true;window.setFoot=function(i){fcur=i;frs=true};
+mk("s-foot",[0,3.4,10.5,1.1],function(g){
+ var PI=Math.PI,w=new T.Group();g.add(w);
+ box(w,10,.02,6,0,-.02,0,0x1D6B55);box(w,.05,.02,5.8,-4.5,.012,0,0xffffff);box(w,10,.02,.05,0,.012,2.9,0xffffff);box(w,10,.02,.05,0,.012,-2.9,0xffffff);box(w,.05,.02,5.8,1.3,.012,0,0xffffff);
+ box(w,.02,.76,6,3.6,1.14,0,0xffffff,.35);box(w,.05,.07,6,3.6,1.52,0,0xffffff);box(w,.06,1.55,.06,3.6,.775,3,0xdddddd);box(w,.06,1.55,.06,3.6,.775,-3,0xdddddd);
+ var P=mkP(w,0xE4572E,0xffffff,0,0,0,true,1.5),T0=0,RP=[[1.8,1.9],[1.8,-1.9],[-.3,2.2],[-.3,-2.2],[-2.8,1.9],[-2.8,-1.9],[0,0],[1.8,0],[-2.8,0]],rg=[];
+ RP.forEach(function(p){var m=new T.Mesh(new T.RingGeometry(.2,.32,24),new T.MeshBasicMaterial({color:0xE9C46A,side:T.DoubleSide}));m.rotation.x=-PI/2;m.position.set(p[0],.04,p[1]);m.visible=false;w.add(m);rg.push(m)});
+ function rs0(){P.g.position.set(0,0,0);P.g.rotation.set(0,0,0);P.legs.rotation.set(0,0,0);P.arm.rotation.set(0,0,0);P.la.rotation.set(0,0,0);P.L1.rotation.set(0,0,0);P.L2.rotation.set(0,0,0);P.K1.rotation.set(0,0,0);P.K2.rotation.set(0,0,0);P.wr.rotation.set(0,0,0)}
+ function rdy(k){P.L1.rotation.z=P.L2.rotation.z=.35*k;P.K1.rotation.z=P.K2.rotation.z=-.7*k;return .8*(1-Math.cos(.35*k))}
+ function sm(a){a=Math.max(0,Math.min(1,a));return a*a*(3-2*a)}
+ var C0={x:0,z:0,m:'r'},FR={x:1.8,z:1.9,m:'f'},FL={x:1.8,z:-1.9,m:'f'},MR={x:-.3,z:2.2,m:'s'},ML={x:-.3,z:-2.2,m:'s'},BR={x:-2.8,z:1.9,m:'b'},BL={x:-2.8,z:-1.9,m:'b'},FM={x:1.8,z:0,m:'f'},BM={x:-2.8,z:0,m:'b'};
+ var RT={6:[C0,FR],7:[C0,FL],8:[C0,MR],9:[C0,ML],10:[C0,BR],11:[C0,BL],12:[FR,BL],13:[FL,BR],14:[BR,BL],15:[FR,FL],16:[ML,MR],17:[C0,FM],18:[C0,BM],19:[FM,BM]};
+ function route(q,pts){var n=pts.length,L=2.1,i=Math.floor(q/L)%n,s=q%L,A=pts[i],B=pts[(i+1)%n],f=sm(s/1.2),x=A.x+(B.x-A.x)*f,z=A.z+(B.z-A.z)*f,m=B.m,sg=B.z>=0?1:-1,hh=s>=1.1&&s<1.9?Math.sin((s-1.1)/.8*PI):0,dr=rdy(.9),tn=0,y=0,sw=Math.sin(q*9)*Math.sin(f*PI),d,e,ld,u2,kk,j2;
+  if(s<1.2){P.L1.rotation.z=.315+.4*sw;P.L2.rotation.z=.315-.4*sw}
+  if(m==='f'&&s>=.8){d=sm((s-.8)/.4)*(s<1.6?1:1-sm((s-1.6)/.5));P.L1.rotation.z=.28+.92*d;P.K1.rotation.z=-.56-.64*d;P.L2.rotation.z=.28-.78*d;P.K2.rotation.z=-.56-.04*d;dr=.031+.224*d}
+  else if(m==='s'&&s>=.7){e=sm((s-.7)/.4);ld=sg>0?P.L1:P.L2;P.L1.rotation.z=P.L2.rotation.z=.385;P.K1.rotation.z=P.K2.rotation.z=-.77;ld.rotation.x=-sg*.5*e;dr=.8*(1-Math.cos(.385))}
+  else if(m==='b'){tn=-1.1*sg*sm(s/.3)*(s<1.5?1:1-sm((s-1.5)/.4));
+   if(s>=1.2&&s<1.9){u2=(s-1.2)/.7;y=.35*4*u2*(1-u2);P.L1.rotation.z=.6*Math.cos(u2*PI);P.L2.rotation.z=-.6*Math.cos(u2*PI);P.K1.rotation.z=P.K2.rotation.z=-.8*Math.sin(u2*PI);dr=0}
+   else if(s>=1.9&&s<2.1){kk=1.3*(1-(s-1.9)/.2);dr=rdy(kk)}}
+  P.g.position.set(x,y-dr,z);P.g.rotation.y=tn;P.arm.rotation.z=(m==='b'&&s>=1.2&&s<1.9)?PI*Math.sin((s-1.2)/.7*PI)*.95:.9+.9*hh;P.la.rotation.z=.6;
+  rg.forEach(function(r){r.visible=false});pts.forEach(function(p){for(j2=0;j2<RP.length;j2++)if(RP[j2][0]===p.x&&RP[j2][1]===p.z){rg[j2].visible=true;if(p===B)rg[j2].scale.setScalar(1.5)}})}
+ var FF=[
+  function(q){var s=q%3.6,k=.8+.06*Math.sin(s*6),y=0,x=0,wd=0,u;
+   if(s>=1&&s<1.35){u=(s-1)/.35;y=.22*Math.sin(u*PI);k=.15;wd=.3*Math.sin(u*PI)}else if(s>=1.35&&s<2.4){u=(s-1.35)/1.05;k=1.25-.45*u;wd=.35*(1-u);x=.9*Math.min(1,u*1.6)}else if(s>=2.4){u=(s-2.4)/1.2;x=.9*(1-u*u*(3-2*u))}
+   var dr=rdy(k);P.L1.rotation.x=-wd;P.L2.rotation.x=wd;P.g.position.set(x,y-dr,0);P.arm.rotation.z=.9;P.la.rotation.z=.6},
+  function(q){var z=1.8*Math.sin(q*.9),sg=Math.cos(q*.9)>=0?1:-1,s=q*5.2,a=Math.max(0,Math.sin(s)),b=Math.max(0,-Math.sin(s)),dr=rdy(.9),ld=sg>0?P.L1:P.L2,tr=sg>0?P.L2:P.L1;
+   ld.rotation.x=-sg*.4*a;tr.rotation.x=sg*.2*b;P.g.position.set(0,.03*Math.abs(Math.sin(s))-dr,z);P.arm.rotation.z=.9;P.la.rotation.z=.6},
+  function(q){var s=q%4,d=s<1?0:s<1.6?(s-1)/.6:s<2.8?1:s<3.6?1-(s-2.8)/.8:0;d=d*d*(3-2*d);
+   P.L1.rotation.z=.28+.92*d;P.K1.rotation.z=-.56-.64*d;P.L2.rotation.z=.28-.78*d;P.K2.rotation.z=-.56-.04*d;
+   P.g.position.set(1.8*d,-(.031+.224*d),0);P.arm.rotation.z=.9+.6*d;P.la.rotation.z=.6},
+  function(q){var s=q%4.4,x=0,y=0,tn=0,u,k=.8,sc=0,jm=0;
+   if(s>=1&&s<2.1){u=(s-1)/1.1;x=-2.4*u*u*(3-2*u);tn=-1.1*Math.min(1,(s-1)/.25)}
+   else if(s>=2.1&&s<2.6){x=-2.4;tn=-1.1*Math.max(0,1-(s-2.1)/.3);k=.8+.4*((s-2.1)/.5)}
+   else if(s>=2.6&&s<3.3){x=-2.4;u=(s-2.6)/.7;y=.35*4*u*(1-u);sc=Math.cos(u*PI);jm=Math.sin(u*PI)}
+   else if(s>=3.3&&s<3.7){x=-2.4;u=(s-3.3)/.4;k=1.3*(1-u)}
+   else if(s>=3.7){u=(s-3.7)/.7;x=-2.4*(1-u*u*(3-2*u))}
+   var dr=rdy(k);
+   if(jm){P.L1.rotation.z=.6*sc;P.L2.rotation.z=-.6*sc;P.K1.rotation.z=-.8*jm;P.K2.rotation.z=-.8*jm;dr=0}
+   if(s>=1&&s<2.1){P.L1.rotation.x=-.4*Math.max(0,Math.sin(s*7));P.L2.rotation.x=.4*Math.max(0,-Math.sin(s*7))}
+   P.g.position.set(x,y-dr,0);P.g.rotation.y=tn;P.arm.rotation.z=jm?PI*jm*.95:.9;P.la.rotation.z=.6},
+  function(q){var t6=q%6,sg=t6<3?1:-1,tri=t6<3?t6/3:(6-t6)/3,s=q*4.2,a=Math.max(0,Math.sin(s)),b=Math.max(0,-Math.sin(s)),dr=rdy(.9),cr=sg>0?P.L1:P.L2,ld=sg>0?P.L2:P.L1;
+   cr.rotation.set(0,sg*.9*a,.315+.4*a);ld.rotation.x=sg>0?.35*b:-.35*b;P.g.position.set(0,.03*Math.abs(Math.sin(s))-dr,-2.4*tri);P.arm.rotation.z=.9;P.la.rotation.z=.6},
+  function(q){var pts=[[0,0],[1.8,1.9],[0,0],[1.8,-1.9],[0,0],[-.3,2.2],[0,0],[-.3,-2.2],[0,0],[-2.8,1.9],[0,0],[-2.8,-1.9],[0,0]],ph=q/1.15,i=Math.floor(ph)%12,u=ph%1,sm=u*u*(3-2*u),A=pts[i],B=pts[i+1],s=q*10,dr=rdy(.9),pk=Math.sin(u*PI),j;
+   P.L1.rotation.z=.315+.4*Math.sin(s)*pk;P.L2.rotation.z=.315-.4*Math.sin(s)*pk;
+   P.g.position.set(A[0]+(B[0]-A[0])*sm,.03*Math.abs(Math.sin(s))*pk-dr,A[1]+(B[1]-A[1])*sm);P.arm.rotation.z=.9+.9*pk;P.la.rotation.z=.6;
+   for(j=0;j<7;j++)if(RP[j][0]===B[0]&&RP[j][1]===B[1])rg[j].scale.setScalar(1.5)}];
+ return function(t){if(frs){T0=t;frs=false}rs0();flex(P,[.3,.3,.3,.3,.3],-5);rg.forEach(function(m){m.visible=fcur===5;m.scale.setScalar(1)});(FF[fcur]||function(q){route(q,RT[fcur])})(t-T0)}},true);
+
+var dcur=0,drs=true;window.setDrill=function(i){dcur=i;drs=true};
+mk("s-feed",[0,4.6,14,1.3],function(g){
+ var PI=Math.PI,w=new T.Group(),Y=new T.Vector3(0,1,0),v=new T.Vector3();g.add(w);
+ box(w,14,.02,6,0,-.02,0,0x1D6B55);box(w,14,.02,.05,0,.012,2.9,0xffffff);box(w,14,.02,.05,0,.012,-2.9,0xffffff);box(w,.05,.02,5.8,6.7,.012,0,0xffffff);box(w,.05,.02,5.8,-6.7,.012,0,0xffffff);box(w,.05,.02,5.8,1.98,.012,0,0xffffff);box(w,.05,.02,5.8,-1.98,.012,0,0xffffff);
+ box(w,.02,.76,6,0,1.14,0,0xffffff,.35);box(w,.05,.07,6,0,1.52,0,0xffffff);box(w,.06,1.55,.06,0,.775,3,0xdddddd);box(w,.06,1.55,.06,0,.775,-3,0xdddddd);
+ var A=mkP(w,0x3A6EA5,0xE9C46A,-3.2,0,0,false,1.5),Cc=mkP(w,0xE4572E,0xffffff,1.6,0,PI,true,1.5),sh=shuttle(),T0=0;
+ Cc.rk.visible=false;sh.scale.setScalar(1.6);w.add(sh);
+ var bun=new T.Group();w.add(bun);for(var bi=0;bi<20;bi++){var gw=new T.Group(),bs=shuttle(),ang=bi*2.4,mt=.1+.45*Math.sqrt(bi/20);gw.rotation.set(Math.sin(ang)*mt,0,Math.cos(ang)*mt);bs.scale.setScalar(1.3);bs.rotation.z=PI;bs.position.y=.25;gw.add(bs);bun.add(gw)}
+ var K=[-1,-.45,0,.35,.8],ST2={ke:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3},li:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3},sm:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0},dr:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0}};
+ var FDS=[{px:-2.9,pz:1.3,st:'ke',D:1,hin:.5,rd:.8,rH:.9,T:[2.2,.05,.5]},{px:-2.9,pz:-1.3,st:'ke',D:1,hin:.5,rd:.8,rH:.9,T:[2.2,.05,-.5]},{px:-4.2,pz:1.9,st:'li',D:1.3,hin:1.2,rd:1.4,rH:3.5,T:[2.6,.05,.6]},{px:-4.2,pz:-1.9,st:'li',D:1.3,hin:1.2,rd:1.4,rH:3.5,T:[2.6,.05,-.6]},{px:-5.4,pz:1.4,st:'sm',D:1.7,hin:2.5,rd:.5,rH:0,T:[3.6,.05,.4]},{px:-5.3,pz:-1.4,st:'dr',D:1.7,hin:2.5,rd:1,rH:1.6,T:[1.4,.05,-.3]},{px:-2.6,pz:0,st:'li',D:1,hin:.6,rd:1.4,rH:3.5,T:[2.8,.05,0]},{px:-5.4,pz:0,st:'sm',D:1.7,hin:2.5,rd:.5,rH:0,T:[3.6,.05,-.3]}];
+ var SEQ=[[0,4,1,5,2,6,3,7],[0,1,6],[2,3],[4,5,7],[0,4,1,5,6,7,2,3,0,4,1,5,6,7,2,3,0,4,1,5]],PP=2.2,CEN=[-3.2,0];
+ FDS.forEach(function(f){var S=ST2[f.st],tl=S.tl,an=S.A[2]+tl,ox=-2.07*Math.sin(tl)+2.075*Math.sin(an),oy=S.j+2.07*Math.cos(tl)-2.075*Math.cos(an);f.C=[f.px+ox,oy,f.pz+.405];f.th=.3+f.D*.3;f.rd2=f.rd*.55});
+ function sm3(a){a=Math.max(0,Math.min(1,a));return a*a*(3-2*a)}
+ function lk(s){var KK=[0,.1,.2,.3,.5,1.7,2.2],PH=[.955,.955,.1,1.5,1.2,1.1,.955],PS=[-.57,-.57,0,0,-.2,-.4,-.57],i,u;for(i=0;i<6;i++)if(s>=KK[i]&&s<=KK[i+1]){u=(s-KK[i])/(KK[i+1]-KK[i]);return[PH[i]+(PH[i+1]-PH[i])*u,PS[i]+(PS[i+1]-PS[i])*u]}return[.955,-.57]}
+ function hand(c){var p=c[0],y=c[1];return[1.6-.84*Math.sin(p)*Math.cos(y),2.07-.84*Math.cos(p)+.1,.405+.84*Math.sin(p)*Math.sin(y)]}
+ return function(t){if(drs){T0=t;drs=false}
+  var q=t-T0,seq=SEQ[dcur],idx=Math.floor(q/PP),done=dcur===4&&idx>=20,f=FDS[seq[idx%seq.length]],s=done?PP-.01:q%PP,S=ST2[f.st],th=f.th,dt=(s-th)*1.8,R0=[.76,2.11,.405],T=f.T,C=f.C;
+  var lc=lk(s),nF=Math.floor(q/PP),rem=dcur===4?Math.max(0,20-nF):20-nF%20,ce=document.getElementById('fdcnt');Cc.la.rotation.set(0,lc[1],lc[0]);Cc.arm.rotation.set(0,.7,1);flex(Cc,[.3,.3,.3,.3,.3],-5);bun.position.set(1.065,1.55,.05);bun.children.forEach(function(c,i){c.visible=i<rem-1});var msg=dcur===4?(done?'Drill complete: 20 of 20 shuttles thrown and hit':'Feed '+(nF+1)+' of 20 \u00b7 '+rem+' left in the coach\u2019s hand'):'Shuttles in the coach\u2019s hand: '+rem;if(ce&&ce.dataset.n!==msg){ce.dataset.n=msg;ce.textContent=msg}
+  function at(x){var u;if(x<.3)return hand(lk(x));if(x<th){u=(x-.3)/(f.D*.3);return[R0[0]+(C[0]-R0[0])*u,R0[1]+(C[1]-R0[1])*u+f.hin*4*u*(1-u),R0[2]+(C[2]-R0[2])*u]}if(x<th+f.rd2){u=(x-th)/f.rd2;return[C[0]+(T[0]-C[0])*u,C[1]+(T[1]-C[1])*u+f.rH*4*u*(1-u),C[2]+(T[2]-C[2])*u]}return T}
+  var p1=at(s),p2=at(s+.03);v.set(p2[0]-p1[0],p2[1]-p1[1],p2[2]-p1[2]);
+  if(s<.3)sh.quaternion.setFromUnitVectors(Y,v.set(0,-1,0));else if(v.lengthSq()>1e-6){v.normalize();sh.quaternion.setFromUnitVectors(Y,v)}
+  sh.position.set(p1[0],p1[1],p1[2]);
+  var rs=.15,ra=th-.1,rr0=th+.2,rr1=th+.9,x,z,u2,a=.3,j,fr=Math.max(0,1-Math.abs(dt)/.8);
+  if(s<rs){x=CEN[0];z=CEN[1]}else if(s<ra){u2=sm3((s-rs)/(ra-rs));x=CEN[0]+(f.px-CEN[0])*u2;z=CEN[1]+(f.pz-CEN[1])*u2}else if(s<rr0){x=f.px;z=f.pz}else if(s<rr1){u2=sm3((s-rr0)/(rr1-rr0));x=f.px+(CEN[0]-f.px)*u2;z=f.pz+(CEN[1]-f.pz)*u2}else{x=CEN[0];z=CEN[1]}
+  for(j=0;j<4;j++)if(dt>=K[j]&&dt<=K[j+1])a=S.A[j]+(S.A[j+1]-S.A[j])*(dt-K[j])/(K[j+1]-K[j]);
+  A.g.position.set(x,S.j*Math.max(0,1-Math.abs(dt)/.4),z);A.g.rotation.z=S.tl*fr;A.arm.rotation.z=a;flex(A,S.A,dt);
+  var mvg=(s>=rs&&s<ra)?Math.sin(PI*(s-rs)/(ra-rs)):(s>=rr0&&s<rr1)?Math.sin(PI*(s-rr0)/(rr1-rr0)):0;
+  if(mvg>0){A.L1.rotation.z=.4*Math.sin(s*10)*mvg;A.L2.rotation.z=-.4*Math.sin(s*10)*mvg}}},true);
+
+var tcur=0,trs=true;window.setTrick=function(i){tcur=i;trs=true};
+mk("s-trick",[0,3,13,1.3],function(g){
+ var PI=Math.PI,w=new T.Group(),Y=new T.Vector3(0,1,0),v=new T.Vector3();w.position.x=-2.2;g.add(w);
+ box(w,9.8,.02,3.4,2.1,-.02,0,0x1D6B55);box(w,.05,.02,3.4,.42,.012,0,0xffffff);box(w,.05,.02,3.4,4.38,.012,0,0xffffff);box(w,9.8,.02,.05,2.1,.012,1.5,0xffffff);box(w,9.8,.02,.05,2.1,.012,-1.5,0xffffff);
+ box(w,.02,.76,3.4,2.4,1.14,0,0xffffff,.35);box(w,.05,.07,3.4,2.4,1.52,0,0xffffff);box(w,.06,1.55,.06,2.4,.775,1.7,0xdddddd);box(w,.06,1.55,.06,2.4,.775,-1.7,0xdddddd);
+ var P=mkP(w,0xE4572E,0xffffff,0,0,0,true,1.5),sh=shuttle(),T0=0,PP=4.4,TH=1.5;sh.scale.setScalar(1.6);w.add(sh);
+ var ring=new T.Mesh(new T.RingGeometry(.2,.34,24),new T.MeshBasicMaterial({color:0xE4572E,side:T.DoubleSide}));ring.rotation.x=-PI/2;w.add(ring);var netM=null;w.children.forEach(function(m){if(m.geometry&&m.geometry.parameters&&m.geometry.parameters.width===.02&&m.material.transparent)netM=m});
+ function kf(x,Ts,Vs){var i;if(x<=Ts[0])return Vs[0];for(i=0;i<Ts.length-1;i++)if(x<=Ts[i+1])return Vs[i]+(Vs[i+1]-Vs[i])*(x-Ts[i])/(Ts[i+1]-Ts[i]);return Vs[Vs.length-1]}
+ function reset(){P.g.position.set(0,0,0);P.g.rotation.set(0,0,0);P.legs.rotation.set(0,0,0);P.arm.rotation.set(0,0,0);P.arm.position.z=.27;P.la.rotation.set(0,0,0);P.la.position.z=-.27;P.L1.rotation.set(0,0,0);P.L2.rotation.set(0,0,0);P.K1.rotation.set(0,0,0);P.K2.rotation.set(0,0,0);P.wr.rotation.set(0,0,0)}
+ function rd(k){P.L1.rotation.z=P.L2.rotation.z=.35*k;P.K1.rotation.z=P.K2.rotation.z=-.7*k;P.g.position.y=-.8*(1-Math.cos(.35*k))}
+ var SM=[.3,PI+.9,PI-.3,PI/2,.3],KS=[-1,-.45,0,.35,.8],LI=[.3,-.4,.9,2.3,.3],KE=[.3,1.2,1.7,1.8,.3],DR=[.3,PI+.8,PI-.35,PI*.7,.3],DRV=[.3,.4,1.5,1.7,.3],SM2=[.3,PI+.9,PI-.3,PI*.55,.3];
+ var TP=[
+  function(dt){var K=[-1,-.5,-.15,0,.3,.7];P.arm.rotation.set(0,kf(dt,K,[0,-.4,-.8,-.9,-.3,0]),kf(dt,K,[.3,-.2,-.6,-.7,.2,.3]));P.la.rotation.z=.9;P.g.rotation.y=.4*kf(dt,[-.6,0,.5],[0,1,0]);rd(.9)},
+  function(dt){var turn=kf(dt,[-1,-.6,-.2,.3,.7],[0,0,1,1,0]),d=kf(dt,[-1,-.4,0,.4,.8],[0,.6,1,.5,0]);P.g.rotation.y=PI*turn;P.L1.rotation.set(-.35*d,0,.9*d);P.L2.rotation.set(.35*d,0,.9*d);P.K1.rotation.z=P.K2.rotation.z=-1.8*d;P.g.position.y=-.302*d;P.arm.rotation.set(0,-.5*d,kf(dt,[-1,-.3,0,.4,.8],[.3,-.4,-1,-.4,.3]));P.la.rotation.x=PI/2*d},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=1.2*Math.sin(kf(dt,[-.6,0],[0,1])*PI);flex(P,SM,dt);P.g.rotation.y=2*PI*kf(dt,[-.65,-.05],[0,1])},
+  function(dt){P.arm.position.z=-.27;P.la.position.z=.27;P.arm.rotation.z=kf(dt,KS,LI);P.la.rotation.z=.9;P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,LI,dt)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt);P.wr.rotation.z=kf(dt,[-.45,-.15,0,.2],[0,.9,-.6,0])},
+  function(dt){P.arm.rotation.z=kf(dt,KS,[.3,PI+.8,PI-.35,PI*.7,.3]);flex(P,[.3,PI+.8,PI-.35,PI*.7,.3],dt);smLegs(P,dt)},
+  function(dt){P.arm.position.z=-.1;P.rk.rotation.y=-PI/2;P.la.rotation.z=-.7;P.g.rotation.y=.8*kf(dt,[-.6,-.2,.5],[.4,1,0]);P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt)},
+  function(dt){var f=kf(dt,[-.7,-.05],[0,1]),th=2*PI*f,tk=Math.sin(PI*f),jy=.9*Math.sin(PI*kf(dt,[-.8,.5],[0,1]));P.g.rotation.z=th;P.g.position.set(.9*Math.sin(th),jy+.9*(1-Math.cos(th)),0);P.L1.rotation.z=P.L2.rotation.z=1.4*tk;P.K1.rotation.z=P.K2.rotation.z=-2.2*tk;P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=2.5*tk},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=1.2*Math.sin(kf(dt,[-.6,0],[0,1])*PI);flex(P,SM,dt);P.g.rotation.y=6*PI*kf(dt,[-.8,-.05],[0,1]);P.g.position.y+=.45*Math.sin(PI*kf(dt,[-.85,.45],[0,1]))},
+  function(dt){var sp=Math.sin(PI*kf(dt,[-.5,.5],[0,1])),jy=.9*Math.sin(PI*kf(dt,[-.6,.5],[0,1]));P.L1.rotation.z=1.45*sp;P.L2.rotation.z=-1.45*sp;P.g.position.y=jy;P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=1.5*sp},
+  function(dt){var h=kf(dt,[-1,-.3,.6,1.1],[0,1.6,1.6,0]);P.g.position.y=h;P.L1.rotation.z=.3;P.L2.rotation.z=-.2;P.K1.rotation.z=-.5;P.K2.rotation.z=-.4;P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=1.2;P.g.rotation.y=.5*Math.sin(dt*2)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,KE);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,KE,dt);P.wr.rotation.z=kf(dt,[-.4,-.1,0,.2],[0,.8,-.7,0])},
+  function(dt){P.arm.rotation.z=kf(dt,KS,DR);flex(P,DR,dt);rd(.9);P.wr.rotation.z=kf(dt,[-.4,-.05,0,.25],[0,.5,-.8,0])},
+  function(dt){P.arm.position.z=-.1;P.rk.rotation.y=-PI/2;P.la.rotation.z=-.7;P.g.rotation.y=.35*kf(dt,[-.8,0,.8],[0,1,0]);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);P.arm.rotation.z=kf(dt,KS,KE);flex(P,KE,dt);P.wr.rotation.z=kf(dt,[-.4,-.1,0,.2],[0,.8,-.7,0])},
+  function(dt){P.arm.rotation.z=kf(dt,KS,DRV);flex(P,DRV,dt);P.g.rotation.y=.25*kf(dt,[-.5,0,.5],[0,1,0]);rd(.9)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,KE);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,KE,dt);P.wr.rotation.x=kf(dt,[-.3,0,.3],[0,.9,0])},
+  function(dt){P.arm.rotation.z=kf(dt,KS,LI);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,LI,dt)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM2);flex(P,SM2,dt);rd(.9)},
+  function(dt){P.arm.position.z=-.1;P.rk.rotation.y=-PI/2;P.la.rotation.z=-.7;P.g.rotation.y=1.1*kf(dt,[-.6,-.2,.5],[.3,1,0]);P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt);P.wr.rotation.z=kf(dt,[-.3,-.05,0,.2],[0,-.6,.8,0])},
+  function(dt){TP[0](dt)},
+  function(dt){TP[1](dt)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=1.2*Math.sin(kf(dt,[-.6,0],[0,1])*PI);flex(P,SM,dt);P.g.rotation.y=PI*(1-kf(dt,[-.6,-.05],[0,1]))},
+  function(dt){P.arm.rotation.z=kf(dt,KS,DR);P.la.rotation.z=1.2*Math.sin(kf(dt,[-.6,0],[0,1])*PI);flex(P,DR,dt);smLegs(P,dt);P.g.rotation.y=2*PI*kf(dt,[-.65,-.05],[0,1])},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt);P.g.position.y+=.45*Math.sin(PI*kf(dt,[-.85,.45],[0,1]))},
+  function(dt){var f=kf(dt,[-.9,-.05],[0,1]),th=4*PI*f,tk=Math.sin(PI*f),jy=1.1*Math.sin(PI*kf(dt,[-1,.6],[0,1]));P.g.rotation.z=th;P.g.position.set(.9*Math.sin(th),jy+.9*(1-Math.cos(th)),0);P.L1.rotation.z=P.L2.rotation.z=1.4*tk;P.K1.rotation.z=P.K2.rotation.z=-2.2*tk;P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=2.5*tk},
+  function(dt){var f=kf(dt,[-.7,-.05],[0,1]),th=2*PI*f,tk=Math.sin(PI*f),jy=.9*Math.sin(PI*kf(dt,[-.8,.5],[0,1]));P.g.rotation.x=th;P.g.position.set(0,jy+.9*(1-Math.cos(th)),-.9*Math.sin(th));P.L1.rotation.x=-.5*tk;P.L2.rotation.x=.5*tk;P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=.8*tk},
+  function(dt){P.rk.scale.setScalar(3);P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt)},
+  function(dt){var h=kf(dt,[-1,-.3,.6,1.1],[0,1.6,1.6,0]);P.g.position.y=h;P.L1.rotation.z=.3;P.L2.rotation.z=-.2;P.K1.rotation.z=-.5;P.K2.rotation.z=-.4;P.arm.rotation.z=kf(dt,KS,SM);P.la.rotation.z=1.2;P.g.rotation.y=6*PI*kf(dt,[-.8,-.05],[0,1])},
+  function(dt){var sc0=kf(dt,[-.5,-.4,-.3,-.2],[1,.01,.01,1]);P.g.scale.setScalar(1.5*sc0);P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt);P.g.position.x=dt<-.35?-2.8:0},
+  function(dt){P.arm.rotation.z=kf(dt,KS,SM);flex(P,SM,dt);P.g.position.y+=1.5*Math.sin(PI*kf(dt,[-.9,.9],[0,1]));P.la.rotation.z=1.4},
+  function(dt){P.arm.rotation.z=kf(dt,[-1,-.45,0,.12,.3,.5,.9],[.3,-.4,.9,.2,.9,2.3,.3]);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,LI,dt)},
+  function(dt){P.arm.rotation.z=kf(dt,[-1,-.45,0,.6,.9,1.3],[.3,-.4,.9,2.1,2.3,.3]);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,LI,dt)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,KE);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,KE,dt)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,KE);P.g.rotation.z=-.5*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,KE,dt)},
+  function(dt){P.arm.rotation.z=kf(dt,KS,KE);P.g.rotation.z=-.3*kf(dt,[-.8,0,.8],[0,1,0]);flex(P,KE,dt)},
+  function(dt){var A=[.3,-.3,1.45,1.8,.3];P.arm.rotation.z=kf(dt,KS,A);P.la.rotation.z=.9;flex(P,A,dt);rd(.9)},
+  function(dt){var A=[.3,-.5,.9,1.5,.3],st=kf(dt,[-.5,0,.4],[0,1,.4]);P.arm.rotation.z=kf(dt,KS,A);flex(P,A,dt);rd(.9);P.L1.rotation.z+=.6*st;P.g.position.x=.5*kf(dt,[-.4,0,.4],[0,1,1]);P.la.rotation.z=.9},
+  function(dt){P.arm.rotation.z=.9;P.la.rotation.z=kf(dt,[-1,-.4,0,.4,.8],[.3,.2,1.2,1.6,.3]);flex(P,LI,dt);rd(.9)},
+  function(dt){rd(.9);P.arm.rotation.z=2.8+.4*Math.sin(dt*14);P.la.rotation.z=2.8+.4*Math.sin(dt*14+1);P.g.position.y+=.08*Math.abs(Math.sin(dt*7))},
+  function(dt){var A=[.3,-.5,.9,1.5,.3];P.arm.rotation.z=kf(dt,[-1.4,-.9,-.6,-.3,0,.4,.8],[.3,-.5,.5,-.2,.9,1.5,.3]);P.la.rotation.z=.9;flex(P,A,dt);rd(.9)}];
+ function apply(i,dt){reset();P.rk.rotation.y=PI/2;P.g.scale.setScalar(1.5);P.rk.scale.setScalar(1.35);flex(P,[.3,.3,.3,.3,.3],-5);TP[i](dt)}
+ var DD=[{cx:-.8,S0:[3,3.5,.9],hin:2,inD:1.2,T:[4.2,.05,.3],H:2.4,dur:1.2},{cx:-1.2,S0:[4,2.6,.3],hin:2,inD:1.2,T:[4.6,.05,.2],H:3.2,dur:1.2},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:.2,S0:[3.4,1.9,-.2],hin:.3,inD:.7,T:[6.2,.05,.3],H:3.8,dur:1.5},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[4.2,.05,-1.8],H:3,dur:1.4},
+  {cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[3.2,.05,.3],H:1.4,dur:.9},{cx:-.4,S0:[6,3.4,-.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,3.8,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,3.6,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,4,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,6.4,.2],hin:1.5,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.5},
+  {cx:-.6,S0:[3.3,1.9,.2],hin:.3,inD:.7,T:[3.2,.05,-1.4],H:.8,dur:.8},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[3,.05,1.4],H:1.4,dur:.9},{cx:-.4,S0:[3.3,1.9,-.1],hin:.3,inD:.7,T:[5.5,.05,.4],H:3,dur:1.3},{cx:-.6,S0:[4.5,2.2,.2],hin:.3,inD:.8,T:[4.8,.05,.2],H:.5,dur:.45},{cx:-.6,S0:[3.3,1.9,.2],hin:.3,inD:.7,T:[3,.05,.3],H:.8,dur:.7},{cx:.2,S0:[3.4,1.9,-.2],hin:.3,inD:.7,T:[6.2,.05,-1.8],H:3.8,dur:1.5},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[4.2,.05,.2],H:.6,dur:.7},
+  {cx:-.4,S0:[6,3.4,-.2],hin:2.2,inD:1.2,T:[4.2,.05,-1.8],H:3,dur:1.4},{cx:-.8,S0:[3,3.5,.9],hin:2,inD:1.2,T:[6.2,.05,.2],H:4,dur:1.6},{cx:-1.2,S0:[4,2.6,.3],hin:2,inD:1.2,T:[6.2,.05,.2],H:4.2,dur:1.6},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[3.2,.05,.3],H:1.4,dur:.9},{cx:-.6,S0:[6,3.8,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},
+  {cx:-.6,S0:[6,3.8,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,3.8,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,6.4,.2],hin:1.5,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.5},{cx:-.6,S0:[6,3.4,.2],hin:2.2,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.4},{cx:-.6,S0:[6,6.2,.2],hin:1.5,inD:1.2,T:[4.6,.05,.3],H:.1,dur:.5},
+  {cx:.2,S0:[3.4,1.9,-.2],hin:.3,inD:.7,md:.3,mh:.6,T:[6.2,.05,.3],H:3.8,dur:1.5},{cx:.2,S0:[3.4,1.9,-.2],hin:.3,inD:.7,md:.6,att:1,T:[6.2,.05,.3],H:3,dur:1.4},{cx:-.2,S0:[3.3,1.9,.2],hin:.3,inD:.7,T:[3,.05,.3],H:.8,dur:.7,net:1},{cx:.3,S0:[4.6,1.9,.2],hin:.3,inD:.8,T:[4.4,.05,.2],H:.1,dur:.4,net:1},{cx:2.5,S0:[5.5,2.2,.2],hin:.3,inD:.8,T:[6.2,.05,.2],H:.1,dur:.4,net:1},
+  {cx:-.9,inD:.35,hin:0,T:[3.6,.05,.3],H:1,dur:1},{cx:-1.5,inD:.35,hin:0,T:[3.6,.05,.3],H:1.5,dur:1},{cx:-.4,src:'la',S0:[3.4,2.2,-.1],hin:.3,inD:.7,T:[4.5,.05,.3],H:1,dur:.9},{cx:2.1,nohit:1,S0:[5.5,2.8,.3],hin:0,inD:.5,T:[-1.5,.05,.3],H:.5,dur:1.6},{cx:-1.4,inD:.3,hin:0,T:[3.6,.05,.3],H:1.6,dur:1.1}];
+ function srcPos(i,dt,d){apply(i,dt);P.g.position.x+=d.cx;w.updateMatrixWorld(true);var la=d.src==='la',p=new T.Vector3(0,la?-.56:-.58,0);(la?P.la:P.rk).localToWorld(p);w.worldToLocal(p);return[p.x,p.y,p.z]}
+ DD.forEach(function(d,i){d.C=srcPos(i,0,d);if(d.md)d.M=srcPos(i,d.md,d);if(!d.S0)d.S0=[d.C[0],d.C[1]+.45,d.C[2]]});
+ return function(t){if(trs){T0=t;trs=false}
+  var q=t-T0,s=q%PP,d=DD[tcur],dt=s-TH;apply(tcur,dt);P.g.position.x+=d.cx;var hp=null;if(d.att&&s>=TH&&s<TH+d.md){w.updateMatrixWorld(true);var hv=new T.Vector3(0,-.58,0);P.rk.localToWorld(hv);w.worldToLocal(hv);hp=[hv.x,hv.y,hv.z]}if(netM)netM.material.color.setHex(d.net?0xFF4040:0xFFFFFF);
+  function at(x){var C=d.C,S0=d.S0,u,M=d.M;if(d.nohit){u=Math.max(0,Math.min(1,(x-.3)/d.dur));return[S0[0]+(d.T[0]-S0[0])*u,S0[1]+(d.T[1]-S0[1])*u+d.H*4*u*(1-u),S0[2]+(d.T[2]-S0[2])*u]}if(x<TH-d.inD)return S0;if(x<TH){u=(x-TH+d.inD)/d.inD;return[S0[0]+(C[0]-S0[0])*u,S0[1]+(C[1]-S0[1])*u+d.hin*4*u*(1-u),S0[2]+(C[2]-S0[2])*u]}if(M){if(x<TH+d.md){if(d.att&&hp)return hp;u=(x-TH)/d.md;return[C[0]+(M[0]-C[0])*u,C[1]+(M[1]-C[1])*u+(d.mh||0)*4*u*(1-u),C[2]+(M[2]-C[2])*u]}C=M;x=x-d.md}u=Math.min(1,(x-TH)/d.dur);return[C[0]+(d.T[0]-C[0])*u,C[1]+(d.T[1]-C[1])*u+d.H*4*u*(1-u),C[2]+(d.T[2]-C[2])*u]}
+  var p1=at(s),p2=at(s+.03);v.set(p2[0]-p1[0],p2[1]-p1[1],p2[2]-p1[2]);if(v.lengthSq()>1e-6){v.normalize();sh.quaternion.setFromUnitVectors(Y,v)}
+  sh.position.set(p1[0],p1[1],p1[2]);ring.position.set(d.T[0],.04,d.T[2])}},true);
+
+mk("s-racket",[0,.2,6,0],function(g){
+ var o=new T.Group();g.add(o);
+ var red=new T.MeshLambertMaterial({color:0xE4572E}),dk=new T.MeshLambertMaterial({color:0x14283a});
+ var head=new T.Mesh(new T.TorusGeometry(.55,.045,10,48),red);head.position.y=.7;head.scale.y=1.25;o.add(head);
+ var cv=document.createElement("canvas");cv.width=cv.height=128;var x=cv.getContext("2d");x.strokeStyle="#ffffff";x.lineWidth=2;
+ for(var i=4;i<128;i+=8){x.beginPath();x.moveTo(i,0);x.lineTo(i,128);x.moveTo(0,i);x.lineTo(128,i);x.stroke()}
+ var st=new T.Mesh(new T.CircleGeometry(.55,48),new T.MeshBasicMaterial({map:new T.CanvasTexture(cv),transparent:true,opacity:.85,side:T.DoubleSide}));st.position.y=.7;st.scale.y=1.25;o.add(st);
+ var sf=new T.Mesh(new T.CylinderGeometry(.025,.025,.9,10),dk);sf.position.y=-.45;o.add(sf);
+ var hd=new T.Mesh(new T.CylinderGeometry(.055,.055,.5,12),red);hd.position.y=-1.15;o.add(hd);
+ o.position.y=-.1;o.rotation.z=.25});
+
+mk("s-shuttle",[0,.3,5,0],function(g){var s=shuttle();s.scale.setScalar(5.5);s.rotation.z=.45;g.add(s)});
+})()}
+</script>
+</body>
+</html>
