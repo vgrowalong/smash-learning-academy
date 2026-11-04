@@ -588,7 +588,7 @@ function mk(id,cam,build,fix){
  var SHs=[];g.traverse(function(o){if(o.userData&&o.userData.shuttle)SHs.push({o:o,last:null,pv:null,t0:-9,fx:null})});
  SHs.forEach(function(S){var m=new T.Mesh(new T.SphereGeometry(.16,12,10),new T.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,depthWrite:false}));m.visible=false;S.o.parent.add(m);S.fx=m});
  function hits(tm){SHs.forEach(function(S){var p=S.o.position;if(S.last){var v=new T.Vector3().subVectors(p,S.last);if(v.lengthSq()>1e-6&&v.length()<3){if(S.pv&&v.dot(S.pv)<0)S.t0=tm;S.pv=v}}S.last=p.clone();var a=tm-S.t0;if(a>=0&&a<.25){S.fx.visible=true;S.fx.position.copy(p);S.fx.scale.setScalar(.5+a*8);S.fx.material.opacity=.7*(1-a/.25)}else S.fx.visible=false})}
- g.traverse(function(m){if(m.isMesh){var p=m.geometry.parameters||{},flat=m.geometry.type==='BoxGeometry'&&(p.height<=.03||p.width>8);m.castShadow=!flat&&!m.material.transparent;m.receiveShadow=true}});
+ g.traverse(function(m){if(m.isMesh){var p=m.geometry.parameters||{},flat=m.geometry.type==='BoxGeometry'&&(p.height<=.03||p.width>8);m.castShadow=!flat&&!m.material.transparent&&!(m.userData&&m.userData.nocast);m.receiveShadow=true}});
  var cl=document.createElement('div');cl.className='ctl';
  function btn(t,l,f){var b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-label',l);b.onclick=f;cl.appendChild(b);return b}
  function zm(k){uz=Math.max(.6,Math.min(3,uz*k));lw=0}
@@ -767,10 +767,24 @@ function rally(pl,sh,ca,g){
    for(j=0;j<4;j++)if(dt>=K[j]&&dt<=K[j+1])a=S.A[j]+(S.A[j+1]-S.A[j])*(dt-K[j])/(K[j+1]-K[j]);
    var ps=P0(w,tt),Q=pl[w];cur[w]=ps;Q.g.position.set(ps[0],S.j*Math.max(0,1-Math.abs(dt)/.4),ps[1]);Q.g.rotation.z=S.tl*f;Q.arm.rotation.z=a;flex(Q,S.A,dt)}}}
 mk("s-court",[0,11,17,0],function(g,ca){
- box(g,15,.02,7.7,0,-.02,0,0x14483A);box(g,13.4,.02,6.1,0,0,0,0x1D6B55);
+ box(g,15.6,.3,8.4,0,-.2,0,0x16294F);box(g,15,.06,7.7,0,-.03,0,0x2563C9);box(g,13.4,.02,6.1,0,0,0,0x1FAE7F);
+ box(g,6.7,.02,2.7,-3.35,.004,-1.7,0x17A06F);box(g,6.7,.02,2.7,3.35,.004,1.7,0x17A06F);
+ [[-1,0xF4A53A],[1,0xE4572E]].forEach(function(e){box(g,.7,.02,6.1,e[0]*6.32,.006,0,e[1])});
+ box(g,15.6,.55,.12,0,.12,-4.25,0xE9C46A);box(g,15.6,.18,.14,0,.45,-4.25,0xE4572E);
+ [-1,1].forEach(function(s){box(g,.12,.55,8.4,s*7.8,.12,0,0xE4572E);box(g,.14,.18,8.4,s*7.8,.45,0,0xE9C46A)});
+ function tube(x,z,len,vert){var G=new T.Group(),y=5,r=.1;
+  var hs=new T.Mesh(new T.BoxGeometry(vert?.26:len+.3,.07,vert?len+.3:.26),new T.MeshLambertMaterial({color:0x39424E}));hs.position.y=.1;G.add(hs);
+  var tb=new T.Mesh(new T.CylinderGeometry(r,r,len,16),new T.MeshBasicMaterial({color:0xFFFDF0}));
+  var gl=new T.Mesh(new T.CylinderGeometry(r*2.4,r*2.4,len,16),new T.MeshBasicMaterial({color:0xFFF1B8,transparent:true,opacity:.28,depthWrite:false,blending:T.AdditiveBlending}));
+  [tb,gl].forEach(function(m){if(vert)m.rotation.x=Math.PI/2;else m.rotation.z=Math.PI/2;m.userData.nocast=1;G.add(m)});
+  hs.userData.nocast=1;
+  [-1,1].forEach(function(e){var c=new T.Mesh(new T.CylinderGeometry(.012,.012,2.6,6),new T.MeshBasicMaterial({color:0x9AA5B1}));c.position.set(vert?0:e*len*.38,1.4,vert?e*len*.38:0);c.userData.nocast=1;G.add(c)});
+  var pl=new T.PointLight(0xFFF3D0,.5,16,1.6);pl.position.y=-.3;G.add(pl);
+  G.position.set(x,y,z);g.add(G);return G}
+ tube(0,-3.6,7,false);tube(0,3.6,7,false);tube(-4.3,0,5.2,true);tube(4.3,0,5.2,true);
  function ln(x,z,w,d){box(g,w,.02,d,x,.012,z,0xffffff)}
  [-1,1].forEach(function(s){ln(0,s*3.05,13.4,.05);ln(0,s*2.59,13.4,.05);ln(s*6.7,0,.05,6.1);ln(s*1.98,0,.05,6.1);ln(s*5.94,0,.05,6.1);ln(s*4.34,0,4.72,.05);
-  box(g,.06,1.55,.06,0,.775,s*3.05,0xdddddd)});
+  box(g,.07,1.55,.07,0,.775,s*3.05,0xFFD23F)});
  box(g,.02,.76,6.1,0,1.14,0,0xffffff,.35);box(g,.05,.07,6.1,0,1.52,0,0xffffff);
  var pl=[mkP(g,0xE4572E,0xffffff,-5.56,-1.6,0,true,1.5),mkP(g,0x3A6EA5,0xE9C46A,5.56,1.6,Math.PI,false,1.5)];
  var sh=shuttle();sh.scale.setScalar(1.6);g.add(sh);var Y=new T.Vector3(0,1,0),v=new T.Vector3();
