@@ -148,10 +148,10 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
 <section id="home" class="hero on">
   <h1>Learn badminton the right way, from the first grip.</h1>
   <p>Simple guides to the rules, rackets, shuttles and strokes. No jargon, made for beginners.</p>
-  <div class="score"><div>Coach <b id="sa">0</b></div><div><b id="sb">0</b> Opponent</div><button id="pm">Play match</button><button id="ex" aria-label="Coach explanation mode">Coach: text</button><button id="spd" aria-label="Change game speed">4×</button><div class="sp" id="sst" aria-live="polite">Ready · tap Play match to start</div></div>
+  <div class="score"><div>Coach <b id="sa">0</b></div><div><b id="sb">0</b> Opponent</div><button id="ex" aria-label="Coach explanation mode">Coach: text</button><button id="spd" aria-label="Change game speed">4×</button><div class="sp" id="sst" aria-live="polite">First to 21 points wins</div></div>
   <div class="stage" id="s-court" role="img" aria-label="3D badminton court where the coach plays a rally"></div>
-  <div class="say" aria-live="polite"><span id="sayav"></span><div id="saytx">Ask me anything and I will explain it and show it here. Tap Play match when you want to see a game.</div></div>
-  <div class="score" style="margin-top:10px;font-size:14px"><div>Back court · Coach <b style="font-size:22px" id="ba">0</b></div><div><b style="font-size:22px" id="bb">0</b> Opponent</div><div class="sp" id="bst">First to 21 wins</div></div>
+  <div class="say" aria-live="polite"><span id="sayav"></span><div id="saytx">Ask me anything and I will explain it and show it here.</div></div>
+  <div class="score" style="margin-top:10px;font-size:14px"><div>Back court · Coach <b style="font-size:22px" id="ba">0</b></div><div><b style="font-size:22px" id="bb">0</b> Opponent</div><div class="sp" id="bst">First to 21 points wins</div></div>
   <svg class="court" style="display:none" viewBox="0 0 340 160" role="img" aria-label="Badminton court diagram">
     <rect width="340" height="160" fill="#1D6B55"/>
     <g fill="none" stroke="#fff" stroke-width="2">
@@ -612,7 +612,7 @@ function bgGame(pl,sh){
  var ST={sv:{A:[.3,-.5,.9,1.5,.3],j:0,tl:0},li:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3},sm:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0},dr:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0},ke:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3}};
  var BASE=[[0,'sv',-2.6,-1,1,1.3],[1,'li',3.4,1.2,1.5,3],[0,'sm',-5.4,-.4,.5,0],[1,'li',4.8,.6,1.5,3],[0,'dr',-5.3,.8,1,.4],[1,'ke',3.96,-.6,.8,.9],[0,'li',-3.18,.9,1.5,3],[1,'sm',5.4,-1,.5,0],[0,'li',-4.78,.2,1.5,3],[1,'dr',5.3,1,1,.4],[0,'ke',-3.96,-.8,.8,1.2]];
  var EN={1:[-6,-.3,1.5,3.5],2:[4.4,.3,.5,0],4:[1.2,.3,1,1.6],7:[-4.2,-.3,.5,0],9:[-1,-.3,1,1.8],10:[1,.3,.8,1.2]};
- var fin=0,rs=11,sA=0,sB=0,srv=0,R=null,tOff=0,lastT=null,clk=0,over=0,cur=[[-2.6,-1],[3.4,1.2]],st=[[-2.6,-1],[3.4,1.2]],NM=['Coach','Opponent'];
+ var overT=null,fin=0,rs=11,sA=0,sB=0,srv=0,R=null,tOff=0,lastT=null,clk=0,over=0,cur=[[-2.6,-1],[3.4,1.2]],st=[[-2.6,-1],[3.4,1.2]],NM=['Coach','Opponent'];
  function rnd(){rs=(rs*16807)%2147483647;return rs/2147483647}
  function ui(m){document.getElementById('ba').textContent=sA;document.getElementById('bb').textContent=sB;document.getElementById('bst').textContent=m}
  function build(){
@@ -624,9 +624,9 @@ function bgGame(pl,sh){
   ts.push(tm);C.push([mir?-en[0]:en[0],.05,mir?-en[1]:en[1]]);
   sq.forEach(function(s,i){E[s[0]].push({a:ts[i]-.4,d:ts[i]+.3,x:s[2],z:s[3],k:i})});
   st=[cur[0].slice(),cur[1].slice()];
-  R={SQ:sq,ts:ts,C:C,E:E,win:win,tEnd:tm,LOOP:tm+1.2,sc:0};ui('First to 21 wins')}
+  R={SQ:sq,ts:ts,C:C,E:E,win:win,tEnd:tm,LOOP:tm+1.2,sc:0};ui('First to 21 points wins')}
  function score(){if(R.win)sB++;else sA++;var a=sA,b=sB;over=((a>=21||b>=21)&&Math.abs(a-b)>=2)||a>=30||b>=30;
-  ui(over?NM[R.win]+' wins '+Math.max(a,b)+'\u2013'+Math.min(a,b)+'!':'First to 21 wins');if(over)fin=1}
+  ui(over?NM[R.win]+' wins '+Math.max(a,b)+'\u2013'+Math.min(a,b)+'!':'First to 21 points wins');if(over)fin=1}
  function P0(w,tt){var e=R.E[w],i,p,q,u;
   if(tt<e[0].a){u=Math.max(0,tt/e[0].a);u=u*u*(3-2*u);return[st[w][0]+(e[0].x-st[w][0])*u,st[w][1]+(e[0].z-st[w][1])*u]}
   for(i=0;i<e.length;i++){p=e[i];if(tt<=p.d)return[p.x,p.z];q=e[i+1];if(q&&tt<q.a){u=(tt-p.d)/(q.a-p.d);u=u*u*(3-2*u);return[p.x+(q.x-p.x)*u,p.z+(q.z-p.z)*u]}}
@@ -636,7 +636,7 @@ function bgGame(pl,sh){
   if(q<ts[0]){u=(q-ts[0]+.3)/.3;return[C[0][0],C[0][1]+.45*(1-u),C[0][2]]}
   for(i=0;i<SQ.length;i++)if(q<ts[i+1]){u=(q-ts[i])/SQ[i][4];a=C[i];b=C[i+1];return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u+SQ[i][5]*4*u*(1-u),a[2]+(b[2]-a[2])*u]}
   return C[SQ.length]}
- return function(t){var d=lastT===null?0:Math.min(t-lastT,.1),w,i,j;lastT=t;if(fin)return;clk+=d*4;
+ return function(t){var d=lastT===null?0:Math.min(t-lastT,.1),w,i,j;lastT=t;if(fin){if(overT===null)overT=t;else if(t-overT>5.5){sA=0;sB=0;srv=0;over=0;fin=0;R=null;overT=null;ui('First to 21 points wins')}return}clk+=d*4;
   if(!R){build();tOff=clk}
   var tt=clk-tOff;
   if(!R.sc&&tt>=R.tEnd){R.sc=1;score()}
@@ -684,7 +684,7 @@ function rally(pl,sh,ca,g){
  var EN={1:[-6,-.3,1.5,3.5],2:[4.4,.3,.5,0],4:[1.2,.3,1,1.6],7:[-4.2,-.3,.5,0],9:[-1,-.3,1,1.8],10:[1,.3,.8,1.2]};
  var rs=7,sA=0,sB=0,srv=0,R=null,tOff=0,lastT=null,clk=0,spd=4,over=0,cur=[[-2.6,-1],[3.4,1.2]],st=[[-2.6,-1],[3.4,1.2]],NM=['Coach','Opponent'];
  function rnd(){rs=(rs*16807)%2147483647;return rs/2147483647}
- function ui(m){m=/wins/.test(m)?m:'First to 21 wins';lm=m;document.getElementById('sa').textContent=sA;document.getElementById('sb').textContent=sB;document.getElementById('sst').textContent=m}
+ function ui(m){m=/wins/.test(m)?m:'First to 21 points wins';lm=m;document.getElementById('sa').textContent=sA;document.getElementById('sb').textContent=sB;document.getElementById('sst').textContent=m}
  function build(){
   var win=rnd()<.52?0:1,pool=win===srv?[2,4,10]:[1,7,9],end=pool[Math.floor(rnd()*3)%3],mir=srv,tm=1.8,k,ts=[],C=[],E=[[],[]],en=EN[end];
   var sq=BASE.slice(0,end+1).map(function(s){return[mir?1-s[0]:s[0],s[1],mir?-s[2]:s[2],mir?-s[3]:s[3],s[4],s[5]]});
@@ -697,7 +697,7 @@ function rally(pl,sh,ca,g){
   R={SQ:sq,ts:ts,C:C,E:E,win:win,tEnd:tm,LOOP:tm+1.2,sc:0,cs:-1};
   ui(NM[srv]+' serves')}
  function score(){if(R.win)sB++;else sA++;var a=sA,b=sB;over=((a>=21||b>=21)&&Math.abs(a-b)>=2)||a>=30||b>=30;
-  ui(over?NM[R.win]+' wins '+Math.max(a,b)+'\u2013'+Math.min(a,b)+'! Tap Play match for a new game':NM[R.win]+' scores');if(over){fin=1;run=0;setPM()}}
+  ui(over?NM[R.win]+' wins '+Math.max(a,b)+'\u2013'+Math.min(a,b)+'! A new game starts soon':NM[R.win]+' scores');if(over){fin=1;run=0;setPM();setTimeout(function(){if(over&&!demo)coachPlay(true)},5500)}}
  function P0(w,tt){var e=R.E[w],i,p,q,u;
   if(tt<e[0].a){u=Math.max(0,tt/e[0].a);u=u*u*(3-2*u);return[st[w][0]+(e[0].x-st[w][0])*u,st[w][1]+(e[0].z-st[w][1])*u]}
   for(i=0;i<e.length;i++){p=e[i];if(tt<=p.d)return[p.x,p.z];q=e[i+1];if(q&&tt<q.a){u=(tt-p.d)/(q.a-p.d);u=u*u*(3-2*u);return[p.x+(q.x-p.x)*u,p.z+(q.z-p.z)*u]}}
@@ -707,7 +707,7 @@ function rally(pl,sh,ca,g){
   if(q<ts[0]){u=(q-ts[0]+.3)/.3;return[C[0][0],C[0][1]+.45*(1-u),C[0][2]]}
   for(i=0;i<SQ.length;i++)if(q<ts[i+1]){u=(q-ts[i])/SQ[i][4];a=C[i];b=C[i+1];return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u+SQ[i][5]*4*u*(1-u),a[2]+(b[2]-a[2])*u]}
   return C[SQ.length]}
- var lm='',fin=0,run=0,demo=null,dstart=-1,mode=1,pu=0,EXL={sv:['serve','Drop the shuttle and hit it underarm, below your waist.'],li:['lift','Swing underarm from low to high to send the shuttle deep.'],sm:['smash','Jump and hit down hard and steep.'],dr:['drop shot','It looks like a smash, but a soft tap lands it close to the net.'],ke:['net keep','A small, soft tap at the top of the net.']};
+ var lm='',fin=0,run=1,demo=null,dstart=-1,mode=1,pu=0,EXL={sv:['serve','Drop the shuttle and hit it underarm, below your waist.'],li:['lift','Swing underarm from low to high to send the shuttle deep.'],sm:['smash','Jump and hit down hard and steep.'],dr:['drop shot','It looks like a smash, but a soft tap lands it close to the net.'],ke:['net keep','A small, soft tap at the top of the net.']};
  var sav=document.getElementById('sayav');if(sav)sav.innerHTML=av(36);
  function say(k){var s=R.SQ[k],x=EXL[s[1]],m=NM[s[0]]+' plays a '+x[0]+'. '+x[1],el=document.getElementById('saytx');if(el)el.textContent=m;
   if(mode!==2)return;pu=lastT+2.4;
@@ -756,10 +756,10 @@ function rally(pl,sh,ca,g){
   if(q<th-D.inD)return S0;
   if(q<th){u=(q-th+D.inD)/D.inD;return[S0[0]+(C[0]-S0[0])*u,S0[1]+(C[1]-S0[1])*u+D.hin*4*u*(1-u),S0[2]+(C[2]-S0[2])*u]}
   u=Math.min(1,(q-th)/D.dur);return[C[0]+(D.T[0]-C[0])*u,C[1]+(D.T[1]-C[1])*u+D.H*4*u*(1-u),C[2]+(D.T[2]-C[2])*u]}
- window.coachDemo=function(k){demo=k?DM[k]:null;dstart=-1;pl[1].g.visible=!k;if(k){run=0;setPM()}if(k){document.getElementById('sst').textContent='Paused \u00b7 coach is explaining'}else{fin=0;pl[1].g.visible=true;document.getElementById('sst').textContent=run&&lm?lm:'Ready \u00b7 tap Play match to start'}};
+ window.coachDemo=function(k){demo=k?DM[k]:null;dstart=-1;pl[1].g.visible=!k;if(k){run=0;setPM()}if(k){document.getElementById('sst').textContent='Paused \u00b7 coach is explaining'}else{fin=0;pl[1].g.visible=true;coachPlay(true)}};
  window.coachSay=function(t,f){var el=document.getElementById('saytx');if(el)el.textContent=t;if(f&&mode===2&&demo&&window.speechSynthesis){try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch(e){}}};
  function setPM(){var b=document.getElementById('pm');if(b)b.textContent=run?'Stop match':'Play match'}
- window.coachPlay=function(on){if(on&&over){sA=0;sB=0;srv=0;over=0;fin=0;R=null;ui('First to 21 wins')}run=on?1:0;pu=0;if(on){demo=null;dstart=-1;pl[1].g.visible=true;document.getElementById('panel').classList.remove('demo');if(lm)document.getElementById('sst').textContent=lm}else{document.getElementById('sst').textContent='Match stopped \u00b7 tap Play match to continue'}setPM()};
+ window.coachPlay=function(on){if(on&&over){sA=0;sB=0;srv=0;over=0;fin=0;R=null;ui('First to 21 points wins')}run=on?1:0;pu=0;if(on){demo=null;dstart=-1;pl[1].g.visible=true;document.getElementById('panel').classList.remove('demo');if(lm)document.getElementById('sst').textContent=lm}else{document.getElementById('sst').textContent='Match paused'}setPM()};
  var pmb=document.getElementById('pm');if(pmb)pmb.onclick=function(){coachPlay(!run)};
  var ctl=document.getElementById('spd');if(ctl)ctl.onclick=function(){spd=spd===4?8:spd===8?16:4;ctl.textContent=spd+'\u00d7'};
  return function(t){var d=lastT===null?0:Math.min(t-lastT,.1),w,i,j;lastT=t;
