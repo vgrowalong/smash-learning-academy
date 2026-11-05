@@ -314,7 +314,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 5 Nov 2026, 4:30 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 5 Nov 2026, 4:35 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -756,7 +756,7 @@ function rally(pl,sh,ca,g){
   if(q<th-D.inD)return S0;
   if(q<th){u=(q-th+D.inD)/D.inD;return[S0[0]+(C[0]-S0[0])*u,S0[1]+(C[1]-S0[1])*u+D.hin*4*u*(1-u),S0[2]+(C[2]-S0[2])*u]}
   u=Math.min(1,(q-th)/D.dur);return[C[0]+(D.T[0]-C[0])*u,C[1]+(D.T[1]-C[1])*u+D.H*4*u*(1-u),C[2]+(D.T[2]-C[2])*u]}
- window.coachDemo=function(k){demo=k?DM[k]:null;dstart=-1;pl[1].g.visible=!k;if(k){run=0;setPM()}if(k){document.getElementById('sst').textContent='Paused \u00b7 coach is explaining'}else{fin=0;pl[1].g.visible=true;coachPlay(true)}};
+ window.coachDemo=function(k){demo=k?DM[k]:null;dstart=-1;pl[1].g.visible=!k;if(k){run=0;setPM()}if(k){document.getElementById('sst').textContent='Paused \u00b7 AI Shree is explaining'}else{fin=0;pl[1].g.visible=true;coachPlay(true)}};
  window.coachSay=function(t,f){var el=document.getElementById('saytx');if(el)el.textContent=t;if(f&&mode===2&&demo&&window.speechSynthesis){try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch(e){}}};
  function setPM(){var b=document.getElementById('pm');if(b)b.textContent=run?'Stop match':'Play match'}
  window.coachPlay=function(on){if(on&&over){sA=0;sB=0;srv=0;over=0;fin=0;R=null;ui('First to 21 points wins')}run=on?1:0;pu=0;if(on){demo=null;dstart=-1;pl[1].g.visible=true;document.getElementById('panel').classList.remove('demo');if(lm)document.getElementById('sst').textContent=lm}else{document.getElementById('sst').textContent='Match paused'}setPM()};
