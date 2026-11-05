@@ -742,7 +742,7 @@ function rally(pl,sh,ca,g){
   msp.visible=!!(D&&D.mark&&(q%4.2)>1.4+D.dur);if(D&&D.mark){msp.material.map=TX[D.mark];msp.position.set(D.T[0],1.1,D.T[2])}
   hS.visible=K2==='co';hA.visible=hB.visible=K2==='co'&&Math.floor(q/2)%2===1;
   sh.visible=!(D&&K2&&K2!=='shu');sh.scale.setScalar(K2==='shu'?5:1.6);
-  if(!(K2==='gp'||K2==='shu')&&zoomed){ca.position.set(0,13,11);ca.lookAt(0,0,-4);zoomed=false}}
+  if(!(K2==='gp'||K2==='shu')&&zoomed){ca.position.set(0,10,15);ca.lookAt(0,0,-4);zoomed=false}}
  function cdemo(t){var D=demo,Q=pl[0],S=ST.sv,q,a,i,u,p,r,n,c;if(dstart<0)dstart=t;q=t-dstart;
   if(D.kind==='ft'){var FP=[[-2.6,-1.6],[-1.2,1.8],[-5.6,1.8],[-5.6,-1.8],[-1.2,-1.8],[-2.6,0]];n=FP.length;i=Math.floor(q/1.1)%n;r=q%1.1;p=FP[(i+n-1)%n];c=FP[i];u=Math.min(1,r/.7);u=u*u*(3-2*u);
    Q.g.position.set(p[0]+(c[0]-p[0])*u,.06*Math.abs(Math.sin(r*9)),p[1]+(c[1]-p[1])*u);Q.g.rotation.z=u<1?-.25*Math.sin(u*PI):0;
@@ -785,7 +785,7 @@ function rally(pl,sh,ca,g){
    var S=ST[R.SQ[best.k][1]],dt=tt-R.ts[best.k],f=Math.max(0,1-Math.abs(dt)/.8),a=.3;
    for(j=0;j<4;j++)if(dt>=K[j]&&dt<=K[j+1])a=S.A[j]+(S.A[j+1]-S.A[j])*(dt-K[j])/(K[j+1]-K[j]);
    var ps=P0(w,tt),Q=pl[w];cur[w]=ps;Q.g.position.set(ps[0],S.j*Math.max(0,1-Math.abs(dt)/.4),ps[1]);Q.g.rotation.z=S.tl*f;Q.arm.rotation.z=a;flex(Q,S.A,dt)}}}
-mk("s-court",[0,13,11,0,-4],function(g,ca){
+mk("s-court",[0,10,15,0,-4],function(g,ca){
  function glow(w,d,x,z,c){var m=new T.Mesh(new T.BoxGeometry(w,.05,d),new T.MeshBasicMaterial({color:c}));m.position.set(x,-.04,z);m.userData.nocast=1;g.add(m);return m}
  box(g,15.6,.34,8.4,0,-.22,0,0x1A1446);box(g,15,.06,7.7,0,-.03,0,0x2F6BFF);box(g,13.4,.02,6.1,0,0,0,0x00B67A);
  box(g,4.72,.02,3.05,4.34,.004,1.525,0x37DDA0);box(g,4.72,.02,3.05,-4.34,.004,-1.525,0x37DDA0);box(g,3.96,.02,6.1,0,.004,0,0x009C69);
