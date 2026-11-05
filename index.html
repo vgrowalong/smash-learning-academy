@@ -597,14 +597,14 @@ function mk(id,cam,build,fix,r0){
  el.appendChild(cl);
  addEventListener('keydown',function(e){if(e.key==='Escape'&&big)eb.onclick()});
  el.addEventListener('wheel',function(e){if(big||e.ctrlKey){e.preventDefault();zm(e.deltaY<0?1.1:.91)}},{passive:false});
- el.onpointerdown=function(e){if(r0!==undefined)return;if(e.target.closest&&e.target.closest('.ctl'))return;dr=true;lx=e.clientX;vel=0;el.style.cursor='grabbing'};
+ el.onpointerdown=function(e){if(e.target.closest&&e.target.closest('.ctl'))return;dr=true;lx=e.clientX;vel=0;el.style.cursor='grabbing'};
  addEventListener('pointerup',function(){dr=false;el.style.cursor='grab'});addEventListener('pointercancel',function(){dr=false});
- if(r0!==undefined)el.style.cursor='default';
+ if(r0!==undefined)el.style.touchAction='pan-y';
  addEventListener('pointermove',function(e){if(dr){var d=(e.clientX-lx)*.01;rot+=d;vel=d;lx=e.clientX}});
  (function loop(t){requestAnimationFrame(loop);if(!el.getClientRects().length){drop();return}if(dead||!ensure())return;
   var rc=el.getBoundingClientRect();if(!big&&(rc.bottom<0||rc.top>innerHeight))return;
   var w=el.clientWidth,h=el.clientHeight;if(w!==lw||h!==lh){lw=w;lh=h;r.setSize(w,h);ca.aspect=w/h;ca.zoom=Math.min(1,w/h/1.2)*uz;ca.updateProjectionMatrix()}
-  if(r0!==undefined){rot=r0;vel=0}else if(!dr){rot+=vel;vel*=.94;if(!calm&&!fix)rot+=.004}
+  if(r0!==undefined)vel=0;else if(!dr){rot+=vel;vel*=.94;if(!calm&&!fix)rot+=.004}
   g.rotation.y=rot;upd(t/1000,g);hits(t/1000);r.render(sc,ca)})(0);
 }
 function bgGame(pl,sh){
