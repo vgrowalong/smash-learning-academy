@@ -144,7 +144,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
 </head>
 <body>
 <header><div class="wrap">
-  <div class="brand"><span style="white-space:nowrap">AI Smash Learning Academy</span><button type="button" class="neonbadge" data-go="join" aria-label="Join the community" title="Join the community"><svg class="neon" width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 20 20)"><path class="nk" d="M15.5 27 L7.5 7.5 Q20 2.5 32.5 7.5 L24.5 27" stroke="#39F5FF" stroke-width="2"/><path class="nk" d="M20 27 V5 M17.7 27 L13.3 6 M22.3 27 L26.7 6 M12.5 7 Q20 9.5 27.5 7" stroke="#39F5FF" stroke-width="1.4"/><path class="nm" d="M14.5 27 H25.5 A5.5 5.5 0 0 1 14.5 27 Z" stroke="#FF2BD6" stroke-width="2.2"/></g></svg></button></div>
+  <div class="brand"><span style="white-space:nowrap">AI Smash Learning Academy</span><button type="button" class="neonbadge" id="nbadge" aria-label="Join the community" title="Join the community"><svg class="neon" width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 20 20)"><path class="nk" d="M15.5 27 L7.5 7.5 Q20 2.5 32.5 7.5 L24.5 27" stroke="#39F5FF" stroke-width="2"/><path class="nk" d="M20 27 V5 M17.7 27 L13.3 6 M22.3 27 L26.7 6 M12.5 7 Q20 9.5 27.5 7" stroke="#39F5FF" stroke-width="1.4"/><path class="nm" d="M14.5 27 H25.5 A5.5 5.5 0 0 1 14.5 27 Z" stroke="#FF2BD6" stroke-width="2.2"/></g></svg></button></div>
   <div class="engage" id="engage">
     <button type="button" class="eb-join" data-go="join">Join the community</button>
     <button type="button" class="eb-heart" id="hbtn" aria-label="Give a heart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C1 8.4 2.7 5 6.2 5c2 0 3.4 1 4.4 2.4h.8C12.4 6 13.8 5 15.8 5c3.5 0 5.2 3.4 3.8 6.7C19.5 16.4 12 21 12 21z"/></svg><span class="hc" id="hcount" aria-live="polite">Like</span></button>
@@ -324,16 +324,17 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 5 Nov 2026, 5:15 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 5 Nov 2026, 5:25 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 var tabs=[["home","Home"],["rules","Rules"],["rackets","Rackets"],["grip","Grip"],["techniques","Techniques"],["footwork","Footwork"],["feed","Feed Drill"],["tricks","Trickshots"],["warmup","Dynamic & Rotation"],["shuttles","Shuttles"],["about","About"],["join","Join"]];
 var nav=document.querySelector("nav");
 tabs.forEach(function(t,i){var b=document.createElement("button");b.textContent=t[1];b.setAttribute("role","tab");b.setAttribute("aria-selected",i==0);b.dataset.id=t[0];b.onclick=function(){go(t[0])};nav.appendChild(b)});
-function go(id){document.querySelectorAll("section").forEach(function(s){s.classList.toggle("on",s.id==id)});
+function go(id){var nbb=document.getElementById('nbadge');if(nbb){var jn=id==='join';nbb.title=jn?'Back to home':'Join the community';nbb.setAttribute('aria-label',nbb.title)}document.querySelectorAll("section").forEach(function(s){s.classList.toggle("on",s.id==id)});
 nav.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.id==id)});window.scrollTo(0,0);if(window.coachTab)coachTab(id)}
 document.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(e){e.preventDefault();go(b.dataset.go)}});
+(function(){var nb=document.getElementById("nbadge");nb.onclick=function(){var j=document.getElementById("join").classList.contains("on");go(j?"home":"join")};})();
 var R={b:["Beginner","4U weight (easier on the wrist)","Even balance or slightly head-heavy","Flexible shaft","Budget range, pre-strung is fine","String tension 18–20 lbs"],
 i:["Intermediate","3U or 4U, whichever feels comfortable","Even balance","Medium shaft","Your own string choice","String tension 20–24 lbs"],
 a:["Advanced","3U for power or 4U for speed","Head-heavy for singles, head-light for doubles","Stiff shaft for control","Premium frame, custom string","String tension 24 lbs and above"]};
