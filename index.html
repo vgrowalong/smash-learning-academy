@@ -16,10 +16,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-u
 h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.1;margin:0}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.neonbadge{flex:none;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;background:#0B1020;box-shadow:0 0 0 1px rgba(57,245,255,.35),0 0 14px rgba(57,245,255,.35)}
+.neonbadge{border:0;padding:0;cursor:pointer;transition:transform .15s,box-shadow .15s;flex:none;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;background:#0B1020;box-shadow:0 0 0 1px rgba(57,245,255,.35),0 0 14px rgba(57,245,255,.35)}
 .neon{animation:nbob 2.4s ease-in-out infinite}
 .neon .nk{filter:drop-shadow(0 0 2px #39F5FF) drop-shadow(0 0 6px #39F5FF);animation:nflick 3.2s infinite}
 .neon .nm{filter:drop-shadow(0 0 2px #FF2BD6) drop-shadow(0 0 6px #FF2BD6)}
+
+.neonbadge:hover,.neonbadge:focus-visible{transform:scale(1.1);box-shadow:0 0 0 1px rgba(57,245,255,.8),0 0 22px rgba(57,245,255,.7)}
 @keyframes nbob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(6deg)}}
 @keyframes nflick{0%,18%,22%,60%,64%,100%{opacity:1}20%,62%{opacity:.45}}
 @media (max-width:400px){.brand{font-size:16px;gap:8px}.neonbadge{width:34px;height:34px}}
@@ -142,7 +144,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
 </head>
 <body>
 <header><div class="wrap">
-  <div class="brand"><span style="white-space:nowrap">AI Smash Learning Academy</span><span class="neonbadge" aria-hidden="true"><svg class="neon" width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 20 20)"><path class="nk" d="M15.5 27 L7.5 7.5 Q20 2.5 32.5 7.5 L24.5 27" stroke="#39F5FF" stroke-width="2"/><path class="nk" d="M20 27 V5 M17.7 27 L13.3 6 M22.3 27 L26.7 6 M12.5 7 Q20 9.5 27.5 7" stroke="#39F5FF" stroke-width="1.4"/><path class="nm" d="M14.5 27 H25.5 A5.5 5.5 0 0 1 14.5 27 Z" stroke="#FF2BD6" stroke-width="2.2"/></g></svg></span></div>
+  <div class="brand"><span style="white-space:nowrap">AI Smash Learning Academy</span><button type="button" class="neonbadge" data-go="join" aria-label="Join the community" title="Join the community"><svg class="neon" width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 20 20)"><path class="nk" d="M15.5 27 L7.5 7.5 Q20 2.5 32.5 7.5 L24.5 27" stroke="#39F5FF" stroke-width="2"/><path class="nk" d="M20 27 V5 M17.7 27 L13.3 6 M22.3 27 L26.7 6 M12.5 7 Q20 9.5 27.5 7" stroke="#39F5FF" stroke-width="1.4"/><path class="nm" d="M14.5 27 H25.5 A5.5 5.5 0 0 1 14.5 27 Z" stroke="#FF2BD6" stroke-width="2.2"/></g></svg></button></div>
   <div class="engage" id="engage">
     <button type="button" class="eb-join" data-go="join">Join the community</button>
     <button type="button" class="eb-heart" id="hbtn" aria-label="Give a heart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C1 8.4 2.7 5 6.2 5c2 0 3.4 1 4.4 2.4h.8C12.4 6 13.8 5 15.8 5c3.5 0 5.2 3.4 3.8 6.7C19.5 16.4 12 21 12 21z"/></svg><span class="hc" id="hcount" aria-live="polite">Like</span></button>
@@ -322,7 +324,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 5 Nov 2026, 5:05 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 5 Nov 2026, 5:15 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
