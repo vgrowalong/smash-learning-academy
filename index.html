@@ -327,7 +327,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 6 Nov 2026, 3:25 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 6 Nov 2026, 3:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -769,6 +769,27 @@ function arena(g,zc){
  box(g,15.6,.8,.14,0,0,zc-3.95,0x7B2FF7);box(g,15.6,.14,.16,0,.43,zc-3.95,0xFFC83D);
  [-1,1].forEach(function(s){box(g,.14,.8,7.4,s*7.8,0,zc-.25,0x7B2FF7);box(g,.16,.14,7.4,s*7.8,.43,zc-.25,0xFFC83D)});
  tube3(g,0,5.4,zc-3.6,7,false);tube3(g,0,5.4,zc+3.6,7,false);tube3(g,-4.3,5.4,zc,5.2,true);tube3(g,4.3,5.4,zc,5.2,true)}
+function crowd(g){
+ var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+ var SH=[0xE4572E,0x2563C9,0x1FAE7F,0xF4C430,0x7B2FF7,0xFF3D81,0x22B8CF,0xFFFFFF],SK=[0xF1C9A5,0xD9A06F,0xA9744A,0x7A4B2A],HR=[0x1B1B1B,0x3A2412,0x6B4A2B,0x8A8A8A];
+ var gB=new T.BoxGeometry(.52,.7,.32),gH=new T.SphereGeometry(.2,12,10),gA=new T.BoxGeometry(.13,.55,.16),gL=new T.BoxGeometry(.46,.22,.62),gS=new T.BoxGeometry(.2,.5,.2),M={};
+ function mat(c){return M[c]||(M[c]=new T.MeshLambertMaterial({color:c}))}
+ function mesh(geo,c,x,y,z){var m=new T.Mesh(geo,mat(c));m.position.set(x,y,z);m.userData.nocast=1;return m}
+ // stepped stand in front of the back wall
+ var rows=[{z:-6.9,top:.5},{z:-7.7,top:1.0},{z:-8.5,top:1.5}];
+ rows.forEach(function(r){var h=r.top+.4;var b=box(g,38,h,.9,8.3,-.4+h/2,r.z,0x1C2F63);b.userData.nocast=1;var t=box(g,38,.06,.92,8.3,r.top+.03,r.z,0x2563C9);t.userData.nocast=1});
+ var P=[];
+ [0,16.6].forEach(function(cx){rows.forEach(function(r,ri){for(var i=0;i<7;i++){if(rnd()<.18)continue;
+  var x=cx-5.1+i*1.7+(rnd()-.5)*.3,G=new T.Group(),sc=.92+rnd()*.2,top=r.top,shirt=SH[Math.floor(rnd()*SH.length)];
+  G.add(mesh(gL,0x2B3A55,0,top+.12,.2));G.add(mesh(gS,0x2B3A55,-.12,top-.2,.5));G.add(mesh(gS,0x2B3A55,.12,top-.2,.5));
+  var body=mesh(gB,shirt,0,top+.58,0);G.add(body);
+  var head=mesh(gH,SK[Math.floor(rnd()*SK.length)],0,top+1.22,.02);G.add(head);var hair=mesh(gH,HR[Math.floor(rnd()*HR.length)],0,top+1.3,-.04);hair.scale.set(1.05,.7,1.05);G.add(hair);
+  var aL=mesh(gA,shirt,-.34,top+.6,.05),aR=mesh(gA,shirt,.34,top+.6,.05);G.add(aL);G.add(aR);
+  G.position.set(x,0,r.z+.05);G.scale.setScalar(sc);g.add(G);
+  P.push({G:G,aL:aL,aR:aR,head:head,ph:rnd()*6.28,ch:rnd()<.35,top:top,sc:sc})}})});
+ return function(t){for(var i=0;i<P.length;i++){var p=P[i],b=Math.sin(t*2+p.ph);p.head.position.y=p.top+1.22+.012*b;
+  if(p.ch){var up=Math.max(0,Math.sin(t*3+p.ph));p.aL.rotation.z=-up*2.4;p.aR.rotation.z=up*2.4;p.aL.position.y=p.top+.6+up*.2;p.aR.position.y=p.top+.6+up*.2}}}
+}
 function academy(g){
  function nc(m){m.userData.nocast=1;return m}
  function cvs(w,h){var c=document.createElement('canvas');c.width=w;c.height=h;return c}
@@ -790,11 +811,10 @@ function academy(g){
  banner('AI SMASH LEARNING ACADEMY',16,2.6,8.3,4.6,-8.55,'#16294F','#2563C9',96);
  banner('PLAY',3.6,2.2,-7.3,4.6,-8.55,'#E4572E','#F4A53A',150);banner('LEARN',3.6,2.2,23.9,4.6,-8.55,'#7B2FF7','#B05CFF',120);
  banner('COURT 1',4,1.1,0,9,-8.55,'#16294F','#2563C9',100);banner('COURT 2',4,1.1,16.6,9,-8.55,'#16294F','#2563C9',100);
- [0,1,2].forEach(function(t){wall(33,.5,.9,8.3,.35+t*.5,-8.2+0,0x1C2F63)});
  // benches and gear in front of the wall
- [0,16.6].forEach(function(cx){nc(box(g,5,.18,.9,cx,.62,-7,0x2B3A55));[-2,2].forEach(function(l){nc(box(g,.2,.5,.7,cx+l,.3,-7,0x39424E))});
-  [-1.6,-.4,.8].forEach(function(b,i){nc(box(g,.5,.4,.4,cx+b,1,-7,[0xE4572E,0x2563C9,0x1FAE7F][i]))})});
- var cool=new T.Mesh(new T.CylinderGeometry(.35,.35,1.3,16),new T.MeshLambertMaterial({color:0x4FC3F7}));cool.position.set(8.3,.25,-7.5);nc(cool);g.add(cool);
+ [0,16.6].forEach(function(cx){nc(box(g,5,.18,.9,cx,.62,-5.4,0x2B3A55));[-2,2].forEach(function(l){nc(box(g,.2,.5,.7,cx+l,.3,-5.4,0x39424E))});
+  [-1.6,-.4,.8].forEach(function(b,i){nc(box(g,.5,.4,.4,cx+b,1,-5.4,[0xE4572E,0x2563C9,0x1FAE7F][i]))})});
+ var cool=new T.Mesh(new T.CylinderGeometry(.35,.35,1.3,16),new T.MeshLambertMaterial({color:0x4FC3F7}));cool.position.set(8.3,.25,-5.6);nc(cool);g.add(cool);
 }
 function bgCourts(g){
 
@@ -940,7 +960,7 @@ mk("s-court",[8.3,3.8,34,3.4,0,8.3],function(g,ca){
  var pl=[mkP(g,0xE4572E,0xffffff,-5.56,-1.6,0,true,1.5),mkP(g,0x3A6EA5,0xE9C46A,5.56,1.6,Math.PI,false,1.5)];
  var sh=shuttle();sh.scale.setScalar(1.6);g.add(sh);var Y=new T.Vector3(0,1,0),v=new T.Vector3();
  var G2=new T.Group();G2.position.set(16.6,0,7.8);g.add(G2);
- academy(g);var rr=rally(pl,sh,ca,g),bgu=bgCourts(G2);return function(t){rr(t);bgu(t)};},true,0,8.3);
+ academy(g);var cu=crowd(g);var rr=rally(pl,sh,ca,g),bgu=bgCourts(G2);return function(t){rr(t);bgu(t);cu(t)};},true,0,8.3);
 
 var ST=[{cx:.3,A:[.3,-.5,.9,1.5,.3],th:1.2,inD:.3,S0:null,hin:0,T:[4.2,.05],H:1,dur:.9,jump:0,tilt:0},
  {cx:-.6,A:[.3,Math.PI+.9,Math.PI-.3,Math.PI/2,.3],th:1.3,inD:1.3,S0:[6,3.4],hin:1.2,T:[4.6,.05],H:.1,dur:.4,jump:.3,tilt:0},
