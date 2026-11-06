@@ -104,7 +104,7 @@ a:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
 .engage{position:relative;display:flex;align-items:center;gap:8px;padding:0 0 10px}
 .engage button{flex:none;display:inline-flex;align-items:center;gap:7px;border-radius:999px;font:700 14px Figtree,sans-serif;padding:8px 14px;cursor:pointer;white-space:nowrap}
 .eb-join{background:var(--hot);color:#fff;border:0}
-.eb-about{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.eb-about{margin-left:-2px;background:var(--surface);color:var(--ink);border:1px solid var(--line)}
 .eb-heart{margin-left:auto;margin-right:7px;background:var(--surface);color:var(--ink);border:2px solid var(--hot);position:relative}
 .eb-heart svg{width:22px;height:22px;fill:var(--hot);animation:dance 1.3s ease-in-out infinite;transform-origin:50% 60%;filter:drop-shadow(0 0 4px rgba(228,87,46,.55))}
 .eb-heart::after{content:"";position:absolute;inset:-5px;border-radius:999px;border:2px solid var(--hot);opacity:0;animation:ring 2.2s ease-out infinite;pointer-events:none}
@@ -149,8 +149,8 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
 <header><div class="wrap">
   <div class="brand"><span style="white-space:nowrap">AI Smash Learning Academy</span><button type="button" class="neonbadge" id="nbadge" aria-label="Join the community" title="Join the community"><svg class="neon" width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 20 20)"><path class="nk" d="M15.5 27 L7.5 7.5 Q20 2.5 32.5 7.5 L24.5 27" stroke="#39F5FF" stroke-width="2"/><path class="nk" d="M20 27 V5 M17.7 27 L13.3 6 M22.3 27 L26.7 6 M12.5 7 Q20 9.5 27.5 7" stroke="#39F5FF" stroke-width="1.4"/><path class="nm" d="M14.5 27 H25.5 A5.5 5.5 0 0 1 14.5 27 Z" stroke="#FF2BD6" stroke-width="2.2"/></g></svg></button></div>
   <div class="engage" id="engage">
-    <button type="button" class="eb-about" data-go="about">About</button>
     <button type="button" class="eb-join" data-go="join">Join the community</button>
+    <button type="button" class="eb-about" data-go="about">About</button>
     <button type="button" class="eb-heart" id="hbtn" aria-label="Give a heart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C1 8.4 2.7 5 6.2 5c2 0 3.4 1 4.4 2.4h.8C12.4 6 13.8 5 15.8 5c3.5 0 5.2 3.4 3.8 6.7C19.5 16.4 12 21 12 21z"/></svg><span class="hc" id="hcount" aria-live="polite">Like</span></button>
     <span class="hmsg" id="hmsg" role="status"></span>
   </div>
@@ -327,7 +327,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 12:05 am &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 12:20 am &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
