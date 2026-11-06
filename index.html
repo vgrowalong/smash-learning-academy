@@ -327,7 +327,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 6 Nov 2026, 4:10 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 12:05 am &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -637,7 +637,7 @@ function mkP(g,shirt,band,x,z,ry,coach,sc,o){o=o||{};var P=new T.Group(),L=funct
  var sk=L(o.skin||0xF2C9A0),nv=L(o.shorts||0x14283A),hm=L(o.hair||0x14283A),wh=L(0xF4F6F8);
  var legs=new T.Group();P.add(legs);var Ls=[.1,-.1].map(function(zz){var lg=new T.Group(),kn=new T.Group();lg.position.set(0,.8,zz);legs.add(lg);
   var th=new T.Mesh(new T.CylinderGeometry(.068,.055,.4,20),sk);th.position.y=-.2;lg.add(th);kn.position.y=-.4;lg.add(kn);var ks=new T.Mesh(new T.SphereGeometry(.058,12,10),sk);ks.position.y=-.4;lg.add(ks);
-  var sn=new T.Mesh(new T.CylinderGeometry(.052,.04,.4,20),sk);sn.position.y=-.2;kn.add(sn);var sck=new T.Mesh(new T.CylinderGeometry(.047,.043,.17,20),wh);sck.position.y=-.3;kn.add(sck);var shl=new T.Mesh(new T.CylinderGeometry(.088,.098,.26,20),nv);shl.position.y=-.13;lg.add(shl);var so=new T.Mesh(new T.BoxGeometry(.32,.04,.15),L(0x1B2430));so.position.set(.08,-.38,0);kn.add(so);
+  var sn=new T.Mesh(new T.CylinderGeometry(.052,.04,.4,20),sk);sn.position.y=-.2;kn.add(sn);var sck=new T.Mesh(new T.CylinderGeometry(.047,.043,.17,20),wh);sck.position.y=-.3;kn.add(sck);var shl=new T.Mesh(new T.CylinderGeometry(.088,.098,.26,20),nv);shl.position.y=-.13;lg.add(shl);var so=new T.Mesh(new T.BoxGeometry(.32,.04,.15),L(0x1B2430));var sl=new T.Mesh(new T.BoxGeometry(.33,.02,.16),L(0xffffff));sl.position.set(.08,-.4,0);kn.add(sl);so.position.set(.08,-.38,0);kn.add(so);
   var up=new T.Mesh(new T.SphereGeometry(.1,24,14,0,Math.PI*2,0,Math.PI/2),L(0xF4F6F8));up.scale.set(1.5,.8,.75);up.position.set(.09,-.36,0);kn.add(up);
   var hc=new T.Mesh(new T.SphereGeometry(.058,16,12),L(shirt));hc.scale.set(.9,1.1,1.05);hc.position.set(-.04,-.335,0);kn.add(hc);
   var tc=new T.Mesh(new T.SphereGeometry(.075,16,10,0,Math.PI*2,0,Math.PI/2),L(shirt));tc.scale.set(1,.55,.95);tc.position.set(.17,-.36,0);kn.add(tc);
@@ -652,7 +652,7 @@ function mkP(g,shirt,band,x,z,ry,coach,sc,o){o=o||{};var P=new T.Group(),L=funct
  var hr=new T.Mesh(new T.SphereGeometry(.14,28,12,0,Math.PI*2,0,Math.PI/2),hm);hr.position.y=1.64;P.add(hr);var bk0=new T.Mesh(new T.SphereGeometry(.136,28,18),hm);bk0.scale.set(.95,1.05,.98);bk0.position.set(-.035,1.625,0);P.add(bk0);
  var fw=L(0xffffff),fk=L(0x14283A);
  [-1,1].forEach(function(s){var e=new T.Mesh(new T.SphereGeometry(.024,10,8),fw);e.position.set(.116,1.625,s*.05);P.add(e);var pu=new T.Mesh(new T.SphereGeometry(.014,8,6),fk);pu.position.set(.134,1.625,s*.05);P.add(pu);var ea=new T.Mesh(new T.SphereGeometry(.032,8,6),sk);ea.position.set(0,1.62,s*.13);P.add(ea)});
- var ns=new T.Mesh(new T.SphereGeometry(.02,8,6),L(0xE0B088));ns.position.set(.13,1.605,0);P.add(ns);
+ [-1,1].forEach(function(s){var eb=new T.Mesh(new T.BoxGeometry(.012,.01,.04),hm);eb.position.set(.126,1.66,s*.05);P.add(eb)});var col=new T.Mesh(new T.TorusGeometry(.085,.022,8,20),L(band));col.rotation.x=Math.PI/2;col.position.y=1.44;col.scale.set(.85,1,1.1);P.add(col);var ns=new T.Mesh(new T.SphereGeometry(.02,8,6),L(0xE0B088));ns.position.set(.13,1.605,0);P.add(ns);
  var mg=new T.TorusGeometry(.03,.006,6,14,Math.PI);mg.rotateZ(Math.PI);mg.rotateY(Math.PI/2);var mo=new T.Mesh(mg,L(0xA0302A));mo.position.set(.122,1.597,0);P.add(mo);
  var bd=new T.Mesh(new T.TorusGeometry(.135,.02,6,20),L(band));bd.rotation.x=Math.PI/2;bd.position.y=1.66;P.add(bd);
  var arm=new T.Group();arm.position.set(0,1.38,.27);P.add(arm);
@@ -772,7 +772,7 @@ function arena(g,zc){
 function crowd(g){
  var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
  var SH=[0xE4572E,0x2563C9,0x1FAE7F,0xF4C430,0x7B2FF7,0xFF3D81,0x22B8CF,0xFFFFFF],SK=[0xF1C9A5,0xD9A06F,0xA9744A,0x7A4B2A],HR=[0x1B1B1B,0x3A2412,0x6B4A2B,0x8A8A8A];
- var gB=new T.BoxGeometry(.52,.7,.32),gH=new T.SphereGeometry(.2,12,10),gA=new T.BoxGeometry(.13,.55,.16),gL=new T.BoxGeometry(.46,.22,.62),gS=new T.BoxGeometry(.2,.5,.2),M={};
+ var gB=new T.CylinderGeometry(.27,.22,.7,18),gH=new T.SphereGeometry(.2,20,16),gA=new T.CylinderGeometry(.07,.06,.55,12),gL=new T.CylinderGeometry(.24,.24,.22,16),gS=new T.CylinderGeometry(.09,.07,.5,12),gN=new T.CylinderGeometry(.06,.07,.12,10),gSh=new T.SphereGeometry(.09,12,10),M={};
  function mat(c){return M[c]||(M[c]=new T.MeshLambertMaterial({color:c}))}
  function mesh(geo,c,x,y,z){var m=new T.Mesh(geo,mat(c));m.position.set(x,y,z);m.userData.nocast=1;return m}
  // stepped stand in front of the back wall
@@ -781,9 +781,9 @@ function crowd(g){
  var P=[];
  [0,16.6].forEach(function(cx){rows.forEach(function(r,ri){for(var i=0;i<7;i++){if(rnd()<.18)continue;
   var x=cx-5.1+i*1.7+(rnd()-.5)*.3,G=new T.Group(),sc=.92+rnd()*.2,top=r.top,shirt=SH[Math.floor(rnd()*SH.length)];
-  G.add(mesh(gL,0x2B3A55,0,top+.12,.2));G.add(mesh(gS,0x2B3A55,-.12,top-.2,.5));G.add(mesh(gS,0x2B3A55,.12,top-.2,.5));
-  var body=mesh(gB,shirt,0,top+.58,0);G.add(body);
-  var head=mesh(gH,SK[Math.floor(rnd()*SK.length)],0,top+1.22,.02);G.add(head);var hair=mesh(gH,HR[Math.floor(rnd()*HR.length)],0,top+1.3,-.04);hair.scale.set(1.05,.7,1.05);G.add(hair);
+  var lp=mesh(gL,0x2B3A55,0,top+.12,.2);lp.rotation.x=Math.PI/2;lp.scale.set(1,2.6,1);G.add(lp);G.add(mesh(gS,0x2B3A55,-.12,top-.2,.5));G.add(mesh(gS,0x2B3A55,.12,top-.2,.5));
+  var body=mesh(gB,shirt,0,top+.58,0);body.scale.set(1,1,.72);G.add(body);var skc=SK[Math.floor(rnd()*SK.length)];G.add(mesh(gN,skc,0,top+.97,0));[-1,1].forEach(function(q){var sd=mesh(gSh,shirt,q*.28,top+.88,0);sd.scale.set(1,.9,.8);G.add(sd)});
+  var head=mesh(gH,skc,0,top+1.22,.02);head.scale.set(.92,1.05,.95);G.add(head);var hair=mesh(gH,HR[Math.floor(rnd()*HR.length)],0,top+1.3,-.04);hair.scale.set(1.05,.7,1.05);G.add(hair);
   var aL=mesh(gA,shirt,-.34,top+.6,.05),aR=mesh(gA,shirt,.34,top+.6,.05);G.add(aL);G.add(aR);
   G.position.set(x,0,r.z+.05);G.scale.setScalar(sc);g.add(G);
   P.push({G:G,aL:aL,aR:aR,head:head,ph:rnd()*6.28,ch:rnd()<.35,top:top,sc:sc})}})});
