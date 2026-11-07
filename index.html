@@ -202,6 +202,10 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
 @media (prefers-reduced-motion:reduce){nav button,.cta,.fab,.chips button{animation:none!important}}
 @media (max-width:600px){header{top:-98px}.score button,.score select{min-height:40px;padding:8px 12px}.eb-join,.eb-heart{min-height:42px}nav button{min-height:42px}body{-webkit-text-size-adjust:100%}}
 @media (hover:none){nav button:hover,.chips button:hover,.cta:hover{transform:none}}
+.gwrap{max-width:min(420px,calc(62vh*360/520));margin:14px auto 0}#gc{width:100%;height:auto;display:block;border-radius:14px;background:#1D6B55;touch-action:none;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.gbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 0;font:600 15px Figtree,sans-serif}.gbar b{font:800 26px 'Bricolage Grotesque',sans-serif;color:var(--court);padding:0 4px}#gm{text-align:center;color:var(--muted);font-size:13px;flex:1}
+.gbtns{display:flex;gap:10px}.gbtns button{flex:1;min-height:56px;font:800 18px Figtree,sans-serif;border-radius:14px;border:2px solid var(--line);background:var(--surface);cursor:pointer;touch-action:manipulation}.gbtns .cta{flex:2;color:#fff;border:0}.gnote{color:var(--muted);font-size:13px}
+nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
 </style>
 </head>
 <body>
@@ -338,6 +342,14 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
   <div class="result" id="wres" aria-live="polite"></div>
 </section>
 
+<section id="game">
+  <h2>Play game</h2>
+  <p class="lead">Beat the computer! First to 21 points wins. Drag to move, press <b>Swing</b> just as the shuttle reaches you.</p>
+  <div class="gwrap"><canvas id="gc" width="360" height="520" aria-label="Badminton game"></canvas>
+   <div class="gbar"><div>You <b id="gp">0</b></div><div id="gm">Press Swing to serve</div><div><b id="ga">0</b> Computer</div></div>
+   <div class="gbtns"><button id="gl" aria-label="Move left">&#9664;</button><button id="gs" class="cta">Swing!</button><button id="gr" aria-label="Move right">&#9654;</button></div>
+   <p class="gnote">Tips: be under the shuttle's landing spot, then swing right when it arrives for a fast smash. Keyboard: arrows to move, space to swing.</p></div>
+</section>
 <section id="about">
   <h2>About me</h2>
   <p class="lead">Hi, I’m Shree. I’m 8 years old. Let’s learn!</p>
@@ -385,11 +397,11 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 5:00 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 5:35 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-var tabs=[["home","Home"],["join","Join"],["about","About"],["rules","Rules"],["rackets","Rackets"],["grip","Grip"],["techniques","Techniques"],["footwork","Footwork"],["feed","Feed Drill"],["tricks","Trickshots"],["warmup","Dynamic & Rotation"],["shuttles","Shuttles"]];
+var tabs=[["home","Home"],["game","Play game"],["join","Join"],["about","About"],["rules","Rules"],["rackets","Rackets"],["grip","Grip"],["techniques","Techniques"],["footwork","Footwork"],["feed","Feed Drill"],["tricks","Trickshots"],["warmup","Dynamic & Rotation"],["shuttles","Shuttles"]];
 var nav=document.querySelector("nav");
 tabs.forEach(function(t,i){var b=document.createElement("button");b.textContent=t[1];b.setAttribute("role","tab");b.setAttribute("aria-selected",i==0);b.dataset.id=t[0];b.onclick=function(){go(t[0])};nav.appendChild(b)});
 function go(id){var nbb=document.getElementById('nbadge');if(nbb){var jn=id==='join';nbb.title=jn?'Back to home':'Join the community';nbb.setAttribute('aria-label',nbb.title)}document.querySelectorAll("section").forEach(function(s){s.classList.toggle("on",s.id==id)});
@@ -1296,6 +1308,41 @@ mk("s-racket",[0,.2,6,0],function(g){
 
 mk("s-shuttle",[0,.3,5,0],function(g){var s=shuttle();s.scale.setScalar(5.5);s.rotation.z=.45;g.add(s)});
 })()}
+</script>
+<script>
+(function(){var cv=document.getElementById('gc'),sec=document.getElementById('game');if(!cv)return;var c=cv.getContext('2d'),W=360,H=520,NY=260,PY=450,AY=70;
+var gm=document.getElementById('gm'),gp=document.getElementById('gp'),ga=document.getElementById('ga');
+var px=180,ax=180,pts=[0,0],srv=0,st='ready',sh=null,swingT=-9,keys={},now=0,msg='',msgT=0,ptsT=0,lastM=0,end=false;
+function say(t,d){gm.textContent=t}
+function rn(a,b){return a+Math.random()*(b-a)}
+function fly(from,fx,fy,tx,ty,T){sh={by:from,fx:fx,fy:fy,tx:tx,ty:ty,t0:now,T:T,done:false};st='fly'}
+function serve(who){if(who===0)fly(0,px,PY,rn(70,290),rn(90,170),1.2);else fly(1,ax,AY,rn(70,290),rn(340,450),1.2)}
+function point(w){pts[w]++;gp.textContent=pts[0];ga.textContent=pts[1];srv=w;sh=null;st='pause';ptsT=now;
+ if(pts[w]>=21){end=true;say(w===0?'You win! Great game! Press Swing to play again':'Computer wins. Press Swing to try again')}else say(w===0?'Point to you! Swing to serve':'Point to computer')}
+function swing(){if(end){pts=[0,0];gp.textContent=0;ga.textContent=0;end=false;srv=0;st='ready';say('Press Swing to serve');return}
+ swingT=now;if(st==='ready'||(st==='pause'&&srv===0&&now-ptsT>.5)){if(srv===0){serve(0);say('Go!')}}}
+function resolve(){var s=sh;if(s.by===0){var miss=Math.abs(ax-s.tx)>52||Math.random()<(s.T<.8?.4:.14);if(miss){point(0);say('Great shot! Point to you!')}else{fly(1,s.tx,s.ty,rn(70,290),rn(340,455),rn(.95,1.2))}}
+ else{var d=swingT-(s.t0+s.T),ok=Math.abs(px-s.tx)<56&&d>-.4&&d<.14;if(!ok){point(1);say(Math.abs(px-s.tx)>=56?'Too far from the shuttle!':'Swing at the right time!')}else{var sm=Math.abs(d)<.1;fly(0,s.tx,s.ty,rn(60,300),rn(80,170),sm?.62:rn(.95,1.2));say(sm?'SMASH!':'Nice return!')}}}
+function upd(dt){now+=dt;var m=(keys.ArrowRight||keys.d||keys.D||keys.R?1:0)-(keys.ArrowLeft||keys.a||keys.A||keys.L?1:0);px=Math.max(45,Math.min(315,px+m*260*dt));
+ var tgt=180;if(sh&&sh.by===0)tgt=sh.tx;ax+=Math.max(-150*dt,Math.min(150*dt,tgt-ax));
+ if(st==='fly'&&now>=sh.t0+sh.T+.14)resolve();
+ if(st==='pause'&&srv===1&&!end&&now-ptsT>1.2)serve(1);}
+function body(x,y,col,flip){c.fillStyle='rgba(0,0,0,.2)';c.beginPath();c.ellipse(x,y+22,18,6,0,0,7);c.fill();c.fillStyle=col;c.fillRect(x-11,y-4,22,24);c.fillStyle='#F2C9A0';c.beginPath();c.arc(x,y-14,11,0,7);c.fill();c.fillStyle='#14283A';c.beginPath();c.arc(x,y-17,11,Math.PI,0);c.fill();
+ var sw=(!flip&&now-swingT<.18)?-1:0;c.strokeStyle='#222';c.lineWidth=3;c.beginPath();c.moveTo(x+11,y+4);c.lineTo(x+24,y-16+(sw?-10:0));c.stroke();c.strokeStyle='#E4572E';c.beginPath();c.ellipse(x+26,y-26+(sw?-10:0),7,10,.3,0,7);c.stroke()}
+function draw(){c.fillStyle='#1D6B55';c.fillRect(0,0,W,H);c.fillStyle='#2A8A6C';c.fillRect(40,30,280,460);c.strokeStyle='#fff';c.lineWidth=3;c.strokeRect(40,30,280,460);c.lineWidth=2;c.beginPath();c.moveTo(60,30);c.lineTo(60,490);c.moveTo(300,30);c.lineTo(300,490);c.moveTo(40,110);c.lineTo(320,110);c.moveTo(40,410);c.lineTo(320,410);c.moveTo(180,110);c.lineTo(180,NY);c.moveTo(180,NY);c.lineTo(180,410);c.stroke();
+ c.fillStyle='rgba(255,255,255,.9)';c.fillRect(30,NY-3,300,6);c.fillStyle='rgba(0,0,0,.25)';c.fillRect(30,NY+3,300,4);
+ body(ax,AY,'#3A6EA5',true);body(px,PY,'#E4572E',false);
+ if(sh){var u=Math.min(1,(now-sh.t0)/sh.T),x=sh.fx+(sh.tx-sh.fx)*u,y=sh.fy+(sh.ty-sh.fy)*u,h=Math.sin(Math.PI*u)*(sh.T<.8?30:70);
+  c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(x,y,7,3,0,0,7);c.fill();var sy=y-h;c.fillStyle='#fff';c.beginPath();c.moveTo(x,sy+8);c.lineTo(x-6,sy-6);c.lineTo(x+6,sy-6);c.closePath();c.fill();c.fillStyle='#E4572E';c.beginPath();c.arc(x,sy+8,4,0,7);c.fill();
+  if(sh.by===1&&u>.55){c.strokeStyle='rgba(255,230,0,.9)';c.lineWidth=3;c.beginPath();c.arc(sh.tx,sh.ty,30,0,7);c.stroke()}}}
+var last=0;function loop(t){requestAnimationFrame(loop);if(!sec.classList.contains('on')){last=0;return}var dt=last?Math.min(.05,(t-last)/1000):0;last=t;upd(dt);draw()}
+requestAnimationFrame(loop);
+function pos(e){var r=cv.getBoundingClientRect();px=Math.max(45,Math.min(315,(e.clientX-r.left)/r.width*W))}
+var drag=false;cv.addEventListener('pointerdown',function(e){drag=true;pos(e);try{cv.setPointerCapture(e.pointerId)}catch(x){}});cv.addEventListener('pointermove',function(e){if(drag)pos(e)});cv.addEventListener('pointerup',function(){drag=false});
+addEventListener('keydown',function(e){if(!sec.classList.contains('on'))return;if(e.code==='Space'){e.preventDefault();swing()}else keys[e.key]=1});addEventListener('keyup',function(e){delete keys[e.key]});
+document.getElementById('gs').addEventListener('pointerdown',function(e){e.preventDefault();swing()});
+[['gl','L'],['gr','R']].forEach(function(b){var el=document.getElementById(b[0]);el.addEventListener('pointerdown',function(e){e.preventDefault();keys[b[1]]=1});['pointerup','pointerleave','pointercancel'].forEach(function(n){el.addEventListener(n,function(){delete keys[b[1]]})})});
+})();
 </script>
 </body>
 </html>
