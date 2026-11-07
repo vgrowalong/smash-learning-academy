@@ -202,7 +202,7 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
 @media (prefers-reduced-motion:reduce){nav button,.cta,.fab,.chips button{animation:none!important}}
 @media (max-width:600px){header{top:-98px}.score button,.score select{min-height:40px;padding:8px 12px}.eb-join,.eb-heart{min-height:42px}nav button{min-height:42px}body{-webkit-text-size-adjust:100%}}
 @media (hover:none){nav button:hover,.chips button:hover,.cta:hover{transform:none}}
-.gwrap{max-width:min(420px,calc(62vh*360/520));margin:14px auto 0}#gc{width:100%;height:auto;display:block;border-radius:14px;background:#1D6B55;touch-action:none;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.gwrap{scroll-margin-top:96px;max-width:min(420px,calc(62vh*360/520));margin:14px auto 0}#gc{width:100%;height:auto;display:block;border-radius:14px;background:#1D6B55;touch-action:none;box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .gbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 0;font:600 15px Figtree,sans-serif}.gbar b{font:800 26px 'Bricolage Grotesque',sans-serif;color:var(--court);padding:0 4px}#gm{text-align:center;color:var(--muted);font-size:13px;flex:1}
 .gbtns{display:flex;gap:10px}.gbtns button{flex:1;min-height:56px;font:800 18px Figtree,sans-serif;border-radius:14px;border:2px solid var(--line);background:var(--surface);cursor:pointer;touch-action:manipulation}.gbtns .cta{flex:2;color:#fff;border:0;background:var(--hot);box-shadow:0 5px 0 #B5401C}.gnote{color:var(--muted);font-size:13px}
 .gcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0;max-width:420px}.gopp{font:800 20px Figtree,sans-serif;margin:20px 0 0}.gcard h3{margin:0 0 8px;font:800 17px Figtree,sans-serif}.gcard input{width:100%;box-sizing:border-box;padding:10px 12px;font:600 16px Figtree,sans-serif;border:2px solid var(--line);border-radius:10px;margin-bottom:10px}
@@ -409,7 +409,7 @@ nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 6:25 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 6:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -1357,6 +1357,7 @@ function body(x,y,l,nm,sw,top){c.fillStyle='rgba(0,0,0,.2)';c.beginPath();c.elli
  c.font='700 12px Figtree,sans-serif';c.textAlign='center';c.lineWidth=3;c.strokeStyle='rgba(0,0,0,.55)';c.fillStyle='#fff';var ty=y+(top?-34:38);c.strokeText(nm,x,ty);c.fillText(nm,x,ty)}
 function draw(){c.fillStyle='#1D6B55';c.fillRect(0,0,W,H);c.fillStyle='#2A8A6C';c.fillRect(40,30,280,460);c.strokeStyle='#fff';c.lineWidth=3;c.strokeRect(40,30,280,460);c.lineWidth=2;c.beginPath();c.moveTo(60,30);c.lineTo(60,490);c.moveTo(300,30);c.lineTo(300,490);c.moveTo(40,110);c.lineTo(320,110);c.moveTo(40,410);c.lineTo(320,410);c.moveTo(180,110);c.lineTo(180,410);c.stroke();
  c.fillStyle='rgba(255,255,255,.9)';c.fillRect(30,NY-3,300,6);c.fillStyle='rgba(0,0,0,.25)';c.fillRect(30,NY+3,300,4);
+ c.font='800 11px Figtree,sans-serif';c.textAlign='center';c.fillStyle='rgba(255,255,255,.75)';c.fillText('OPPONENTS: '+opp[0]+' & '+opp[1],W/2,20);c.fillText('YOUR TEAM: '+names[0]+' & '+names[1],W/2,H-8);
  body(o1,AY,oL[0],opp[0],0,1);body(o2,AY,oL[1],opp[1],0,1);body(mx,PY,LOOKS[sel[1]],names[1],0,0);body(px,PY,LOOKS[sel[0]],names[0]+' (you)',now-swingT<.18,0);
  if(sh){var u=Math.min(1,(now-sh.t0)/sh.T),x=sh.fx+(sh.tx-sh.fx)*u,y=sh.fy+(sh.ty-sh.fy)*u,h=Math.sin(Math.PI*u)*(sh.T<.8?30:70);
   c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(x,y,7,3,0,0,7);c.fill();var sy=y-h;c.fillStyle='#fff';c.beginPath();c.moveTo(x,sy+8);c.lineTo(x-6,sy-6);c.lineTo(x+6,sy-6);c.closePath();c.fill();c.fillStyle='#E4572E';c.beginPath();c.arc(x,sy+8,4,0,7);c.fill();
@@ -1368,7 +1369,7 @@ function clean(v,d){v=(v||'').replace(/[<>&]/g,'').trim().slice(0,12);return v||
 document.getElementById('gstart').onclick=function(){names=[clean(document.getElementById('gn1').value,'You'),clean(document.getElementById('gn2').value,'Buddy')];
  opp=[clean(document.getElementById('gn3').value,'Rex'),clean(document.getElementById('gn4').value,'Mia')];oL=[LOOKS[sel[2]],LOOKS[sel[3]]];
  document.getElementById('gt1').textContent=names[0]+' & '+names[1];document.getElementById('gt2').textContent=opp[0]+' & '+opp[1];
- reset();setup.hidden=true;play.hidden=false;run=true;draw();play.scrollIntoView({block:'nearest'})};
+ reset();setup.hidden=true;play.hidden=false;run=true;draw();play.scrollIntoView({block:'start'})};
 document.getElementById('gback').onclick=function(){run=false;play.hidden=true;setup.hidden=false};
 function pos(e){var r=cv.getBoundingClientRect();px=Math.max(45,Math.min(315,(e.clientX-r.left)/r.width*W))}
 var drag=false;cv.addEventListener('pointerdown',function(e){drag=true;pos(e);try{cv.setPointerCapture(e.pointerId)}catch(x){}});cv.addEventListener('pointermove',function(e){if(drag)pos(e)});cv.addEventListener('pointerup',function(){drag=false});
