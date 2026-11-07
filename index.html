@@ -164,7 +164,7 @@ nav button[aria-selected="true"]{background:linear-gradient(120deg,var(--court),
 
 /* colourful tabs, each with its own motion */
 @keyframes k-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes k-pulse{0%{box-shadow:0 0 0 0 var(--c)}70%{box-shadow:0 0 0 11px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes k-pulse{0%{box-shadow:0 0 0 0 var(--r,var(--c))}70%{box-shadow:0 0 0 11px transparent}100%{box-shadow:0 0 0 0 transparent}}
 @keyframes k-wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-6deg)}90%{transform:rotate(6deg)}95%{transform:rotate(-4deg)}}
 @keyframes k-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.04)}}
 @keyframes k-swing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
@@ -193,6 +193,13 @@ nav button[data-id="warmup"]{--c:#FFB38A;--t:#14281F;animation:k-sway 2.6s ease-
 nav button[data-id="shuttles"]{--c:#FACC15;--t:#14281F;animation:k-flick 2.2s ease-in-out infinite}
 nav button[aria-selected="true"]{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){nav button,.eb-join{animation:none!important}}
+nav button,nav button[data-id]{animation:k-pulse 2.2s ease-out infinite!important;background-image:none!important}
+nav button[data-id="techniques"]{--r:#7A8A80}
+nav button[aria-selected="true"]{animation-play-state:running!important}
+.cta{--c:#E4572E;animation:k-pulse 2.2s ease-out infinite!important}.cta.alt{--c:#1D6B55}
+.fab{--c:#E4572E;animation:k-pulse 2.2s ease-out infinite}
+.chips button{--c:#1D6B55;animation:k-pulse 2.6s ease-out infinite}
+@media (prefers-reduced-motion:reduce){nav button,.cta,.fab,.chips button{animation:none!important}}
 </style>
 </head>
 <body>
@@ -376,7 +383,7 @@ nav button[aria-selected="true"]{animation-play-state:paused}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 1:05 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 1:20 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
