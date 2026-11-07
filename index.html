@@ -269,7 +269,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
     <a class="card lk" href="#shuttles" data-go="shuttles"><h3>Shuttles <span aria-hidden="true">›</span></h3><p>Feather or nylon? Which speed to buy.</p></a>
     <a class="card lk" href="#techniques" data-go="techniques"><h3>Techniques <span aria-hidden="true">›</span></h3><p>Watch the coach serve, smash, drop, lift and keep.</p></a>
     <a class="card lk" href="#footwork" data-go="footwork"><h3>Footwork <span aria-hidden="true">›</span></h3><p>Split step, side steps, lunges and the six-corner drill.</p></a>
-    <a class="card lk" href="#tricks" data-go="tricks"><h3>Trickshots <span aria-hidden="true">›</span></h3><p>Easy and hard tricks, plus the illegal moves to avoid.</p></a>
+    <a class="card lk" href="#tricks" data-go="tricks"><h3>Trickshots <span aria-hidden="true">›</span></h3><p>Illegal moves to avoid, plus wild fantasy stunts.</p></a>
     <a class="card lk" href="#feed" data-go="feed"><h3>Feed Drill <span aria-hidden="true">›</span></h3><p>The coach throws shuttles and the player hits every one.</p></a>
     <a class="card lk" href="#about" data-go="about"><h3>About me <span aria-hidden="true">›</span></h3><p>Meet Shree and see why this academy was built.</p></a>
     <a class="card lk" href="#warmup" data-go="warmup"><h3>Dynamic &amp; Rotation <span aria-hidden="true">›</span></h3><p>Warm-ups before the game and stretches after.</p></a>
@@ -348,9 +348,9 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
 
 <section id="tricks">
   <h2>Trickshots</h2>
-  <p class="lead">Pick a level. Easy and Hard are legal tricks. Impossible has only illegal moves that break the rules and lose the point. Fantasy has stunts that no one can do. Drag to see each one from another side.</p>
+  <p class="lead">Only illegal moves are here: moves that break the rules and lose the point in a real match. Fantasy has wild stunts that no one can really do. Drag to see each one from another side.</p>
   <div class="stage sm" id="s-trick" role="img" aria-label="3D coach performing a badminton trick shot"></div>
-  <div class="pick" id="tkc" role="group" aria-label="Difficulty"><button aria-pressed="true" data-c="0">Easy</button><button aria-pressed="false" data-c="1">Hard</button><button aria-pressed="false" data-c="2">Impossible</button><button aria-pressed="false" data-c="3">Fantasy</button></div>
+  <div class="pick" id="tkc" role="group" aria-label="Difficulty"><button aria-pressed="true" data-c="2">Illegal moves</button><button aria-pressed="false" data-c="3">Fantasy</button></div>
   <div class="pick" id="tkb" role="group" aria-label="Trick shot"></div>
   <div class="result" id="tkres" aria-live="polite"></div>
 </section>
@@ -431,7 +431,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 10:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 11:00 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -720,9 +720,9 @@ var TK=[['Behind-the-back shot','Hit the shuttle behind your back as it drops pa
 ['Hitting with the hand','Illegal: hitting the shuttle with your hand instead of the racket.',['The shuttle comes toward you.','You hit it with your hand.','The umpire calls a fault.','Your opponent gets the point.'],'Only the racket may hit the shuttle.'],
 ['Obstructing your opponent','Illegal: waving or shouting to distract your opponent.',['You stand at the net and wave your arms.','You try to put your opponent off.','The umpire calls a fault.','You may also get a card.'],'You may not deliberately distract your opponent.'],
 ['False-start serve','Illegal: a feint or pause before the serve.',['The server starts to swing, stops, then swings again.','The receiver cannot judge the serve.','The umpire calls a fault.','The serve is lost.'],'Once the forward swing starts, it must continue without a pause.']];
-var tcat=0,TC=[[3,4,5,11,12,13,14,15,16,17],[0,1,2,6,18,19,20,21,22,23],[30,31,32,33,34,35,36,37,38,39],[7,8,9,10,24,25,26,27,28,29]],TN=['Easy','Hard','Impossible','Fantasy'];
+var tcat=0,TC=[[3,4,5,11,12,13,14,15,16,17],[0,1,2,6,18,19,20,21,22,23],[30,31,32,33,34,35,36,37,38,39],[7,8,9,10,24,25,26,27,28,29]],TN=['Easy','Hard','Illegal move','Fantasy'];
 function tpick(i){i=TC.some(function(a){return a.indexOf(i)>=0})?i:TC[0][0];tcat=TC.findIndex(function(a){return a.indexOf(i)>=0});document.querySelectorAll('#tkc button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.c===tcat)});var gb=document.getElementById('tkb');gb.innerHTML='';TC[tcat].forEach(function(j,n){var b=document.createElement('button');b.textContent=(n+1)+'. '+TK[j][0];b.setAttribute('aria-pressed',j===i);b.onclick=function(){tpick(j)};gb.appendChild(b)});var d=TK[i];document.getElementById('tkres').innerHTML='<h3>'+d[0]+' \u00b7 '+TN[tcat]+'</h3><p style="margin:0 0 8px">'+d[1]+'</p><ol>'+d[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><p style="margin:0"><b>Tip:</b> '+d[3]+'</p>';if(window.setTrick)setTrick(i)}
-document.querySelectorAll('#tkc button').forEach(function(b){b.onclick=function(){tpick(TC[+b.dataset.c][0])}});tpick(TC[0][0]);
+document.querySelectorAll('#tkc button').forEach(function(b){b.onclick=function(){tpick(TC[+b.dataset.c][0])}});tpick(TC[2][0]);
 
 
 /* 3D scenes */
