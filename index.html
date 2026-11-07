@@ -211,6 +211,23 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
 nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
 .eb-share{--c:#7B2FF7;background:#7B2FF7;color:#fff;border:0;border-radius:999px;padding:8px 16px;font:800 14px Figtree,sans-serif;min-height:38px;cursor:pointer;animation:k-pulse 2.2s ease-out infinite;margin-left:7px}
 #cf{position:fixed;inset:0;pointer-events:none;z-index:50}
+/* visual attraction pack */
+@keyframes hgrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(16px,-22px) rotate(14deg)}}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,40px) scale(1.15)}}
+body::before,body::after{content:"";position:fixed;z-index:-1;width:46vw;height:46vw;max-width:520px;max-height:520px;border-radius:50%;filter:blur(70px);opacity:.28;pointer-events:none;animation:blob 14s ease-in-out infinite}
+body::before{top:-12vw;right:-10vw;background:#E4572E}body::after{bottom:-14vw;left:-12vw;background:#2563EB;animation-delay:-6s}
+.hero h1{background:linear-gradient(100deg,#14281F,#1D6B55,#E4572E,#7B2FF7,#1D6B55,#14281F);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:hgrad 8s linear infinite}
+.hero{position:relative}.hero::after{content:"\1F3F8";position:absolute;right:4px;top:10px;font-size:44px;opacity:.35;animation:drift 6s ease-in-out infinite;pointer-events:none}
+section.on .card,section.on .grid>*{animation:fup .5s ease both}
+section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-child(3){animation-delay:.12s}section.on .grid>*:nth-child(4){animation-delay:.18s}section.on .grid>*:nth-child(5){animation-delay:.24s}section.on .grid>*:nth-child(n+6){animation-delay:.3s}
+.card.lk{border-left:6px solid var(--ac,#1D6B55);transition:transform .2s cubic-bezier(.3,1.6,.5,1),box-shadow .2s}
+.card.lk:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 10px 22px rgba(0,0,0,.14)}
+.card.lk h3 span{color:var(--ac,#1D6B55);display:inline-block;transition:transform .2s}.card.lk:hover h3 span{transform:translateX(5px)}
+.card.lk[data-go="rules"]{--ac:#800020}.card.lk[data-go="rackets"]{--ac:#111}.card.lk[data-go="grip"]{--ac:#7B2FF7}.card.lk[data-go="shuttles"]{--ac:#E0B400}.card.lk[data-go="techniques"]{--ac:#14B8A6}.card.lk[data-go="footwork"]{--ac:#F97316}.card.lk[data-go="feed"]{--ac:#FF4D9D}.card.lk[data-go="tricks"]{--ac:#06B6D4}.card.lk[data-go="warmup"]{--ac:#FF9A6B}.card.lk[data-go="game"]{--ac:#06B6D4}
+.stage{box-shadow:0 12px 34px rgba(29,107,85,.28);border-radius:16px}
+@media (prefers-reduced-motion:reduce){body::before,body::after,.hero h1,.hero::after,section.on .card,section.on .grid>*{animation:none!important}}
 </style>
 </head>
 <body>
@@ -245,6 +262,7 @@ nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
   <button class="cta" data-go="game">Play game now</button> <button class="cta" data-go="rules">Start with the rules</button> <button class="cta alt" data-go="join">Join the academy</button>
   <p class="lead" style="margin:28px 0 8px;font-weight:600">Jump to a section</p>
   <div class="grid" style="margin-top:0">
+    <a class="card lk" href="#game" data-go="game"><h3>Play game <span aria-hidden="true">›</span></h3><p>Pick your team and play doubles against the computer.</p></a>
     <a class="card lk" href="#rules" data-go="rules"><h3>Rules <span aria-hidden="true">›</span></h3><p>Scoring, serving, faults and court lines.</p></a>
     <a class="card lk" href="#rackets" data-go="rackets"><h3>Rackets <span aria-hidden="true">›</span></h3><p>Find a racket that suits your level.</p></a>
     <a class="card lk" href="#grip" data-go="grip"><h3>Grip <span aria-hidden="true">›</span></h3><p>How to hold the racket for power and control.</p></a>
@@ -413,7 +431,7 @@ nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 10:20 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 10:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
