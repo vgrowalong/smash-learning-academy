@@ -70,7 +70,7 @@ th{font-family:'Bricolage Grotesque',sans-serif}
 .say svg{background:#fff;border-radius:50%;display:block;flex:none}
 .say div{font-size:15px;min-height:46px}
 .score .sp{order:5;flex-basis:100%;color:var(--muted);font-size:13px}
-.score button.on{background:var(--court);color:#fff;border-color:var(--court)}#vg{--c:#FF4D9D}#vb{--c:#2563EB}.score button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 10px;font:600 13px Figtree,sans-serif;cursor:pointer}
+.score select{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 8px;font:600 13px Figtree,sans-serif;max-width:150px}.score button.on{background:var(--court);color:#fff;border-color:var(--court)}#vg{--c:#FF4D9D}#vb{--c:#2563EB}.score button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 10px;font:600 13px Figtree,sans-serif;cursor:pointer}
 .ctl{position:absolute;top:8px;right:8px;display:flex;gap:6px;z-index:3}
 .ctl button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px Figtree,sans-serif;cursor:pointer;opacity:.92;padding:0}
 .stage.big{position:fixed;left:0;top:0;right:0;bottom:0;width:auto;height:auto;margin:0;border-radius:0;z-index:60}
@@ -217,7 +217,7 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
 <section id="home" class="hero on">
   <h1>Learn badminton the right way, from the first grip.</h1>
   <p>Simple guides to the rules, rackets, shuttles and strokes. No jargon, made for beginners.</p>
-  <div class="score"><div>Coach <b id="sa">0</b></div><div><b id="sb">0</b> Opponent</div><button id="ex" aria-label="Coach explanation mode">Coach: text</button><button id="vg" aria-label="Girl voice">Girl voice</button><button id="vb" aria-label="Boy voice">Boy voice</button><button id="spd" aria-label="Change game speed">4×</button><div class="sp" id="sst" aria-live="polite">First to 21 points wins</div></div>
+  <div class="score"><div>Coach <b id="sa">0</b></div><div><b id="sb">0</b> Opponent</div><button id="ex" aria-label="Coach explanation mode">Coach: text</button><button id="vg" aria-label="Girl voice">Girl voice</button><button id="vb" aria-label="Boy voice">Boy voice</button><select id="vs" aria-label="Choose a voice" hidden></select><button id="spd" aria-label="Change game speed">4×</button><div class="sp" id="sst" aria-live="polite">First to 21 points wins</div></div>
   <div class="stage" id="s-court" role="img" aria-label="3D badminton court where the coach plays a rally"></div>
   <div class="say" aria-live="polite"><span id="sayav"></span><div id="saytx">Ask me anything and I will explain it and show it here.</div></div>
   <div class="score" style="margin-top:10px;font-size:14px"><div>Back court · Coach <b style="font-size:22px" id="ba">0</b></div><div><b style="font-size:22px" id="bb">0</b> Opponent</div><div class="sp" id="bst">First to 21 points wins</div></div>
@@ -383,7 +383,7 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 3:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 4:00 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -889,15 +889,15 @@ function bgCourts(g){
   var c=CL[i],sg=new T.Group(),s2=shuttle(),pa,pb;sg.position.z=zc;g.add(sg);pa=mkP(sg,c[0],c[1],-2.6,-1,0,true,1.5);pb=mkP(sg,c[2],c[3],3.4,1.2,Math.PI,false,1.5);
   s2.scale.setScalar(1.6);sg.add(s2);items.push({u:bgGame([pa,pb],s2),ph:0})});
  return function(t){items.forEach(function(it){it.u(t+it.ph)})}}
-var VG='boy',VC=null;
+var VG='boy',VI=0,VC=null,PRE={boy:[['Boy 1 \u2013 Arjun',1.15,1.05],['Boy 2 \u2013 Rohan',1.3,1.1],['Boy 3 \u2013 Kabir',1.0,1.0],['Boy 4 \u2013 Aarav',1.45,1.15],['Boy 5 \u2013 Vihaan',1.2,.95],['Boy 6 \u2013 Ishaan',1.6,1.1],['Boy 7 \u2013 Dev',.95,1.05],['Boy 8 \u2013 Neel',1.35,1.2],['Boy 9 \u2013 Veer',1.1,.9],['Boy 10 \u2013 Sid',1.7,1.15]],girl:[['Girl 1 \u2013 Anaya',2,1.1],['Girl 2 \u2013 Diya',1.8,1.05],['Girl 3 \u2013 Myra',1.6,1],['Girl 4 \u2013 Kiara',1.9,1.15],['Girl 5 \u2013 Riya',1.7,.95],['Girl 6 \u2013 Tara',2,1.2],['Girl 7 \u2013 Ira',1.5,1.05],['Girl 8 \u2013 Meera',1.85,.9],['Girl 9 \u2013 Siya',1.65,1.1],['Girl 10 \u2013 Zoya',1.95,1.0]]};
 function spk(u){try{var ss=speechSynthesis;ss.cancel();u.onstart=function(){window.__speaking=1};var oe=u.onend,oer=u.onerror;u.onend=function(){window.__speaking=0;if(oe)oe()};u.onerror=function(){window.__speaking=0;if(oer)oer()};clearTimeout(window.__st);window.__st=setTimeout(function(){try{ss.resume();ss.speak(u)}catch(e){}},60)}catch(e){}}
 
 function boyUtt(t){var u=new SpeechSynthesisUtterance(t);try{var girl=VG==='girl',vs=VC&&VC.length?VC:(VC=speechSynthesis.getVoices()||[]),en=vs.filter(function(v){return /^en/i.test(v.lang)}),fem=/(female|samantha|victoria|karen|moira|tessa|fiona|zira|susan|hazel|heera|veena|serena|allison|ava|jenny|aria|google us english)/i,male=/\b(daniel|aaron|alex|fred|david|mark|guy|ryan|james|arthur|rishi|prabhat|george|male)\b/i,pick=null;
  var ok=function(v){return girl?fem.test(v.name)&&!/\bmale\b/i.test(v.name.replace(/female/ig,'')):(male.test(v.name)||!fem.test(v.name))};
- pick=en.filter(function(v){return v.localService&&ok(v)})[0]||en.filter(ok)[0]||null;
+ var cand=en.filter(function(v){return v.localService&&ok(v)});if(!cand.length)cand=en.filter(ok);pick=cand.length?cand[VI%cand.length]:null;
  if(!pick&&en.length){var od=en.filter(function(v){return girl?fem.test(v.name):!fem.test(v.name)});pick=od[0]||(girl?en[en.length>1?1:0]:en[0])}
  if(pick){var oth=girl?'boy':'girl';if(pick===window.__vp&&window.__vp_g!==VG&&en.length>1){pick=en.filter(function(v){return v!==window.__vp})[0]||pick}window.__vp=pick;window.__vp_g=VG;u.voice=pick;u.lang=pick.lang}}catch(e){}
- u.pitch=VG==='girl'?2:1.15;u.rate=VG==='girl'?1.1:1.05;u.volume=1;return u}
+ var pr=PRE[VG][VI]||PRE[VG][0];u.pitch=pr[1];u.rate=pr[2];u.volume=1;return u}
 if(window.speechSynthesis)try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){VC=speechSynthesis.getVoices()}}catch(e){}
 function rally(pl,sh,ca,g){
  var PI=Math.PI,Y=new T.Vector3(0,1,0),v=new T.Vector3(),K=[-1,-.45,0,.35,.8];
@@ -934,8 +934,10 @@ function rally(pl,sh,ca,g){
  function say(k){var s=R.SQ[k],x=EXL[s[1]],m=NM[s[0]]+' plays a '+x[0]+'. '+x[1],el=document.getElementById('saytx');if(el)el.textContent=m;
   if(mode!==2)return;pu=lastT+2.4;
   if(mode===2&&window.speechSynthesis){try{speechSynthesis.cancel();var u=boyUtt(m);u.onend=function(){pu=0};u.onerror=function(){pu=0};pu=lastT+9;spk(u)}catch(e){pu=lastT+2.4}}}
- function setV(g){VG=g;mode=2;ex.textContent='Coach: voice';var a=document.getElementById('vg'),b=document.getElementById('vb');a.classList.toggle('on',g==='girl');b.classList.toggle('on',g==='boy');pu=0;try{speechSynthesis.cancel()}catch(e){}
+ function fillV(g){var se=document.getElementById('vs');se.innerHTML='';PRE[g].forEach(function(p,i){var o=document.createElement('option');o.value=i;o.textContent=p[0];se.appendChild(o)});se.value=VI;se.hidden=false}
+ function setV(g){if(g!==VG||document.getElementById('vs').hidden)VI=0;VG=g;fillV(g);mode=2;ex.textContent='Coach: voice';var a=document.getElementById('vg'),b=document.getElementById('vb');a.classList.toggle('on',g==='girl');b.classList.toggle('on',g==='boy');pu=0;try{speechSynthesis.cancel()}catch(e){}
   var hi="Hi! I'm your coach Shree! Let's learn badminton together!",el2=document.getElementById('saytx');if(el2)el2.textContent=hi;try{var u0=boyUtt(hi);pu=lastT+9;u0.onend=function(){pu=0};u0.onerror=function(){pu=0};spk(u0)}catch(e){pu=0}}
+ var vse=document.getElementById('vs');if(vse)vse.onchange=function(){VI=+vse.value;pu=0;var hi='Hi! I am your coach Shree!';var el2=document.getElementById('saytx');if(el2)el2.textContent=hi;try{var u1=boyUtt(hi);pu=lastT+6;u1.onend=function(){pu=0};u1.onerror=function(){pu=0};spk(u1)}catch(e){pu=0}};
  var vgb=document.getElementById('vg'),vbb=document.getElementById('vb');if(vgb)vgb.onclick=function(){setV('girl')};if(vbb)vbb.onclick=function(){setV('boy')};
  var ex=document.getElementById('ex');if(ex)ex.onclick=function(){mode=(mode+1)%3;ex.textContent=['Coach: off','Coach: text','Coach: voice'][mode];pu=0;try{speechSynthesis.cancel()}catch(e){}
   if(mode===2&&window.speechSynthesis){var hi="Hi! I'm your coach Shree! Let's learn badminton together!";var el2=document.getElementById('saytx');if(el2)el2.textContent=hi;try{var u0=boyUtt(hi);pu=lastT+9;u0.onend=function(){pu=0};u0.onerror=function(){pu=0};spk(u0)}catch(e){pu=0}}};
