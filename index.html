@@ -383,7 +383,7 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 1:35 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 1:55 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -888,6 +888,10 @@ function bgCourts(g){
   var c=CL[i],sg=new T.Group(),s2=shuttle(),pa,pb;sg.position.z=zc;g.add(sg);pa=mkP(sg,c[0],c[1],-2.6,-1,0,true,1.5);pb=mkP(sg,c[2],c[3],3.4,1.2,Math.PI,false,1.5);
   s2.scale.setScalar(1.6);sg.add(s2);items.push({u:bgGame([pa,pb],s2),ph:0})});
  return function(t){items.forEach(function(it){it.u(t+it.ph)})}}
+function boyUtt(t){var u=new SpeechSynthesisUtterance(t);try{var vs=speechSynthesis.getVoices()||[],en=vs.filter(function(v){return /^en/i.test(v.lang)}),pick=null,pref=[/google uk english male/i,/\b(daniel|aaron|alex|fred|david|mark|guy|ryan|james|arthur|rishi|prabhat|male)\b/i,/google us english/i];
+ for(var i=0;i<pref.length&&!pick;i++)pick=en.filter(function(v){return pref[i].test(v.name)})[0];pick=pick||en[0];if(pick){u.voice=pick;u.lang=pick.lang}}catch(e){}
+ u.pitch=1.75;u.rate=1.08;u.volume=1;return u}
+if(window.speechSynthesis)try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()}}catch(e){}
 function rally(pl,sh,ca,g){
  var PI=Math.PI,Y=new T.Vector3(0,1,0),v=new T.Vector3(),K=[-1,-.45,0,.35,.8];
  var ST={sv:{A:[.3,-.5,.9,1.5,.3],j:0,tl:0},li:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3},sm:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0},dr:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0},ke:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3},cl:{A:[.3,PI+.9,PI-.3,PI*.65,.3],j:0,tl:0},bl:{A:[.3,-.4,.9,2.3,.3],j:0,tl:-.3,bh:1,bt:.35},bs:{A:[.3,PI+.9,PI-.3,PI/2,.3],j:.3,tl:0,bh:1,bt:.8},bk:{A:[.3,1.2,1.7,1.8,.3],j:0,tl:-.3,bh:1,bt:.35},bd:{A:[.3,PI+.8,PI-.35,PI*.7,.3],j:0,tl:0,bh:1,bt:.8}};
@@ -922,7 +926,7 @@ function rally(pl,sh,ca,g){
  var sav=document.getElementById('sayav');if(sav)sav.innerHTML=av(36);
  function say(k){var s=R.SQ[k],x=EXL[s[1]],m=NM[s[0]]+' plays a '+x[0]+'. '+x[1],el=document.getElementById('saytx');if(el)el.textContent=m;
   if(mode!==2)return;pu=lastT+2.4;
-  if(mode===2&&window.speechSynthesis){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(m);u.onend=function(){pu=0};u.onerror=function(){pu=0};pu=lastT+9;speechSynthesis.speak(u)}catch(e){pu=lastT+2.4}}}
+  if(mode===2&&window.speechSynthesis){try{speechSynthesis.cancel();var u=boyUtt(m);u.onend=function(){pu=0};u.onerror=function(){pu=0};pu=lastT+9;speechSynthesis.speak(u)}catch(e){pu=lastT+2.4}}}
  var ex=document.getElementById('ex');if(ex)ex.onclick=function(){mode=(mode+1)%3;ex.textContent=['Coach: off','Coach: text','Coach: voice'][mode];pu=0;try{speechSynthesis.cancel()}catch(e){}};
  function ctc(sn,px,pz){var S0=ST[sn],tl=S0.tl,an=S0.A[2]+tl,ox=-2.07*Math.sin(tl)+2.075*Math.sin(an),bt=S0.bt||0,zl=S0.bh?-.15:.405;return[px+ox*Math.cos(bt)+zl*Math.sin(bt),S0.j+2.07*Math.cos(tl)-2.075*Math.cos(an),pz-ox*Math.sin(bt)+zl*Math.cos(bt)]}
  var DM={sv:{s:'sv',px:-2.6,pz:-1,S0:null,hin:0,inD:.3,T:[1.6,.05,-.7],H:1.3,dur:1},sm:{s:'sm',px:-5.4,pz:-.4,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[4.4,.05,.3],H:0,dur:.5},dr:{s:'dr',px:-5.3,pz:.8,S0:[3.5,3.8,.2],hin:2.2,inD:1.2,T:[1.2,.05,.3],H:1.6,dur:1},li:{s:'li',px:-3.18,pz:.9,S0:[1.2,1.6,.5],hin:.9,inD:.8,T:[5.8,.05,.5],H:3.5,dur:1.5},ke:{s:'ke',px:-3.96,pz:-.8,S0:[1.3,1.63,-.2],hin:.9,inD:.8,T:[1,.05,.3],H:1.2,dur:.8}};
@@ -968,7 +972,7 @@ function rally(pl,sh,ca,g){
   if(q<th){u=(q-th+D.inD)/D.inD;return[S0[0]+(C[0]-S0[0])*u,S0[1]+(C[1]-S0[1])*u+D.hin*4*u*(1-u),S0[2]+(C[2]-S0[2])*u]}
   u=Math.min(1,(q-th)/D.dur);return[C[0]+(D.T[0]-C[0])*u,C[1]+(D.T[1]-C[1])*u+D.H*4*u*(1-u),C[2]+(D.T[2]-C[2])*u]}
  window.coachDemo=function(k){demo=k?DM[k]:null;dstart=-1;pl[1].g.visible=!k;if(k){run=0;setPM()}if(k){document.getElementById('sst').textContent='Paused \u00b7 AI Shree is explaining'}else{fin=0;pl[1].g.visible=true;coachPlay(true)}};
- window.coachSay=function(t,f){var el=document.getElementById('saytx');if(el)el.textContent=t;if(f&&mode===2&&demo&&window.speechSynthesis){try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch(e){}}};
+ window.coachSay=function(t,f){var el=document.getElementById('saytx');if(el)el.textContent=t;if(f&&mode===2&&demo&&window.speechSynthesis){try{speechSynthesis.cancel();speechSynthesis.speak(boyUtt(t))}catch(e){}}};
  function setPM(){var b=document.getElementById('pm');if(b)b.textContent=run?'Stop match':'Play match'}
  window.coachPlay=function(on){if(on&&over){sA=0;sB=0;srv=0;over=0;fin=0;R=null;ui('First to 21 points wins')}run=on?1:0;pu=0;if(on){demo=null;dstart=-1;pl[1].g.visible=true;document.getElementById('panel').classList.remove('demo');if(lm)document.getElementById('sst').textContent=lm}else{document.getElementById('sst').textContent='Match paused'}setPM()};
  var pmb=document.getElementById('pm');if(pmb)pmb.onclick=function(){coachPlay(!run)};
