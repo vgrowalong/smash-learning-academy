@@ -147,6 +147,20 @@ a:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
 .ask{display:flex;gap:8px;padding:6px 14px 12px}
 .ask input{flex:1;min-width:0;font:16px Figtree,sans-serif;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
 footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+/* attractive buttons */
+@keyframes bpulse{0%{box-shadow:0 0 0 0 rgba(228,87,46,.55)}70%{box-shadow:0 0 0 12px rgba(228,87,46,0)}100%{box-shadow:0 0 0 0 rgba(228,87,46,0)}}
+@keyframes bshine{0%{background-position:-160% 0}100%{background-position:260% 0}}
+@keyframes bwig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-3deg)}92%{transform:rotate(3deg)}95%{transform:rotate(-2deg)}}
+nav button,.cta,.eb-join,.chips button,.fab{transition:transform .18s cubic-bezier(.3,1.6,.5,1),box-shadow .18s,background .18s,color .18s}
+nav button:hover,.chips button:hover{transform:translateY(-2px) scale(1.06);box-shadow:0 6px 14px rgba(20,72,58,.22);border-color:var(--hot)}
+nav button[aria-selected="true"]{background:linear-gradient(120deg,var(--court),#2FA37F);box-shadow:0 4px 12px rgba(29,107,85,.4)}
+.cta{background:linear-gradient(110deg,var(--hot) 30%,#FF9A5C 50%,var(--hot) 70%);background-size:250% 100%;animation:bshine 3.2s linear infinite,bpulse 2.2s ease-out infinite;box-shadow:0 5px 0 #B5401C}
+.cta.alt{background:linear-gradient(110deg,var(--court) 30%,#37B38D 50%,var(--court) 70%);background-size:250% 100%;box-shadow:0 5px 0 var(--court-d)}
+.cta:hover{transform:translateY(-3px) scale(1.04)}.cta:active{transform:translateY(3px);box-shadow:0 1px 0 #B5401C}
+.eb-join{animation:bpulse 2.2s ease-out infinite,bwig 4.5s ease-in-out infinite;box-shadow:0 4px 0 #B5401C}
+.eb-join:hover,.fab:hover{transform:translateY(-2px) scale(1.07)}.eb-join:active{transform:translateY(3px);box-shadow:0 1px 0 #B5401C}
+.chips button:hover{background:var(--court);color:#fff}
+@media (prefers-reduced-motion:reduce){.cta,.eb-join{animation:none!important}}
 </style>
 </head>
 <body>
@@ -330,7 +344,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 12:30 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 12:45 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
