@@ -6,7 +6,7 @@
 <meta name="description" content="Shree, 8, is learning badminton with AI and sharing it free. Learn rules, grip, footwork, shots and drills with 3D demos, and join our open-source community.">
 <link rel="canonical" href="https://aismashlearningacademy.com/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="AI Smash Learning Academy"><meta property="og:title" content="AI Smash Learning Academy – Learn Badminton with AI"><meta property="og:description" content="Shree, 8, is learning badminton with AI and sharing it free. Learn rules, grip, footwork, shots and drills with 3D demos, and join our open-source community."><meta property="og:url" content="https://aismashlearningacademy.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://aismashlearningacademy.com/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://aismashlearningacademy.com/og.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI Smash Learning Academy","alternateName":"Smash Learning Academy","url":"https://aismashlearningacademy.com/"}</script>
 <title>AI Smash Learning Academy – Learn Badminton with AI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap">
@@ -209,6 +209,8 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
 .gsw{display:flex;flex-wrap:wrap;gap:8px}.gsw button{width:46px;height:56px;border-radius:12px;border:3px solid transparent;background:var(--bg);padding:0;cursor:pointer}.gsw button[aria-pressed="true"]{border-color:var(--ink);transform:scale(1.08)}.gsw svg{display:block;margin:auto}
 #gstart{margin-top:6px;color:#fff;border:0;padding:14px 28px;border-radius:12px;font:800 18px Figtree,sans-serif;min-height:48px}.gback{margin-top:10px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;font:700 14px Figtree,sans-serif;min-height:40px}
 nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
+.eb-share{--c:#7B2FF7;background:#7B2FF7;color:#fff;border:0;border-radius:999px;padding:8px 16px;font:800 14px Figtree,sans-serif;min-height:38px;cursor:pointer;animation:k-pulse 2.2s ease-out infinite;margin-left:7px}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:50}
 </style>
 </head>
 <body>
@@ -217,6 +219,7 @@ nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
   <div class="engage" id="engage">
     <button type="button" class="eb-join" data-go="join">Join the community</button>
     <button type="button" class="eb-heart" id="hbtn" aria-label="Give a heart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C1 8.4 2.7 5 6.2 5c2 0 3.4 1 4.4 2.4h.8C12.4 6 13.8 5 15.8 5c3.5 0 5.2 3.4 3.8 6.7C19.5 16.4 12 21 12 21z"/></svg><span class="hc" id="hcount" aria-live="polite">Like</span></button>
+    <button type="button" class="eb-share" id="shbtn" aria-label="Share this website">Share</button>
     <span class="hmsg" id="hmsg" role="status"></span>
   </div>
   <nav role="tablist" aria-label="Sections"></nav>
@@ -239,7 +242,7 @@ nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
     </g>
     <text x="170" y="8" fill="#fff" font-size="9" text-anchor="middle" font-family="Figtree,sans-serif">Net</text>
   </svg>
-  <button class="cta" data-go="rules">Start with the rules</button> <button class="cta alt" data-go="join">Join the academy</button>
+  <button class="cta" data-go="game">Play game now</button> <button class="cta" data-go="rules">Start with the rules</button> <button class="cta alt" data-go="join">Join the academy</button>
   <p class="lead" style="margin:28px 0 8px;font-weight:600">Jump to a section</p>
   <div class="grid" style="margin-top:0">
     <a class="card lk" href="#rules" data-go="rules"><h3>Rules <span aria-hidden="true">›</span></h3><p>Scoring, serving, faults and court lines.</p></a>
@@ -410,7 +413,7 @@ nav button[data-id="game"]{--c:#06B6D4;--t:#fff}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 8:00 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 10:20 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -1340,7 +1343,7 @@ function hitK(who,k,fx,fy){var h=shot(k,who);fly(who,fx,fy,h.tx,h.ty,h.T,h.arc,k
 function serve(who){if(who===0){SW[0]=now;hitK(0,'clear',px,py)}else{SW[2]=now;hitK(1,'clear',o1,AY)}}
 function shPos(){var u=Math.min(1.2,(now-sh.t0)/sh.T);return[sh.fx+(sh.tx-sh.fx)*u,sh.fy+(sh.ty-sh.fy)*u,u]}
 function point(w){pts[w]++;gp.textContent=pts[0];ga.textContent=pts[1];srv=w;sh=null;st='pause';ptsT=now;
- if(pts[w]>=21){end=true;document.getElementById('gagain').hidden=false;say(w===0?'Your team wins!':opp[0]+' & '+opp[1]+' win!')}}
+ if(pts[w]>=21){end=true;if(w===0&&window.confetti)window.confetti();document.getElementById('gagain').hidden=false;say(w===0?'Your team wins!':opp[0]+' & '+opp[1]+' win!')}}
 function reset(){pts=[0,0];gp.textContent=0;ga.textContent=0;end=false;srv=0;st='pause';ptsT=now;sh=null;px=tx0=110;py=ty0=430;mx=250;my=430;o1=110;o2=250;document.getElementById('gagain').hidden=true;say('Get ready!')}
 function near(a,b,x){return Math.abs(a-x)<=Math.abs(b-x)?0:1}
 function pickK(){var q=Math.random();return q<.3?'clear':q<.55?'drop':q<.78?'smash':'drive'}
@@ -1401,6 +1404,10 @@ var drag=false;cv.addEventListener('pointerdown',function(e){drag=true;pos(e);tr
 [].forEach.call(document.querySelectorAll('#gk button'),function(b){b.setAttribute('aria-pressed',b.dataset.k===KIND);b.onclick=function(){KIND=b.dataset.k;[].forEach.call(document.querySelectorAll('#gk button'),function(x){x.setAttribute('aria-pressed',x===b)})}});
 addEventListener('keydown',function(e){if(!sec.classList.contains('on')||!run)return;if('1234'.indexOf(e.key)>=0&&e.key){var kb=document.querySelectorAll('#gk button')[+e.key-1];if(kb)kb.click()}else{if(e.key.indexOf('Arrow')===0)e.preventDefault();keys[e.key]=1}});addEventListener('keyup',function(e){delete keys[e.key]});
 })();
+</script>
+<script>
+(function(){var b=document.getElementById('shbtn');if(b)b.onclick=function(){var d={title:'AI Smash Learning Academy',text:'Learn badminton with AI, play the game and join Shree\u2019s community!',url:'https://aismashlearningacademy.com/'};if(navigator.share){navigator.share(d).catch(function(){})}else{try{navigator.clipboard.writeText(d.url);b.textContent='Link copied!';setTimeout(function(){b.textContent='Share'},1800)}catch(e){prompt('Copy this link',d.url)}}};
+window.confetti=function(){var cv=document.createElement('canvas');cv.id='cf';cv.width=innerWidth;cv.height=innerHeight;document.body.appendChild(cv);var x=cv.getContext('2d'),P=[],cols=['#E4572E','#2563EB','#FACC15','#1FA463','#FF4D9D','#7B2FF7'];for(var i=0;i<140;i++)P.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*.5,v:2+Math.random()*4,r:Math.random()*6,s:4+Math.random()*6,c:cols[i%6]});var t=0;(function f(){x.clearRect(0,0,cv.width,cv.height);P.forEach(function(p){p.y+=p.v;p.r+=.1;p.x+=Math.sin(p.r)*1.5;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()});if(++t<200)requestAnimationFrame(f);else cv.remove()})()}})();
 </script>
 </body>
 </html>
