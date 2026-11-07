@@ -326,7 +326,7 @@ footer{padding:22px 0 30px;color:var(--muted);font-size:14px;border-top:1px soli
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 8:50 am &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 12:30 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -771,7 +771,7 @@ function arena(g,zc){
 function crowd(g){
  var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
  var SH=[0xE4572E,0x2563C9,0x1FAE7F,0xF4C430,0x7B2FF7,0xFF3D81,0x22B8CF,0xFFFFFF],SK=[0xF1C9A5,0xD9A06F,0xA9744A,0x7A4B2A],HR=[0x1B1B1B,0x3A2412,0x6B4A2B,0x8A8A8A];
- var gB=new T.CylinderGeometry(.27,.22,.7,18),gH=new T.SphereGeometry(.2,20,16),gA=new T.CylinderGeometry(.07,.06,.55,12),gL=new T.CylinderGeometry(.24,.24,.22,16),gS=new T.CylinderGeometry(.09,.07,.5,12),gN=new T.CylinderGeometry(.06,.07,.12,10),gSh=new T.SphereGeometry(.09,12,10),M={};
+ var gB=new T.CylinderGeometry(.27,.22,.7,18),gH=new T.SphereGeometry(.2,20,16),gA=new T.CylinderGeometry(.07,.06,.55,12),gL=new T.CylinderGeometry(.24,.24,.22,16),gS=new T.CylinderGeometry(.09,.07,.5,12),gN=new T.CylinderGeometry(.06,.07,.12,10),gT=new T.CylinderGeometry(.095,.08,.5,12),gF=new T.BoxGeometry(.16,.07,.26),gE=new T.SphereGeometry(.022,8,6),gBun=new T.SphereGeometry(.08,10,8),gSh=new T.SphereGeometry(.09,12,10),M={};
  function mat(c){return M[c]||(M[c]=new T.MeshLambertMaterial({color:c}))}
  function mesh(geo,c,x,y,z){var m=new T.Mesh(geo,mat(c));m.position.set(x,y,z);m.userData.nocast=1;return m}
  // stepped stand in front of the back wall
@@ -780,12 +780,12 @@ function crowd(g){
  var P=[];
  [0,16.6].forEach(function(cx){rows.forEach(function(r,ri){for(var i=0;i<7;i++){if(rnd()<.18)continue;
   var x=cx-5.1+i*1.7+(rnd()-.5)*.3,G=new T.Group(),sc=.92+rnd()*.2,top=r.top,shirt=SH[Math.floor(rnd()*SH.length)];
-  var lp=mesh(gL,0x2B3A55,0,top+.12,.2);lp.rotation.x=Math.PI/2;lp.scale.set(1,2.6,1);G.add(lp);G.add(mesh(gS,0x2B3A55,-.12,top-.2,.5));G.add(mesh(gS,0x2B3A55,.12,top-.2,.5));
+  var lp=mesh(gL,0x2B3A55,0,top+.12,.2);lp.rotation.x=Math.PI/2;lp.scale.set(1,2.6,1);G.add(lp);var pc=[0x2B3A55,0x3B5B8C,0x4A4A4A,0x6B4A2B][Math.floor(rnd()*4)];[-1,1].forEach(function(q){var th=mesh(gT,pc,q*.12,top+.2,.3);th.rotation.x=Math.PI/2;G.add(th);G.add(mesh(gS,pc,q*.12,top-.03,.52));var ft=mesh(gF,0xF4F6F8,q*.12,top-.3,.58);G.add(ft)});
   var body=mesh(gB,shirt,0,top+.58,0);body.scale.set(1,1,.72);G.add(body);var skc=SK[Math.floor(rnd()*SK.length)];G.add(mesh(gN,skc,0,top+.97,0));[-1,1].forEach(function(q){var sd=mesh(gSh,shirt,q*.28,top+.88,0);sd.scale.set(1,.9,.8);G.add(sd)});
-  var head=mesh(gH,skc,0,top+1.22,.02);head.scale.set(.92,1.05,.95);G.add(head);var hair=mesh(gH,HR[Math.floor(rnd()*HR.length)],0,top+1.3,-.04);hair.scale.set(1.05,.7,1.05);G.add(hair);
-  var aL=mesh(gA,shirt,-.34,top+.6,.05),aR=mesh(gA,shirt,.34,top+.6,.05);G.add(aL);G.add(aR);
+  var head=mesh(gH,skc,0,top+1.22,.02);head.scale.set(.92,1.05,.95);[-1,1].forEach(function(q){G.add(mesh(gE,0x14283A,q*.07,top+1.25,.2))});G.add(head);var hair=mesh(gH,HR[Math.floor(rnd()*HR.length)],0,top+1.3,-.04);hair.scale.set(1.05,.7,1.05);G.add(hair);var hs=rnd();if(hs<.3){var bn=mesh(gBun,HR[Math.floor(rnd()*HR.length)],0,top+1.5,-.08);G.add(bn)}else if(hs<.55){var lh=mesh(gH,0x1B1B1B,0,top+1.14,-.1);lh.scale.set(1.08,1.05,.8);G.add(lh)}
+  var ch0=rnd()<.35,aL=mesh(gA,shirt,-.34,top+.6,.05),aR=mesh(gA,shirt,.34,top+.6,.05);if(!ch0){aL.rotation.x=aR.rotation.x=-1.0;aL.position.set(-.3,top+.5,.2);aR.position.set(.3,top+.5,.2)}G.add(aL);G.add(aR);
   G.position.set(x,0,r.z+.05);G.scale.setScalar(sc);g.add(G);
-  P.push({G:G,aL:aL,aR:aR,head:head,ph:rnd()*6.28,ch:rnd()<.35,top:top,sc:sc})}})});
+  P.push({G:G,aL:aL,aR:aR,head:head,ph:rnd()*6.28,ch:ch0,top:top,sc:sc})}})});
  return function(t){for(var i=0;i<P.length;i++){var p=P[i],b=Math.sin(t*2+p.ph);p.head.position.y=p.top+1.22+.012*b;
   if(p.ch){var up=Math.max(0,Math.sin(t*3+p.ph));p.aL.rotation.z=-up*2.4;p.aR.rotation.z=up*2.4;p.aL.position.y=p.top+.6+up*.2;p.aR.position.y=p.top+.6+up*.2}}}
 }
