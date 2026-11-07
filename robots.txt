@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aismashlearningacademy.com/sitemap.xml
