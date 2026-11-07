@@ -383,7 +383,7 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 2:30 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 3:00 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -891,8 +891,10 @@ function bgCourts(g){
 var VG='boy';
 function boyUtt(t){var u=new SpeechSynthesisUtterance(t);try{var girl=VG==='girl',vs=speechSynthesis.getVoices()||[],en=vs.filter(function(v){return /^en/i.test(v.lang)}),fem=/(female|samantha|victoria|karen|moira|tessa|fiona|zira|susan|hazel|heera|veena|serena|allison|ava|jenny|aria|google us english)/i,male=/\b(daniel|aaron|alex|fred|david|mark|guy|ryan|james|arthur|rishi|prabhat|george|male)\b/i,pick=null;
  var ok=function(v){return girl?fem.test(v.name)&&!/\bmale\b/i.test(v.name.replace(/female/ig,'')):(male.test(v.name)||!fem.test(v.name))};
- pick=en.filter(function(v){return v.localService&&ok(v)})[0]||en.filter(ok)[0]||en[0];if(pick){u.voice=pick;u.lang=pick.lang}}catch(e){}
- u.pitch=VG==='girl'?2:1.8;u.rate=1.1;u.volume=1;return u}
+ pick=en.filter(function(v){return v.localService&&ok(v)})[0]||en.filter(ok)[0]||null;
+ if(!pick&&en.length){var od=en.filter(function(v){return girl?fem.test(v.name):!fem.test(v.name)});pick=od[0]||(girl?en[en.length>1?1:0]:en[0])}
+ if(pick){var oth=girl?'boy':'girl';if(pick===window.__vp&&window.__vp_g!==VG&&en.length>1){pick=en.filter(function(v){return v!==window.__vp})[0]||pick}window.__vp=pick;window.__vp_g=VG;u.voice=pick;u.lang=pick.lang}}catch(e){}
+ u.pitch=VG==='girl'?2:1.15;u.rate=VG==='girl'?1.1:1.05;u.volume=1;return u}
 if(window.speechSynthesis)try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()}}catch(e){}
 function rally(pl,sh,ca,g){
  var PI=Math.PI,Y=new T.Vector3(0,1,0),v=new T.Vector3(),K=[-1,-.45,0,.35,.8];
