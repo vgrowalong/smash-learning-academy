@@ -383,7 +383,7 @@ nav button[aria-selected="true"]{animation-play-state:running!important}
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 3:20 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 3:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -736,7 +736,7 @@ function flex(p,A,dt){var K=[-1,-.45,0,.35,.8],m=Math.min(1,Math.abs(A[2]-A[1])/
 function mk(id,cam,build,fix,r0,piv){
  var el=document.getElementById(id),r=null,dead=false;if(!el)return;
  var EXT={'s-court':26,'s-tech':7,'s-warm':6,'s-grip':4,'s-racket':3,'s-shuttle':3}[id]||8;
- function ensure(){if(r)return true;try{r=new T.WebGLRenderer({antialias:true,alpha:true})}catch(e){el.textContent='3D is not supported on this device.';dead=true;return false}r.setPixelRatio(Math.min(devicePixelRatio||1,2));r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;el.insertBefore(r.domElement,el.firstChild);lw=0;return true}
+ function ensure(){if(r)return true;try{r=new T.WebGLRenderer({antialias:true,alpha:true})}catch(e){el.textContent='3D is not supported on this device.';dead=true;return false}r.setPixelRatio(Math.min(devicePixelRatio||1,id==='s-court'?1.1:2));r.shadowMap.enabled=true;r.shadowMap.type=id==='s-court'?T.PCFShadowMap:T.PCFSoftShadowMap;el.insertBefore(r.domElement,el.firstChild);lw=0;return true}
  function drop(){if(r){r.dispose();try{r.forceContextLoss()}catch(e){}if(r.domElement.parentNode)r.domElement.parentNode.removeChild(r.domElement);r=null}}
  
  var sc=new T.Scene(),ca=new T.PerspectiveCamera(40,1,.1,100),g=new T.Group(),lw=0,lh=0,rot0=r0!==undefined?r0:(fix?.3:.6),rot=rot0,dr=false,lx=0,vel=0,uz=1,big=false;
@@ -761,6 +761,7 @@ function mk(id,cam,build,fix,r0,piv){
  if(r0!==undefined)el.style.touchAction='pan-y';
  addEventListener('pointermove',function(e){if(dr){var d=(e.clientX-lx)*.01;rot+=d;vel=d;lx=e.clientX}});
  (function loop(t){requestAnimationFrame(loop);if(!el.getClientRects().length){drop();return}if(dead||!ensure())return;
+  if(id==='s-court'){var gap=window.__speaking?60:33;if(t-(window.__lf||0)<gap)return;window.__lf=t}
   var rc=el.getBoundingClientRect();if(!big&&(rc.bottom<0||rc.top>innerHeight))return;
   var w=el.clientWidth,h=el.clientHeight;if(w!==lw||h!==lh){lw=w;lh=h;r.setSize(w,h);ca.aspect=w/h;ca.zoom=Math.min(id==='s-court'?1.5:1,w/h/(id==='s-court'?1.45:1.2))*uz;ca.updateProjectionMatrix()}
   if(r0!==undefined){rot=r0;vel=0}else if(!dr){rot+=vel;vel*=.94;if(!calm&&!fix)rot+=.004}
@@ -889,7 +890,7 @@ function bgCourts(g){
   s2.scale.setScalar(1.6);sg.add(s2);items.push({u:bgGame([pa,pb],s2),ph:0})});
  return function(t){items.forEach(function(it){it.u(t+it.ph)})}}
 var VG='boy',VC=null;
-function spk(u){try{var ss=speechSynthesis;ss.cancel();clearTimeout(window.__st);window.__st=setTimeout(function(){try{ss.resume();ss.speak(u)}catch(e){}},60)}catch(e){}}
+function spk(u){try{var ss=speechSynthesis;ss.cancel();u.onstart=function(){window.__speaking=1};var oe=u.onend,oer=u.onerror;u.onend=function(){window.__speaking=0;if(oe)oe()};u.onerror=function(){window.__speaking=0;if(oer)oer()};clearTimeout(window.__st);window.__st=setTimeout(function(){try{ss.resume();ss.speak(u)}catch(e){}},60)}catch(e){}}
 
 function boyUtt(t){var u=new SpeechSynthesisUtterance(t);try{var girl=VG==='girl',vs=VC&&VC.length?VC:(VC=speechSynthesis.getVoices()||[]),en=vs.filter(function(v){return /^en/i.test(v.lang)}),fem=/(female|samantha|victoria|karen|moira|tessa|fiona|zira|susan|hazel|heera|veena|serena|allison|ava|jenny|aria|google us english)/i,male=/\b(daniel|aaron|alex|fred|david|mark|guy|ryan|james|arthur|rishi|prabhat|george|male)\b/i,pick=null;
  var ok=function(v){return girl?fem.test(v.name)&&!/\bmale\b/i.test(v.name.replace(/female/ig,'')):(male.test(v.name)||!fem.test(v.name))};
