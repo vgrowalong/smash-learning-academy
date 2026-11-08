@@ -228,6 +228,9 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
 .card.lk[data-go="rules"]{--ac:#800020}.card.lk[data-go="rackets"]{--ac:#111}.card.lk[data-go="grip"]{--ac:#7B2FF7}.card.lk[data-go="shuttles"]{--ac:#E0B400}.card.lk[data-go="techniques"]{--ac:#14B8A6}.card.lk[data-go="footwork"]{--ac:#F97316}.card.lk[data-go="feed"]{--ac:#FF4D9D}.card.lk[data-go="tricks"]{--ac:#06B6D4}.card.lk[data-go="warmup"]{--ac:#FF9A6B}.card.lk[data-go="game"]{--ac:#06B6D4}
 .stage{box-shadow:0 12px 34px rgba(29,107,85,.28);border-radius:16px}
 @media (prefers-reduced-motion:reduce){body::before,body::after,.hero h1,.hero::after,section.on .card,section.on .grid>*{animation:none!important}}
+.gov,.grev{background:var(--surface);border:2px solid #06B6D4;border-radius:16px;padding:16px;margin:0 0 10px}.gov h3,.grev h3{margin:0 0 10px;font:800 18px Figtree,sans-serif}
+.gsay{display:flex;gap:10px;align-items:flex-start;margin:8px 0;animation:fup .4s ease both}.gsay .av{flex:none;width:40px;height:50px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center}.gsay .bb{background:var(--bg);border-radius:14px;padding:10px 12px;font:600 15px/1.4 Figtree,sans-serif}.gsay .bb b{display:block;font-size:13px;color:var(--court)}
+.gskip{margin-top:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 16px;font:700 14px Figtree,sans-serif;min-height:40px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -377,10 +380,10 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
    <div class="gcard"><h3>Opponent 2</h3><input id="gn4" maxlength="12" value="Mia" aria-label="Opponent 2 name"><div class="gsw" id="gsw4" role="group" aria-label="Opponent 2 look"></div></div>
    <button id="gstart" class="cta">Start game</button>
   </div>
-  <div class="gwrap" id="gplay" hidden><canvas id="gc" width="360" height="520" aria-label="Badminton doubles game"></canvas>
+  <div class="gwrap" id="gplay" hidden><div id="gov" class="gov" hidden></div><canvas id="gc" width="360" height="520" aria-label="Badminton doubles game"></canvas>
    <div class="gbar"><div><span id="gt1">You</span> <b id="gp">0</b></div><div id="gm">Get ready!</div><div><b id="ga">0</b> <span id="gt2">Computer</span></div></div>
    <div class="gkind" id="gk" role="group" aria-label="Choose your shot"><button data-k="clear">Clear</button><button data-k="drop">Drop</button><button data-k="smash" aria-pressed="true">Smash</button><button data-k="drive">Drive</button></div>
-   <button id="gagain" class="cta gagain" hidden>Play again</button>
+   <button id="gagain" class="cta gagain" hidden>Play again</button><div id="grev" class="grev" hidden></div>
    <p class="gnote">How to play: pick a shot (Clear, Drop, Smash or Drive), then drag your finger on the court to move your player. When your racket touches the shuttle, your player hits the shot you picked. Your teammate plays by themselves. Keyboard: arrows to move, 1-4 to pick a shot.</p>
    <button id="gback" class="gback">Change team</button></div>
 </section>
@@ -431,7 +434,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 10:40 am &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 3:20 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -992,6 +995,7 @@ function rally(pl,sh,ca,g){
   var hi="Hi! I'm your coach Shree! Let's learn badminton together!",el2=document.getElementById('saytx');if(el2)el2.textContent=hi;try{var u0=boyUtt(hi);pu=lastT+9;u0.onend=function(){pu=0};u0.onerror=function(){pu=0};spk(u0)}catch(e){pu=0}}
  var vse=document.getElementById('vs');if(vse)vse.onchange=function(){VI=+vse.value;pu=0;var hi='Hi! I am your coach Shree!';var el2=document.getElementById('saytx');if(el2)el2.textContent=hi;try{var u1=boyUtt(hi);pu=lastT+6;u1.onend=function(){pu=0};u1.onerror=function(){pu=0};spk(u1)}catch(e){pu=0}};
  var vgb=document.getElementById('vg'),vbb=document.getElementById('vb');if(vgb)vgb.onclick=function(){setV('girl')};if(vbb)vbb.onclick=function(){setV('boy')};
+ window.coachVoiceOn=function(){return mode===2};window.coachSpeak=function(t){try{spk(boyUtt(t))}catch(e){}};
  var ex=document.getElementById('ex');if(ex)ex.onclick=function(){mode=(mode+1)%3;ex.textContent=['Coach: off','Coach: text','Coach: voice'][mode];pu=0;try{speechSynthesis.cancel()}catch(e){}
   if(mode===2&&window.speechSynthesis){var hi="Hi! I'm your coach Shree! Let's learn badminton together!";var el2=document.getElementById('saytx');if(el2)el2.textContent=hi;try{var u0=boyUtt(hi);pu=lastT+9;u0.onend=function(){pu=0};u0.onerror=function(){pu=0};spk(u0)}catch(e){pu=0}}};
  function ctc(sn,px,pz){var S0=ST[sn],tl=S0.tl,an=S0.A[2]+tl,ox=-2.07*Math.sin(tl)+2.075*Math.sin(an),bt=S0.bt||0,zl=S0.bh?-.15:.405;return[px+ox*Math.cos(bt)+zl*Math.sin(bt),S0.j+2.07*Math.cos(tl)-2.075*Math.cos(an),pz-ox*Math.sin(bt)+zl*Math.cos(bt)]}
@@ -1351,7 +1355,7 @@ var sel=[0,1,6,2],names=['Shree','Coach'];
 function icon(l){return '<svg width="36" height="46" viewBox="0 0 36 46"><circle cx="18" cy="12" r="9" fill="'+l[1]+'"/><path d="M9 11a9 9 0 0 1 18 0z" fill="'+l[2]+'"/><rect x="8" y="22" width="20" height="20" rx="5" fill="'+l[0]+'"/></svg>'}
 [1,2,3,4].forEach(function(n){var box=document.getElementById('gsw'+n);LOOKS.forEach(function(l,k){var b=document.createElement('button');b.type='button';b.innerHTML=icon(l);b.setAttribute('aria-label','Look '+(k+1));b.setAttribute('aria-pressed',k===sel[n-1]);b.onclick=function(){sel[n-1]=k;[].forEach.call(box.children,function(x,q){x.setAttribute('aria-pressed',q===k)})};box.appendChild(b)})});
 var opp=['Rex','Mia'],oL=[LOOKS[6],LOOKS[2]];
-var KN={clear:'Clear',drop:'Drop shot',smash:'SMASH',drive:'Drive'},KIND='smash';
+var ST={me:{clear:0,drop:0,smash:0,drive:0},mate:0,missed:0},KN={clear:'Clear',drop:'Drop shot',smash:'SMASH',drive:'Drive'},KIND='smash';
 var SW=[-9,-9,-9,-9],PV=[110,250,110,250],PW=[450,450,70,70],PH=[0,0,0,0],px=110,py=430,tx0=110,ty0=430,mx=250,my=430,o1=110,o2=250,YY=[70,70],pts=[0,0],srv=0,st='pause',sh=null,now=0,ptsT=0,end=false,keys={},mateOk=true,hitDone=false;
 function say(t){gm.textContent=t}
 function rn(a,b){return a+Math.random()*(b-a)}
@@ -1361,8 +1365,8 @@ function hitK(who,k,fx,fy){var h=shot(k,who);fly(who,fx,fy,h.tx,h.ty,h.T,h.arc,k
 function serve(who){if(who===0){SW[0]=now;hitK(0,'clear',px,py)}else{SW[2]=now;hitK(1,'clear',o1,AY)}}
 function shPos(){var u=Math.min(1.2,(now-sh.t0)/sh.T);return[sh.fx+(sh.tx-sh.fx)*u,sh.fy+(sh.ty-sh.fy)*u,u]}
 function point(w){pts[w]++;gp.textContent=pts[0];ga.textContent=pts[1];srv=w;sh=null;st='pause';ptsT=now;
- if(pts[w]>=21){end=true;if(w===0&&window.confetti)window.confetti();document.getElementById('gagain').hidden=false;say(w===0?'Your team wins!':opp[0]+' & '+opp[1]+' win!')}}
-function reset(){pts=[0,0];gp.textContent=0;ga.textContent=0;end=false;srv=0;st='pause';ptsT=now;sh=null;px=tx0=110;py=ty0=430;mx=250;my=430;o1=110;o2=250;document.getElementById('gagain').hidden=true;say('Get ready!')}
+ if(pts[w]>=21){end=true;if(w===0&&window.confetti)window.confetti();document.getElementById('gagain').hidden=false;setTimeout(showReview,1200);say(w===0?'Your team wins!':opp[0]+' & '+opp[1]+' win!')}}
+function reset(){ST={me:{clear:0,drop:0,smash:0,drive:0},mate:0,missed:0};document.getElementById('grev').hidden=true;pts=[0,0];gp.textContent=0;ga.textContent=0;end=false;srv=0;st='pause';ptsT=now;sh=null;px=tx0=110;py=ty0=430;mx=250;my=430;o1=110;o2=250;document.getElementById('gagain').hidden=true;say('Get ready!')}
 function near(a,b,x){return Math.abs(a-x)<=Math.abs(b-x)?0:1}
 function pickK(){var q=Math.random();return q<.3?'clear':q<.55?'drop':q<.78?'smash':'drive'}
 function resolveOpp(){var s=sh,pm={clear:.1,drop:.3,smash:.4,drive:.28},k=near(o1,o2,s.tx),ox=k?o2:o1,nm=opp[k],miss=Math.abs(ox-s.tx)>54||Math.random()<(pm[s.k]||.15);
@@ -1374,9 +1378,9 @@ function upd(dt){now+=dt;var kx=(keys.ArrowRight||keys.d||keys.D?1:0)-(keys.Arro
  if(st==='fly'&&sh.by===1){var P=shPos(),u=P[2],dm=Math.hypot(mx-P[0],my-P[1]),dp=Math.hypot(px-P[0],py-P[1]),mateTake=dm+25<dp;
   var t2=mateTake?mv2(mx,my,sh.tx,Math.max(300,Math.min(480,sh.ty+10)),sp):mv2(mx,my,px<180?255:105,430,sp);mx=t2[0];my=t2[1];
   if(!hitDone&&u>=.8&&u<=1.15){
-   if(Math.hypot(px+8-P[0],py-12-P[1])<46){hitDone=true;SW[0]=now;hitK(0,KIND,P[0],P[1]);say(names[0]+': '+KN[KIND]+'!')}
-   else if(mateOk&&Math.hypot(mx+8-P[0],my-12-P[1])<46){hitDone=true;var mk=['clear','drop','drive'][Math.floor(Math.random()*3)];SW[1]=now;hitK(0,mk,P[0],P[1]);say(names[1]+' saves it: '+KN[mk])}}
-  if(!hitDone&&u>1.12){point(1);say('Missed! Move your player onto the yellow ring.')}}
+   if(Math.hypot(px+8-P[0],py-12-P[1])<46){hitDone=true;SW[0]=now;ST.me[KIND]++;hitK(0,KIND,P[0],P[1]);say(names[0]+': '+KN[KIND]+'!')}
+   else if(mateOk&&Math.hypot(mx+8-P[0],my-12-P[1])<46){hitDone=true;var mk=['clear','drop','drive'][Math.floor(Math.random()*3)];ST.mate++;SW[1]=now;hitK(0,mk,P[0],P[1]);say(names[1]+' saves it: '+KN[mk])}}
+  if(!hitDone&&u>1.12){ST.missed++;point(1);say('Missed! Move your player onto the yellow ring.')}}
  else{var t3=mv2(mx,my,px<180?255:105,430,sp);mx=t3[0];my=t3[1]}
  var tt=(sh&&st==='fly'&&sh.by===0)?Math.max(70,Math.min(215,sh.ty-10)):70,k2=sh&&st==='fly'&&sh.by===0?near(o1,o2,sh.tx):-1,oth=sh&&sh.tx<180?255:105;
  if(k2===1){o2=mv2(o2,0,sh.tx,0,sp)[0];o1=mv2(o1,0,Math.min(oth,o2-60),0,sp)[0]}else if(k2===0){o1=mv2(o1,0,sh.tx,0,sp)[0];o2=mv2(o2,0,Math.max(oth,o1+60),0,sp)[0]}else{o1=mv2(o1,0,110,0,sp)[0];o2=mv2(o2,0,250,0,sp)[0]}
@@ -1409,13 +1413,27 @@ function draw(){c.fillStyle='#1D6B55';c.fillRect(0,0,W,H);c.fillStyle='#2A8A6C';
   if(sh.by===1&&u>.4){c.strokeStyle='rgba(255,230,0,.9)';c.lineWidth=3;c.beginPath();c.arc(sh.tx,sh.ty,30,0,7);c.stroke()}}}
 var last=0,run=false;function loop(t){requestAnimationFrame(loop);if(!run||!sec.classList.contains('on')){last=0;return}var dt=last?Math.min(.05,(t-last)/1000):0;last=t;upd(dt);draw()}
 requestAnimationFrame(loop);
+function say2(i,who,txt){var L=[LOOKS[sel[0]],LOOKS[sel[1]],oL[0],oL[1]][i];return '<div class="gsay"><div class="av">'+icon(L)+'</div><div class="bb"><b>'+who+'</b>'+txt+'</div></div>'}
+var introT=null;
+function startGame(){clearTimeout(introT);document.getElementById('gov').hidden=true;cv.style.display='';reset();run=true;draw()}
+function intro(){var favs=['Clear','Drop shot','Smash','Drive'],fav=favs[Math.floor(Math.random()*4)],ov=document.getElementById('gov');
+ var L=[[0,names[0],"Hi everyone! I'm "+names[0]+". My favourite shot is the "+fav+". Let's have fun and play fair!"],[1,names[1],"Hello! I'm "+names[1]+", "+names[0]+"'s teammate. I'll cover the other side of the court. Teamwork wins games!"],[2,opp[0],"I'm "+opp[0]+". We're going to give you a tough match!"],[3,opp[1],"And I'm "+opp[1]+". May the best team win!"]];
+ cv.style.display='none';ov.hidden=false;ov.innerHTML='<h3>Meet the players</h3><div id="govl"></div><button class="gskip" id="gskip">Skip</button>';document.getElementById('gskip').onclick=startGame;
+ var n=0;(function next(){var l=document.getElementById('govl');if(!l||ov.hidden)return;if(n>=L.length){introT=setTimeout(startGame,1200);return}var x=L[n++];l.insertAdjacentHTML('beforeend',say2(x[0],x[1],x[2]));try{if(window.coachVoiceOn&&window.coachVoiceOn())window.coachSpeak(x[2])}catch(e){}introT=setTimeout(next,3300)})()}
+function showReview(){if(!end)return;var w=pts[0]>pts[1]?0:1,tot=0,top='',tc=-1,k;for(k in ST.me){tot+=ST.me[k];if(ST.me[k]>tc){tc=ST.me[k];top=KN[k]}}
+ var L=[[0,names[0],'I hit '+tot+' shot'+(tot===1?'':'s')+(tot?' and my favourite was the '+top.toLowerCase()+' ('+tc+'x)':'')+'. '+(ST.missed?'I missed '+ST.missed+' shuttle'+(ST.missed===1?'':'s')+', so next time I will move onto the yellow ring earlier.':'I did not miss a single shuttle!')],
+  [1,names[1],'I saved '+ST.mate+' shuttle'+(ST.mate===1?'':'s')+' for our team. '+(ST.mate?'Great teamwork!':'Next time I will try to help more.')],
+  [2,opp[0],w===0?'Well played! You were the better team today.':'Good game! We will keep learning and improving.'],
+  [3,opp[1],w===0?'We will train harder and come back stronger!':'Thanks for playing. Rematch soon?']];
+ var rv=document.getElementById('grev');rv.hidden=false;rv.innerHTML='<h3>Team review meeting · '+pts[0]+' – '+pts[1]+'</h3>'+L.map(function(x){return say2(x[0],x[1],x[2])}).join('');rv.scrollIntoView({block:'nearest'});
+ try{if(window.coachVoiceOn&&window.coachVoiceOn())window.coachSpeak('Team review. '+L[0][2])}catch(e){}}
 var setup=document.getElementById('gsetup'),play=document.getElementById('gplay');
 function clean(v,d){v=(v||'').replace(/[<>&]/g,'').trim().slice(0,12);return v||d}
 document.getElementById('gstart').onclick=function(){names=[clean(document.getElementById('gn1').value,'You'),clean(document.getElementById('gn2').value,'Buddy')];
  opp=[clean(document.getElementById('gn3').value,'Rex'),clean(document.getElementById('gn4').value,'Mia')];oL=[LOOKS[sel[2]],LOOKS[sel[3]]];
  document.getElementById('gt1').textContent=names[0]+' & '+names[1];document.getElementById('gt2').textContent=opp[0]+' & '+opp[1];
- reset();setup.hidden=true;play.hidden=false;run=true;draw();play.scrollIntoView({block:'start'})};
-document.getElementById('gback').onclick=function(){run=false;play.hidden=true;setup.hidden=false};
+ setup.hidden=true;play.hidden=false;run=false;intro();play.scrollIntoView({block:'start'})};
+document.getElementById('gback').onclick=function(){clearTimeout(introT);document.getElementById('gov').hidden=true;cv.style.display='';run=false;play.hidden=true;setup.hidden=false};
 document.getElementById('gagain').onclick=reset;
 function pos(e){var r=cv.getBoundingClientRect();tx0=Math.max(45,Math.min(315,(e.clientX-r.left)/r.width*W));ty0=Math.max(285,Math.min(485,(e.clientY-r.top)/r.height*H))}
 var drag=false;cv.addEventListener('pointerdown',function(e){drag=true;pos(e);try{cv.setPointerCapture(e.pointerId)}catch(x){}});cv.addEventListener('pointermove',function(e){if(drag)pos(e)});cv.addEventListener('pointerup',function(){drag=false});
