@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Shree, 8, is learning badminton with AI and sharing it free. Learn rules, grip, footwork, shots and drills with 3D demos, and join our open-source community.">
 <link rel="canonical" href="https://aismashlearningacademy.com/">
-<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1D6B55"><link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Smash Academy">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1D6B55"><link rel="icon" type="image/svg+xml" href="favicon.svg" id="fav"><link rel="icon" type="image/png" sizes="192x192" href="icon2-192.png"><link rel="apple-touch-icon" href="icon2-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Smash Academy">
 <meta property="og:type" content="website"><meta property="og:site_name" content="AI Smash Learning Academy"><meta property="og:title" content="AI Smash Learning Academy – Learn Badminton with AI"><meta property="og:description" content="Shree, 8, is learning badminton with AI and sharing it free. Learn rules, grip, footwork, shots and drills with 3D demos, and join our open-source community."><meta property="og:url" content="https://aismashlearningacademy.com/">
 <meta property="og:image" content="https://aismashlearningacademy.com/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://aismashlearningacademy.com/og.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI Smash Learning Academy","alternateName":"Smash Learning Academy","url":"https://aismashlearningacademy.com/"}</script>
@@ -452,7 +452,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 4:25 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 4:45 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -1468,6 +1468,9 @@ window.confetti=function(){var cv=document.createElement('canvas');cv.id='cf';cv
 var dp=null,bar=document.createElement('button');bar.id='inst';bar.type='button';bar.textContent='Install app';bar.hidden=true;document.body.appendChild(bar);
 addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;bar.hidden=false});
 bar.onclick=function(){if(dp){dp.prompt();dp.userChoice.finally(function(){bar.hidden=true;dp=null})}};addEventListener('appinstalled',function(){bar.hidden=true})})();
+</script>
+<script>
+(function(){var l=document.getElementById('fav');if(!l)return;var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=c.height=64;var x=c.getContext('2d');if(!('filter' in x))return;var h=0;setInterval(function(){h=(h+25)%360;x.clearRect(0,0,64,64);x.filter='hue-rotate('+h+'deg) saturate(2)';x.drawImage(im,0,0,64,64);try{l.type='image/png';l.href=c.toDataURL('image/png')}catch(e){}},500)};im.src='icon2-192.png'})();
 </script>
 </body>
 </html>
