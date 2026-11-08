@@ -452,7 +452,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 9:05 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 9:15 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -554,7 +554,8 @@ var lastE=null,__rel=null;
 function norm(q){return q.toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9'\/ ]+/g,' ').replace(/\s+/g,' ').trim()}
 function best(s){var top=null,sc=0;for(var i=0;i<KBX.length;i++){var e=KBX[i],v=0,m=e.s.exec(s);if(m)v+=5+m[0].length/3;for(var j=0;j<e.w.length;j++){var n=e.w[j].exec(s);if(n)v+=2+n[0].length/4}if(v>0)v+=e.p||0;if(v>sc){sc=v;top=e}}return sc>=2?top:null}
 var CQA=[
- [/\b(who|whom)\b.*\b(made|created|built|started|founded|developed|owns?|designed)\b.*\b(academy|website|site|app|this)\b|\b(academy|website|site|app)\b.*\b(made|created|built|started|founded) by\b|\bwho is (the )?(founder|creator|owner|maker)\b/,'Shree made this academy with AI interest.']
+ [/\b(who|whom)\b.*\b(made|created|built|started|founded|developed|owns?|designed)\b.*\b(academy|website|site|app|this)\b|\b(academy|website|site|app)\b.*\b(made|created|built|started|founded) by\b|\bwho is (the )?(founder|creator|owner|maker)\b/,'Shree made this academy with AI interest.'],
+ [/\b(why|how)\b.*\b(badminton|this game|this sport)\b.*\b(important|good|useful|special|great|beneficial|worth|matter|need)\b|\b(importance|benefits?|advantages?) of (playing )?badminton\b|\bwhy (should|do) (i|we|people|kids|children) (play|learn)\b.*\bbadminton\b|\bwhy (play|learn) badminton\b/,'Badminton is important because you will not get any pain in your body, and badminton is a very interesting game.']
 ];
 function cqa(s){for(var i=0;i<CQA.length;i++)if(CQA[i][0].test(s))return CQA[i][1];return null}
 function local(q){var s=norm(q);__rel=null;
