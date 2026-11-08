@@ -452,7 +452,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 9:15 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 9:40 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -555,7 +555,58 @@ function norm(q){return q.toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0
 function best(s){var top=null,sc=0;for(var i=0;i<KBX.length;i++){var e=KBX[i],v=0,m=e.s.exec(s);if(m)v+=5+m[0].length/3;for(var j=0;j<e.w.length;j++){var n=e.w[j].exec(s);if(n)v+=2+n[0].length/4}if(v>0)v+=e.p||0;if(v>sc){sc=v;top=e}}return sc>=2?top:null}
 var CQA=[
  [/\b(who|whom)\b.*\b(made|created|built|started|founded|developed|owns?|designed)\b.*\b(academy|website|site|app|this)\b|\b(academy|website|site|app)\b.*\b(made|created|built|started|founded) by\b|\bwho is (the )?(founder|creator|owner|maker)\b/,'Shree made this academy with AI interest.'],
- [/\b(why|how)\b.*\b(badminton|this game|this sport)\b.*\b(important|good|useful|special|great|beneficial|worth|matter|need)\b|\b(importance|benefits?|advantages?) of (playing )?badminton\b|\bwhy (should|do) (i|we|people|kids|children) (play|learn)\b.*\bbadminton\b|\bwhy (play|learn) badminton\b/,'Badminton is important because you will not get any pain in your body, and badminton is a very interesting game.']
+ [/\b(why|how)\b.*\b(badminton|this game|this sport)\b.*\b(important|good|useful|special|great|beneficial|worth|matter|need)\b|\b(importance|benefits?|advantages?) of (playing )?badminton\b|\bwhy (should|do) (i|we|people|kids|children) (play|learn)\b.*\bbadminton\b|\bwhy (play|learn) badminton\b/,'Badminton is important because you will not get any pain in your body, and badminton is a very interesting game.'],
+ [/\bwhat('?s| is| are)\b.*\b(this (website|site|academy|app)|ai smash|smash learning academy|the academy)\b|\btell me about (the |this )?(academy|website|site)\b/,"AI Smash Learning Academy is a free website where you learn badminton with the help of AI. It has 3D demos, lessons and a game."],
+ [/\bwho('?s| is)\b.*\bshree\b|\babout shree\b|\btell me about shree\b/,"Shree is an 8-year-old boy who is learning badminton with AI. He made this academy."],
+ [/\b(can|may|is it open to|who can)\b.*\b(everyone|anyone|any ?one|everybody|kids|children|adults|people)\b.*\bjoin\b|\bwho can join\b|\bcan (i|we) join\b/,"Yes, everyone can join. Anyone who wants to learn badminton and help others learn with AI is welcome."],
+ [/\bhow (do|can|to|should) (i|we|you|one)\b.*\bjoin\b|\bhow to join\b|\bjoin (the )?(community|academy)\b/,"Press the Join the community button and fill in the short form. We will get in touch with you."],
+ [/\b(need|have) to (pay|sign ?up|register|log ?in|create an account)\b|\bdo (i|we) (need|have)\b.*\b(account|sign ?up|pay)\b/,"No. You can use the whole website without paying or making an account."],
+ [/\b(is|are) (it|this (website|site|academy|app)|everything|the (academy|website|site|app)) (really )?(free|paid)\b|\bis it free\b|\bany (cost|fees?|charges?)\b|\bhow much (does it|is it|do i)\b.*\b(cost|pay)\b/,"Yes, everything on the academy is free."],
+ [/\bwhat (can|will|do) (i|we|you)\b.*\b(learn|teach|find)\b|\bwhat('?s| is) (taught|inside|available)\b|\bwhat topics\b/,"You can learn the rules, how to choose a racket and shuttle, the grip, strokes, footwork, drills, warm-ups and trick shots."],
+ [/\b(beginner|new to|first time|just starting|never played)\b.*\b(start|begin)\b|\bwhere (do|should|can) (i|we)\b.*\b(start|begin)\b|\bwhere to start\b/,"Start with Rules, then Rackets, then Shuttles. After that, try Grip and Strokes."],
+ [/\bhow (do|can|to|should) (i|we|you)\b.*\bplay (the )?(game|play game)\b|\bhow to play (the )?(game|play game)\b|\bhow does the game work\b/,"Open Play game, choose your team, pick a shot, and drag your finger to move your player. When your racket touches the shuttle, your player hits it."],
+ [/\b15\b|\b(play game|this game|your game)\b.*\bpoints\b|\bpoints\b.*\b(play game|this game)\b/,"The first team to reach 15 points wins the Play game."],
+ [/\bhow many points\b.*\b(real|actual|badminton|normal|official|win)\b|\b21 points?\b|\bpoints (to|do you need to) win\b/,"A real game is played to 21 points, and you win the match by winning 2 games out of 3."],
+ [/\b(work|use|open|run|play)\b.*\b(on|in)\b.*\b(phone|mobile|tablet|ipad|android|iphone)\b|\bmobile friendly\b|\bphone friendly\b/,"Yes, the website works well on phones, and you can also install it like an app."],
+ [/\binstall\b|\bdownload\b.*\b(app|website|site)\b|\badd to home screen\b|\bis there (an )?app\b/,"On Android, press the Install app button. On iPhone, use Safari, tap Share, and choose Add to Home Screen."],
+ [/\bopen ?source\b|\bis the code (free|public|shared)\b|\bgithub\b|\bsource code\b/,"Yes, the code is open source and shared on GitHub, so anyone can use it and help improve it."],
+ [/\b(can|how can|how do) (i|we)\b.*\b(help|contribute|improve|support)\b.*\b(academy|website|site)\b|\bcontribute\b/,"Yes, you can join the community, or suggest changes on our GitHub page."],
+ [/\b(ads?|advertisements?|advertising|adverts?)\b/,"No, there are no ads on this website."],
+ [/\bis it safe\b|\b(safe|secure|safety)\b.*\b(kids?|children|child)\b|\bkid friendly\b/,"Yes, it is made for learning, with no ads. Kids should still ask a parent before filling in the Join form."],
+ [/\bwhat (is|does) the (heart|like)\b|\bwhy (the )?hearts?\b|\b(heart|like) button\b/,"Press the heart to show you like the academy. Everyone's hearts are added together."],
+ [/\bhow (do|can|to) (i|we) (use|turn on) (the )?(coach|voice)\b|\bgirl voice\b|\bboy voice\b|\bcoach voice\b/,"Press Girl voice or Boy voice below the court, and the coach will talk while the match plays."],
+ [/\b(can|how) (i|we|do i)\b.*\bask\b.*\b(shree|ai shree)\b|\bhow to ask\b|\bask ai shree\b/,"Yes, press the Ask AI Shree button and type your question."],
+ [/\bnet\b.*\b(height|tall|high)\b|\bhow (tall|high) is (the|a) (badminton )?net\b/,"The net is about 1.5 metres high, which is a little above a child's chest height."],
+ [/\bcourt\b.*\b(size|big|long|wide|length|width|dimensions?)\b|\bsize of (the|a) (badminton )?court\b|\bhow (big|large|long|wide) is (the|a) (badminton )?court\b/,"A doubles court is 13.4 metres long and 6.1 metres wide. A singles court is a little narrower."],
+ [/\b(singles?|doubles?)\b.*\b(players?|people|how many)\b|\bhow many players\b|\bnumber of players\b/,"In singles, 2 players play, with one on each side of the net. In doubles, 4 players play, with two on each side."],
+ [/\bwhat (do|should) (i|we) need\b.*\b(play|start|begin)\b|\bequipment\b|\bwhat (equipment|gear)\b/,"You need a racket, shuttles, a net and a flat court, plus comfortable sports shoes."],
+ [/\bwhat('?s| is) (a|the) (shuttle|shuttlecock|birdie|bird)\b|\bwhat are shuttles?\b/,"A shuttle (or shuttlecock) is the small feathered or plastic ball that you hit over the net."],
+ [/\b(feather|nylon|plastic)\b.*\b(feather|nylon|plastic|difference|better|vs|or)\b/,"Feather shuttles fly better and are used in tournaments. Nylon shuttles last longer and cost less, so they are good for learning."],
+ [/\bhow (do|to|can) (i|we) (hold|grip)\b|\b(hold|grip|holding|gripping)\b.*\b(racket|racquet)\b|\bracket (grip|hold)\b/,"Hold it like a handshake. Keep your grip relaxed so you can change your hand quickly."],
+ [/\bwhat('?s| is) (a |the )?smash\b|\bwhat does smash mean\b|\bmeaning of smash\b/,"A smash is a hard shot hit downward and fast, usually from above your head."],
+ [/\bwhat('?s| is) (a |the )?drop( shot)?\b/,"A drop shot is a soft shot that falls just over the net, so your opponent has to run forward."],
+ [/\bwhat('?s| is) (a |the )?clear\b/,"A clear is a high shot that flies deep to the back of the opponent's court."],
+ [/\bwhat('?s| is) (a |the )?drive\b/,"A drive is a fast, flat shot that goes across the court at about net height."],
+ [/\bwhat('?s| is) (the )?footwork\b|\bwhat does footwork mean\b|\bmeaning of footwork\b/,"Footwork is how you move around the court so you reach the shuttle early and stay balanced."],
+ [/\bsplit ?step\b/,"A split step is a small hop just before your opponent hits, so you are ready to move in any direction."],
+ [/\bhow (do|to|can|should) (i|we|you)\b.*\bserve\b|\bhow to serve\b|\bserving (rules|correctly)\b|\bcorrect serve\b|\bserve (rules|correctly)\b/,"Hit the shuttle below your waist, with part of your racket head pointing down, and send it diagonally to the opponent's service box."],
+ [/\b(hit|touch|touches|hits|touching|hitting)\b.*\bnet\b/,"If the shuttle touches the net and does not go over, the other side wins the point."],
+ [/\bwhat('?s| is) (a |the )?fault\b|\bfaults?\b/,"A fault is breaking a rule, like hitting the shuttle twice or touching the net with your racket. The other side gets the point."],
+ [/\bwhat('?s| is) (a |the )?let\b|\bwhat does let mean\b/,"A let means the rally is played again. It can happen if something unexpected disturbs the play."],
+ [/\bwarm ?(up|ing)\b.*\b(before|after)\b.*\b(and|or)\b|\bbefore and after\b.*\b(game|match|playing)\b|\bwhy\b.*\bwarm ?up\b.*\b(and|or)\b.*\b(cool|after)\b/,"Before the game, a warm-up wakes up your muscles and gets your body ready, which helps you avoid pain and injuries. After the game, a cool-down and stretching helps your body relax, so your muscles do not feel stiff or sore later."],
+ [/\bwhy\b.*\bwarm ?(up|ing)\b|\bimportance of warm ?up\b/,"Warming up wakes up your muscles and helps you avoid pain and injuries."],
+ [/\bhow\b.*\bwarm ?(up|ing)\b|\bwarm ?up (exercises?|routine)\b/,"Do some light jogging, arm circles, leg swings and gentle stretches for a few minutes so your body is ready."],
+ [/\bafter (playing|the game|a game|the match|match|game)\b.*\b(do|should)\b|\bcool ?down\b|\bwhat (should|do) (i|we) do after\b/,"Slow down, walk a little, and stretch your arms, shoulders and legs. Drink some water too."],
+ [/\bis badminton\b.*\b(exercise|fitness|healthy|good for)\b|\bbadminton\b.*\b(exercise|fitness)\b/,"Yes, it makes you run, jump and stretch, so it helps your fitness, balance and speed."],
+ [/\bhow (can|do|to) (i|we)\b.*\b(get better|improve|become (better|good)|get good)\b|\bimprove (my )?(game|badminton|skills?)\b/,"Practise often, learn the basics first, watch the lessons here, and play with friends."],
+ [/\bhow (long|many (minutes|hours))\b.*\b(practi[cs]e|train|play)\b|\bhow often\b.*\b(practi[cs]e|play|train)\b/,"Even 20 to 30 minutes of careful practice is good, especially for kids. Ask a parent or coach if you are not sure."],
+ [/\b(trick ?shots?|tricks)\b.*\b(page|category|section|tab)\b/,"It shows illegal moves that lose the point, plus fantasy stunts that nobody can really do."],
+ [/\bwhat('?s| is) (a |the )?trick ?shots?\b|\btrick ?shots? (mean|meaning)\b/,"A trick shot is a fancy move for fun, like hitting behind your back. Many of them are illegal in a real match, so we only show them for fun."],
+ [/\bis (ai )?shree (a )?(real|human|person|robot|bot)\b|\bare you (a )?(real|human|person|robot|bot)\b|\bwho are you\b|\bwhat are you\b/,"No, AI Shree is a helper made with AI. Shree, the 8-year-old, built the academy with AI's help."],
+ [/\b(can|does|will) (ai|you)\b.*\b(wrong|mistakes?|errors?|lie)\b|\bis ai (always )?(right|correct|accurate)\b/,"Yes, AI can sometimes be wrong, so it is a good idea to check important things with a coach or a grown-up."],
+ [/\bhow (can|does|do) (ai|you)\b.*\b(help|teach)\b|\bhow does ai help\b/,"AI can explain the rules, show the moves, answer your questions and make practice fun, at any time."],
+ [/\bplay\b.*\b(with|against)\b.*\b(friends?|others|multiplayer|online|people)\b|\bmultiplayer\b/,"Right now you play with a teammate who is controlled by the computer. You can choose names and looks for everyone."],
+ [/\bshare\b.*\b(website|site|academy|friends|link)\b|\bhow (do|can|to) (i|we) share\b/,"Yes, press the Share button. It opens your phone's share menu, or copies the link on a computer."]
 ];
 function cqa(s){for(var i=0;i<CQA.length;i++)if(CQA[i][0].test(s))return CQA[i][1];return null}
 function local(q){var s=norm(q);__rel=null;
