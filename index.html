@@ -372,7 +372,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
 <section id="game">
   <h2>Play game</h2>
   <div id="gsetup">
-   <p class="lead">Pick your team! Choose a name and a look for yourself, your teammate and the opponent team, then play doubles.</p>
+   <p class="lead">Pick your team! Choose a name and a look for yourself, your teammate and the opponent team, then play doubles. The first team to 15 points wins, and then you have a team review meeting.</p>
    <div class="gcard"><h3>You</h3><input id="gn1" maxlength="12" value="Shree" aria-label="Your name"><div class="gsw" id="gsw1" role="group" aria-label="Your look"></div></div>
    <div class="gcard"><h3>Your teammate</h3><input id="gn2" maxlength="12" value="Coach" aria-label="Teammate name"><div class="gsw" id="gsw2" role="group" aria-label="Teammate look"></div></div>
    <h3 class="gopp">Opponent team</h3>
@@ -434,7 +434,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 3:20 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 3:45 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -1365,7 +1365,7 @@ function hitK(who,k,fx,fy){var h=shot(k,who);fly(who,fx,fy,h.tx,h.ty,h.T,h.arc,k
 function serve(who){if(who===0){SW[0]=now;hitK(0,'clear',px,py)}else{SW[2]=now;hitK(1,'clear',o1,AY)}}
 function shPos(){var u=Math.min(1.2,(now-sh.t0)/sh.T);return[sh.fx+(sh.tx-sh.fx)*u,sh.fy+(sh.ty-sh.fy)*u,u]}
 function point(w){pts[w]++;gp.textContent=pts[0];ga.textContent=pts[1];srv=w;sh=null;st='pause';ptsT=now;
- if(pts[w]>=21){end=true;if(w===0&&window.confetti)window.confetti();document.getElementById('gagain').hidden=false;setTimeout(showReview,1200);say(w===0?'Your team wins!':opp[0]+' & '+opp[1]+' win!')}}
+ if(pts[w]>=15){end=true;if(w===0&&window.confetti)window.confetti();document.getElementById('gagain').hidden=false;setTimeout(showReview,1200);say(w===0?'Your team wins!':opp[0]+' & '+opp[1]+' win!')}}
 function reset(){ST={me:{clear:0,drop:0,smash:0,drive:0},mate:0,missed:0};document.getElementById('grev').hidden=true;pts=[0,0];gp.textContent=0;ga.textContent=0;end=false;srv=0;st='pause';ptsT=now;sh=null;px=tx0=110;py=ty0=430;mx=250;my=430;o1=110;o2=250;document.getElementById('gagain').hidden=true;say('Get ready!')}
 function near(a,b,x){return Math.abs(a-x)<=Math.abs(b-x)?0:1}
 function pickK(){var q=Math.random();return q<.3?'clear':q<.55?'drop':q<.78?'smash':'drive'}
