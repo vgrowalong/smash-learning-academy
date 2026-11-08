@@ -78,7 +78,7 @@ th{font-family:'Bricolage Grotesque',sans-serif}
 body.noscroll{overflow:hidden}
 .lk{display:block;text-decoration:none;color:inherit}.lk:hover{border-color:var(--court)}.lk h3 span{color:var(--hot)}
 a:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
-.stage#s-court{height:clamp(240px,44vw,340px)}
+.stage#s-court{height:clamp(250px,54vw,400px)}
 .stage{position:relative;height:300px;margin:18px 0;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:grab}
 .stage.sm{height:260px}
 .stage canvas{display:block;width:100%;height:100%;touch-action:pan-y}
@@ -431,7 +431,7 @@ section.on .grid>*:nth-child(2){animation-delay:.06s}section.on .grid>*:nth-chil
   <div class="chips" id="chips"></div>
   <div class="ask"><input id="q" placeholder="Ask anything about badminton" aria-label="Ask AI Shree"><button class="cta" id="send" style="padding:10px 16px">Ask</button></div>
 </div>
-<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 7 Nov 2026, 11:00 pm &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
+<div class="wrap"><footer>© 2026 AI Smash Learning Academy. Version 8 Nov 2026, 10:40 am &middot; Open source under the <a href="https://github.com/vgrowalong/smash-learning-academy/blob/main/LICENSE" target="_blank" rel="noopener" style="color:inherit">MIT License</a>.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -784,7 +784,7 @@ function flex(p,A,dt){var K=[-1,-.45,0,.35,.8],m=Math.min(1,Math.abs(A[2]-A[1])/
 function mk(id,cam,build,fix,r0,piv){
  var el=document.getElementById(id),r=null,dead=false;if(!el)return;
  var EXT={'s-court':26,'s-tech':7,'s-warm':6,'s-grip':4,'s-racket':3,'s-shuttle':3}[id]||8;
- function ensure(){if(r)return true;try{r=new T.WebGLRenderer({antialias:true,alpha:true})}catch(e){el.textContent='3D is not supported on this device.';dead=true;return false}r.setPixelRatio(Math.min(devicePixelRatio||1,id==='s-court'?1.1:2));r.shadowMap.enabled=true;r.shadowMap.type=id==='s-court'?T.PCFShadowMap:T.PCFSoftShadowMap;el.insertBefore(r.domElement,el.firstChild);lw=0;return true}
+ function ensure(){if(r)return true;try{r=new T.WebGLRenderer({antialias:true,alpha:true})}catch(e){el.textContent='3D is not supported on this device.';dead=true;return false}r.setPixelRatio(Math.min(devicePixelRatio||1,id==='s-court'?1.7:2));r.shadowMap.enabled=true;r.shadowMap.type=id==='s-court'?T.PCFShadowMap:T.PCFSoftShadowMap;el.insertBefore(r.domElement,el.firstChild);lw=0;return true}
  function drop(){if(r){r.dispose();try{r.forceContextLoss()}catch(e){}if(r.domElement.parentNode)r.domElement.parentNode.removeChild(r.domElement);r=null}}
  
  var sc=new T.Scene(),ca=new T.PerspectiveCamera(40,1,.1,100),g=new T.Group(),lw=0,lh=0,rot0=r0!==undefined?r0:(fix?.3:.6),rot=rot0,dr=false,lx=0,vel=0,uz=1,big=false;
@@ -1023,7 +1023,7 @@ function rally(pl,sh,ca,g){
   msp.visible=!!(D&&D.mark&&(q%4.2)>1.4+D.dur);if(D&&D.mark){msp.material.map=TX[D.mark];msp.position.set(D.T[0],1.1,D.T[2])}
   hS.visible=K2==='co';hA.visible=hB.visible=K2==='co'&&Math.floor(q/2)%2===1;
   sh.visible=!(D&&K2&&K2!=='shu');sh.scale.setScalar(K2==='shu'?5:1.6);
-  if(!(K2==='gp'||K2==='shu')&&zoomed){ca.position.set(8.3,3.8,34);ca.lookAt(8.3,3.4,0);zoomed=false}}
+  if(!(K2==='gp'||K2==='shu')&&zoomed){ca.position.set(8.3,4.6,28);ca.lookAt(8.3,0.4,0);zoomed=false}}
  function cdemo(t){var D=demo,Q=pl[0],S=ST.sv,q,a,i,u,p,r,n,c;if(dstart<0)dstart=t;q=t-dstart;
   if(D.kind==='ft'){var FP=[[-2.6,-1.6],[-1.2,1.8],[-5.6,1.8],[-5.6,-1.8],[-1.2,-1.8],[-2.6,0]];n=FP.length;i=Math.floor(q/1.1)%n;r=q%1.1;p=FP[(i+n-1)%n];c=FP[i];u=Math.min(1,r/.7);u=u*u*(3-2*u);
    Q.g.position.set(p[0]+(c[0]-p[0])*u,.06*Math.abs(Math.sin(r*9)),p[1]+(c[1]-p[1])*u);Q.g.rotation.z=u<1?-.25*Math.sin(u*PI):0;
@@ -1070,7 +1070,7 @@ function rally(pl,sh,ca,g){
     var am=Math.min(1,sp/2.2),sw=Math.sin(PH[w]=PH[w]+d*(3+am*7)),bd=.2+.25*am*Math.abs(sw);
     Q.L1.rotation.z=bd+.7*am*sw;Q.L2.rotation.z=bd-.7*am*sw;Q.K1.rotation.z=-2*bd-.9*am*Math.max(0,-sw);Q.K2.rotation.z=-2*bd-.9*am*Math.max(0,sw);
     Q.la.rotation.z=-.55*am*sw+.1*Math.sin(PH[w]*.5);Q.g.position.y+=-.8*(1-Math.cos(bd))+.03*am*Math.abs(sw)}}}}
-mk("s-court",[8.3,3.8,34,3.4,0,8.3],function(g,ca){
+mk("s-court",[8.3,4.6,28,0.4,0,8.3],function(g,ca){
  function glow(w,d,x,z,c){var m=new T.Mesh(new T.BoxGeometry(w,.05,d),new T.MeshBasicMaterial({color:c}));m.position.set(x,-.04,z);m.userData.nocast=1;g.add(m);return m}
  box(g,15.6,.34,8.4,0,-.22,0,0x1A1446);box(g,15,.06,7.7,0,-.03,0,0x2F6BFF);box(g,13.4,.02,6.1,0,0,0,0x00B67A);
  box(g,4.72,.02,3.05,4.34,.004,1.525,0x37DDA0);box(g,4.72,.02,3.05,-4.34,.004,-1.525,0x37DDA0);box(g,3.96,.02,6.1,0,.004,0,0x009C69);
